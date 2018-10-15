@@ -1,3 +1,3 @@
 # capstone
-UCSB f18 Capstone Project
-... Company: Intouch Health
+## UCSB f18 Capstone Project
+Company: Intouch Health
