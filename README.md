@@ -1,2 +1,4 @@
-## UCSB f18 Capstone Project
-Company: Intouch Health
+# UCSB CS Capstone: InTouch Health # 
+Team Name: InTouch With My Health 
+
+
