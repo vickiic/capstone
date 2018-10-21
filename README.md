@@ -14,7 +14,9 @@ Project Name: Apple Watch x Physicians
 ## Project Description ## 
 The InTouch operating system provides a simple and reliable communication platform between physicians and patients. Although patient data is collected during a session, to further track a patient's health and enhance current methods of life-saving interventions, data should be collected on a regular basis. With the power of modern wearable devices, vitals can be taken much more often and remotely compared to the occasional hospital visits. 
 <br />
+<br />
 With the newest release of the Apple Watch Series 4, specifically the electrocardiography (ECG) capability, wearable devices take a step further in the direction towards medical appliances. This important feature allows more real time and frequent measurements to be collected and provide physicians supplementary data points, leading to a more accurate diagnosis and treatment for the patient. 
+<br />
 <br />
 For our group project, we will leverage apple watch engineering to integrate medical data including heart rate, ECG, and patient symptoms inside a doctor’s session to provide further clinical data for diagnostic assessment. This will not only provide live data which can alert medical assistants once measurements reach abnormal rates, but the watch integration will also build a health history for each patient that can later be used by the physician.
 
