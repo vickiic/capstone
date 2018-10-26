@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import Home from './components/Home';
 import Login from './components/Login';
 import Header from './components/Header';
 import Stats1 from './components/Stats1';
@@ -36,8 +37,17 @@ class App extends Component {
       }
   }
 
+  home = () => {
+    this.setState({
+      home: true,
+      nav1: false,
+      nav2: false,
+    })
+  }
+
   nav1 = () => {
     this.setState({
+      home: false,
       nav1: true,
       nav2: false,
     })
@@ -45,6 +55,7 @@ class App extends Component {
 
   nav2 = () => {
     this.setState({
+      home: false,
       nav1: false,
       nav2: true,
     })
@@ -75,9 +86,11 @@ class App extends Component {
         <Header
           nav1={this.nav1}
           nav2={this.nav2}
+          home={this.home}
           username={this.state.username}
           logout={this.logout}
         />
+        {this.state.home && <Home/>}
         {this.state.nav1 && <Stats1/>}
         {this.state.nav2 && <Stats2/>}
       </div>

@@ -5,6 +5,7 @@ export default class Header extends Component {
         return (
             <div>
                 Hello {this.props.username}!
+                <button onClick={this.props.home}>Home</button>
                 <button onClick={this.props.nav1}>Show stats!</button>
                 <button onClick={this.props.nav2}>Show different stats!</button>
                 <button onClick={this.props.logout}>Logout</button>
