@@ -57,7 +57,3 @@ export function get(url, config){
             default: console.log("Hit default")
     }
 }
-
-export function foo(){
-    console.log("wtf");
-}

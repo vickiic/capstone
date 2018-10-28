@@ -18,19 +18,30 @@ export default class Stats1 extends Component {
                 "Content-Type": "application/json"
             }
         }
-        console.log(config)
-        axios.foo();
         axios.get(`https://devices.intouchhealth.com/api/v1/devices`, config)
         .then(res => {
-            console.log("here")
-            console.log(res)
+            this.setState({
+                devices: res.devices,
+            })
         })
     }
 
     render(){
         return(
             <div>
-                Some stats!
+                <div>
+                    <span className="stats_name">Name</span>
+                    <span className="stats_id">Id</span>
+                    <span className="stats_enabled">Enabled</span>
+                </div>
+
+                {this.state.devices.map(device => (
+                    <div>
+                        <span className="stats_name">{device.name}</span>
+                        <span className="stats_id">{device.id}</span>
+                        <span className="stats_enabled">{device.is_enabled ? "true" : "false"}</span>
+                    </div>
+                ))}
             </div>
         )
     }
