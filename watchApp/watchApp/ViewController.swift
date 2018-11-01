@@ -47,7 +47,9 @@ class ViewController: UIViewController, WCSessionDelegate  {
 
   @IBOutlet weak var clickStatus: UILabel!
   
-
+    @IBAction func test(_ sender: Any) {
+    }
+    
   @IBAction func click(_ sender: Any) {
     self.clickStatus.text = "Phone Click"
     print("clicked on Phone")
