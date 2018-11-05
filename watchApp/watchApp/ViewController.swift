@@ -10,6 +10,8 @@ import UIKit
 import WatchConnectivity
 
 class ViewController: UIViewController, WCSessionDelegate  {
+    
+    let store:HealthKitManager = HealthKitManager.getInstance()
 
   public func sessionDidDeactivate(_ session: WCSession) {
     // Code
@@ -42,6 +44,7 @@ class ViewController: UIViewController, WCSessionDelegate  {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    print("Original view did load")
     // Do any additional setup after loading the view, typically from a nib.
   }
 
