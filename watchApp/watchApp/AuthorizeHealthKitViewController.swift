@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import HealthKit
 
 class AuthorizeHealthKitViewController: UIViewController {
-
+    
+    @IBOutlet weak var HealthKitAuthLabel: UILabel!
+    
     var store:HealthKitManager = HealthKitManager.getInstance()
     
     override func viewDidLoad() {
@@ -18,8 +21,15 @@ class AuthorizeHealthKitViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
-    @IBAction func authButtonClicked(_ sender: Any) {
+    @IBAction func continueButtonClicked(_ sender: Any) {
+        if(store.healthStore?.authorizationStatus(for: HKObjectType.quantityType(forIdentifier: .heartRate)!) == .sharingAuthorized){
+            print("it did have access");
+            self.performSegue(withIdentifier: "authorizedSegue", sender: nil)
+        }
+        else{
+            print("it didnt have access");
+            HealthKitAuthLabel.text = "To continue, please enable access to HealthKit data. \n\nTo authorize HealthKit go to: \n\nSettings > Privacy > Health > WatchApp \n\nand enable both read and write for heart rate data.\n"
+        }
     }
     
     /*
