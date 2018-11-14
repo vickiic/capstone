@@ -57,5 +57,11 @@ class ViewController: UIViewController, WCSessionDelegate  {
     self.clickStatus.text = "Phone Click"
     print("clicked on Phone")
   }
+    
+    @IBAction func SendHealthData(_ sender: Any) {
+        let dm: DeviceManager = DeviceManager.getSharedInstance()
+        dm.writeHeartRateData(heartRate: "50", timeStamp: "11122018")
+    }
+    
 }
 

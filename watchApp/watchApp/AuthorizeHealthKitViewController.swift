@@ -31,6 +31,8 @@ class AuthorizeHealthKitViewController: UIViewController {
             HealthKitAuthLabel.text = "To continue, please enable access to HealthKit data. \n\nTo authorize HealthKit go to: \n\nSettings > Privacy > Health > WatchApp \n\nand enable both read and write for heart rate data.\n"
         }
     }
+
+    
     
     /*
     // MARK: - Navigation
