@@ -35,6 +35,7 @@
 		F086F5782187C69800E125D8 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F086F5772187C69800E125D8 /* ExtensionDelegate.swift */; };
 		F086F57A2187C69800E125D8 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F086F5792187C69800E125D8 /* NotificationController.swift */; };
 		F086F57C2187C69800E125D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F086F57B2187C69800E125D8 /* Assets.xcassets */; };
+		F0A9D38F219C1671008D5934 /* HeartRateMonitorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A9D38E219C1671008D5934 /* HeartRateMonitorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,8 +137,12 @@
 		F086F57B2187C69800E125D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F086F57D2187C69800E125D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F086F57E2187C69800E125D8 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		F8EC3C33261CEC840A0D92B8 /* Pods-watchApp WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchApp WatchKit App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchApp WatchKit App/Pods-watchApp WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
 		FC20956E397C4DA35D7C4203 /* Pods-watchApp WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchApp WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchApp WatchKit Extension/Pods-watchApp WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+=======
+		F0A9D38E219C1671008D5934 /* HeartRateMonitorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateMonitorViewController.swift; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,7 +261,11 @@
 				F086F5432187C69700E125D8 /* Assets.xcassets */,
 				F086F5452187C69700E125D8 /* LaunchScreen.storyboard */,
 				F086F5482187C69700E125D8 /* Info.plist */,
+<<<<<<< Updated upstream
 				9BB0D0F721936A5B00D4CA4C /* GoogleService-Info.plist */,
+=======
+				F0A9D38E219C1671008D5934 /* HeartRateMonitorViewController.swift */,
+>>>>>>> Stashed changes
 			);
 			path = watchApp;
 			sourceTree = "<group>";
@@ -650,6 +659,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0A9D38F219C1671008D5934 /* HeartRateMonitorViewController.swift in Sources */,
 				F086F53F2187C69700E125D8 /* ViewController.swift in Sources */,
 				CA937097218CFAA9000BBF08 /* AuthorizeHealthKitViewController.swift in Sources */,
 				F086F53D2187C69700E125D8 /* AppDelegate.swift in Sources */,
@@ -945,7 +955,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = watchApp/watchApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7Z6TUPH89Q;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = watchApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -965,7 +975,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = watchApp/watchApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7Z6TUPH89Q;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = watchApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
