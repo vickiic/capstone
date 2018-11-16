@@ -8,6 +8,7 @@
 
 import UIKit
 import WatchConnectivity
+import FirebaseAuth
 
 class ViewController: UIViewController, WCSessionDelegate  {
     
@@ -57,6 +58,35 @@ class ViewController: UIViewController, WCSessionDelegate  {
     self.clickStatus.text = "Phone Click"
     print("clicked on Phone")
   }
+    
+    @IBOutlet weak var usernameTextfield: UITextField!
+    @IBOutlet weak var passwordTextfield: UITextField!
+    
+    @IBAction func loginTapped(_ sender: Any) {
+        if let email = usernameTextfield.text, let password = passwordTextfield.text {
+            Auth.auth().signIn(withEmail: email, password: password, completion: {
+                (user, error) in
+                if let firebaseError = error {
+                    print(firebaseError.localizedDescription)
+                    return
+                }
+                print("login success!")
+            })
+    }
+    }
+    
+    @IBAction func signupTapped(_ sender: Any) {
+        if let email = usernameTextfield.text, let password = passwordTextfield.text {
+            Auth.auth().createUser(withEmail: email, password: password, completion: {
+                user, error in
+                if let firebaseError = error {
+                    print(firebaseError.localizedDescription)
+                    return
+                }
+                print("success!")
+            })
+        }
+    }
     
     @IBAction func SendHealthData(_ sender: Any) {
         let dm: DeviceManager = DeviceManager.getSharedInstance()
