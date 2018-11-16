@@ -12,6 +12,7 @@ import FirebaseAuth
 
 class ViewController: UIViewController, WCSessionDelegate  {
     
+let store:HealthKitManager = HealthKitManager.getInstance()
 
   public func sessionDidDeactivate(_ session: WCSession) {
     // Code
@@ -85,5 +86,11 @@ class ViewController: UIViewController, WCSessionDelegate  {
             })
         }
     }
+    
+    @IBAction func SendHealthData(_ sender: Any) {
+        let dm: DeviceManager = DeviceManager.getSharedInstance()
+        dm.writeHeartRateData(heartRate: "50", timeStamp: "11122018")
+    }
+    
 }
 
