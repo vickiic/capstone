@@ -138,8 +138,12 @@
 		F086F57D2187C69800E125D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F086F57E2187C69800E125D8 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 		F8EC3C33261CEC840A0D92B8 /* Pods-watchApp WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchApp WatchKit App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchApp WatchKit App/Pods-watchApp WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
 		FC20956E397C4DA35D7C4203 /* Pods-watchApp WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchApp WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchApp WatchKit Extension/Pods-watchApp WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+=======
+		F0A9D38E219C1671008D5934 /* HeartRateMonitorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateMonitorViewController.swift; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 =======
 		F0A9D38E219C1671008D5934 /* HeartRateMonitorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateMonitorViewController.swift; sourceTree = "<group>"; };
 >>>>>>> Stashed changes
@@ -262,7 +266,11 @@
 				F086F5452187C69700E125D8 /* LaunchScreen.storyboard */,
 				F086F5482187C69700E125D8 /* Info.plist */,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 				9BB0D0F721936A5B00D4CA4C /* GoogleService-Info.plist */,
+=======
+				F0A9D38E219C1671008D5934 /* HeartRateMonitorViewController.swift */,
+>>>>>>> Stashed changes
 =======
 				F0A9D38E219C1671008D5934 /* HeartRateMonitorViewController.swift */,
 >>>>>>> Stashed changes
