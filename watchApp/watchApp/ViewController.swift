@@ -12,7 +12,7 @@ import FirebaseAuth
 
 class ViewController: UIViewController, WCSessionDelegate  {
     
-let store:HealthKitManager = HealthKitManager.getInstance()
+    let store:HealthKitManager = HealthKitManager.getInstance()
 
   public func sessionDidDeactivate(_ session: WCSession) {
     // Code
@@ -45,6 +45,7 @@ let store:HealthKitManager = HealthKitManager.getInstance()
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    print("Original view did load")
     // Do any additional setup after loading the view, typically from a nib.
   }
 
