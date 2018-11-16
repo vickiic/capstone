@@ -17,9 +17,6 @@
 		9BB0D0FB21936A5C00D4CA4C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BB0D0F721936A5B00D4CA4C /* GoogleService-Info.plist */; };
 		9BB0D0FC21936A5C00D4CA4C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BB0D0F721936A5B00D4CA4C /* GoogleService-Info.plist */; };
 		DDD704A5E3BAA0B3062DDB25 /* Pods_watchAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710BA07B128B872EB4CA7174 /* Pods_watchAppTests.framework */; };
-		CA937091218CEF6F000BBF08 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA937090218CEF6F000BBF08 /* HealthKit.framework */; };
-		CA937093218CF0AF000BBF08 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA937092218CF0AF000BBF08 /* HealthKitManager.swift */; };
-		CA937097218CFAA9000BBF08 /* AuthorizeHealthKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA937096218CFAA9000BBF08 /* AuthorizeHealthKitViewController.swift */; };
 		F086F53D2187C69700E125D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F086F53C2187C69700E125D8 /* AppDelegate.swift */; };
 		F086F53F2187C69700E125D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F086F53E2187C69700E125D8 /* ViewController.swift */; };
 		F086F5422187C69700E125D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F086F5402187C69700E125D8 /* Main.storyboard */; };
@@ -108,10 +105,6 @@
 		C25194EB9F14B2FC4C53F7E5 /* Pods_watchApp_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watchApp_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D571C628720679429343D8BC /* Pods-watchAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchAppUITests/Pods-watchAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EE063F2A11509CEDBB6EDF20 /* Pods-watchApp WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchApp WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchApp WatchKit Extension/Pods-watchApp WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
-		CA93708E218CEF6F000BBF08 /* watchApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = watchApp.entitlements; sourceTree = "<group>"; };
-		CA937090218CEF6F000BBF08 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		CA937092218CF0AF000BBF08 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
-		CA937096218CFAA9000BBF08 /* AuthorizeHealthKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizeHealthKitViewController.swift; sourceTree = "<group>"; };
 		F086F5392187C69700E125D8 /* watchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F086F53C2187C69700E125D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F086F53E2187C69700E125D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -154,8 +147,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E6162F8BB02AB6BC6B1AA42 /* Pods_watchApp.framework in Frameworks */,
-				CA937091218CEF6F000BBF08 /* HealthKit.framework in Frameworks */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,11 +185,6 @@
 				C25194EB9F14B2FC4C53F7E5 /* Pods_watchApp_WatchKit_Extension.framework */,
 				710BA07B128B872EB4CA7174 /* Pods_watchAppTests.framework */,
 				67290C873698B8FA4BD9F732 /* Pods_watchAppUITests.framework */,
-
-				CA93708F218CEF6F000BBF08 /* Frameworks */ = {
-				isa = PBXGroup;
-				children = (
-				CA937090218CEF6F000BBF08 /* HealthKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -231,8 +217,6 @@
 				F086F53A2187C69700E125D8 /* Products */,
 				768EB2A89B88D89AE9E81227 /* Pods */,
 				1A8F43A260A3B85B2DA805A9 /* Frameworks */,
-				CA93708F218CEF6F000BBF08 /* Frameworks */,
-
 			);
 			sourceTree = "<group>";
 		};
