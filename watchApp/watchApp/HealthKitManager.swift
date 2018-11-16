@@ -81,7 +81,7 @@ class HealthKitManager {
     public static func getInstance() -> HealthKitManager {
         print("Made it to getInstance")
         if sharedInstance == nil {
-            print("it was nil")
+            print("health kit manager instance was nil")
             sharedInstance = HealthKitManager()
         }
         return sharedInstance!
