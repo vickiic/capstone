@@ -60,7 +60,7 @@ class ViewController: UIViewController, WCSessionDelegate  {
     
     @IBAction func SendHealthData(_ sender: Any) {
         let dm: DeviceManager = DeviceManager.getSharedInstance()
-        dm.writeHeartRateData(heartRate: "50", timeStamp: "11122018")
+        dm.writeHeartRateData(apiKey: "insert_api_key", username: "insert_username", uid: "insert_uid", heartRate: "50", timeStamp: "2018-11-19T22:26:12")
     }
     
 }

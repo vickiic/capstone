@@ -20,16 +20,21 @@ class DeviceManager {
         return sharedInstance!
     }
     
-    public func writeHeartRateData(heartRate: String, timeStamp: String) {
+    public func writeHeartRateData(apiKey: String, username: String, uid: String, heartRate: String, timeStamp: String) {
         
-        let parameters = ["heartRate": heartRate, "timestamp": timeStamp]
+        let innerParams = ["value": heartRate,  "timestamp": timeStamp]
+        let heartRateParams = ["heartRate": innerParams]
+        let metricParams = ["device_uid": uid, "metric_field_values": heartRateParams] as [String : Any]
         
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else { return }
+        
+        guard let url = URL(string: "https://devices.intouchhealth.com/api/v1/metric_field_values") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: metricParams, options: []) else { return }
         request.httpBody = httpBody
+        request.addValue(apiKey, forHTTPHeaderField: "ITH-API-Key")
+        request.addValue(username, forHTTPHeaderField: "ITH-Username")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let session = URLSession.shared
