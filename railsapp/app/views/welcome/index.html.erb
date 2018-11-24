@@ -76,12 +76,19 @@
       <nav class="sidebar-nav">
         <ul id="sidebarnav">
           <li> <a class="waves-effect waves-dark" href="index.html" aria-expanded="false">
-            <i class="mdi mdi-account"></i>
+<!--            <i class="mdi mdi-account"></i>-->
+            <%= fa_icon "user" %>
             <span class="hide-menu">Patients</span></a>
           </li>
-          <li> <a class="waves-effect waves-dark" href="pages-messages.html" aria-expanded="false"><i class="mdi mdi-message-text-outline"></i><span class="hide-menu">Messages</span></a>
+          <li> <a class="waves-effect waves-dark" href="pages-messages.html" aria-expanded="false">
+<!--            <i class="mdi mdi-message-text-outline"></i>-->
+            <%= fa_icon "comment-alt" %>
+            <span class="hide-menu">Messages</span></a>
           </li>
-          <li> <a class="waves-effect waves-dark" href="pages-setting.html" aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">Settings</span></a>
+          <li> <a class="waves-effect waves-dark" href="pages-setting.html" aria-expanded="false">
+<!--            <i class="mdi mdi-settings"></i>-->
+            <%= fa_icon "cog" %>
+            <span class="hide-menu">Settings</span></a>
           </li>
         </ul>
       </nav>
@@ -173,10 +180,12 @@
 <!-- ============================================================== -->
 <!-- All Jquery -->
 <!-- ============================================================== -->
-<script src="../../assets/plugins/jquery/jquery.min.js"></script>
+<%= javascript_include_tag 'plugins/jquery/jquery.min' %>
+
+<!--<script src="plugins/jquery/jquery.min.js"></script>-->
 <!-- Bootstrap tether Core JavaScript -->
-<script src="../../assets/plugins/bootstrap/js/tether.min.js"></script>
-<script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="plugins/bootstrap/js/tether.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- slimscrollbar scrollbar JavaScript -->
 <script src="../../assets/javascripts/jquery.slimscroll.js"></script>
 <!--Wave Effects -->
@@ -184,17 +193,17 @@
 <!--Menu sidebar -->
 <script src="../../assets/javascripts/sidebarmenu.js"></script>
 <!--stickey kit -->
-<script src="../../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+<script src="plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
 <!--Custom JavaScript -->
 <script src="../../assets/javascripts/custom.min.js"></script>
 <!-- ============================================================== -->
 <!-- This page plugins -->
 <!-- ============================================================== -->
 <!-- chartist chart -->
-<script src="../../assets/plugins/chartist-js/dist/chartist.min.js"></script>
-<script src="../../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+<script src="plugins/chartist-js/dist/chartist.min.js"></script>
+<script src="plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
 <!--c3 JavaScript -->
-<script src="../../assets/plugins/d3/d3.min.js"></script>
-<script src="../../assets/plugins/c3-master/c3.min.js"></script>
+<script src="plugins/d3/d3.min.js"></script>
+<script src="plugins/c3-master/c3.min.js"></script>
 <!-- Chart JS -->
 <script src="../../assets/javascripts/dashboard1.js"></script>
