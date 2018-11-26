@@ -41,9 +41,18 @@ The data collected from the patient’s apple watch will be compiled in a databa
 
 ## Notes for using the Rails App ##
 List of useful commands:
-    bundle install              //install all gems
-    bundle exec rails server    //start the local server
+    * bundle install              //install all gems
+    * bundle exec rails server    //start the local server
     
+## Test Criteria for Web App ##
+* Should be able to run a local server using 'bundle exec rails server' and build successfully
+* Should be able to visit localhost:3000 and have the Webapp appear.
+    * The webapp should display using the proper colorscheme of ITH
+    * The home page should display a list of patient cards with names and pictures
+* Should be able to click on an individual patient card and see extra info about that patient
+    * Extra data includes heartrate data
+* After deploying using gcloud app deploy, should be able to run 'gcloud app describe' and see that the servingStatus field has value SERVING
+* After deploying should visit https://starry-odyssey-221817.appspot.com/ and see that all previous tests for the local server also work on the hosted webapp.  
 
 
 
