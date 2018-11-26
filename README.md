@@ -41,9 +41,13 @@ The data collected from the patient’s apple watch will be compiled in a databa
 
 ## Notes for using the Rails App ##
 List of useful commands:
-    * bundle install              //install all gems
-    * bundle exec rails server    //start the local server
     
+* bundle install                                                //install all gems
+* bundle exec rails server                                      //start the local server
+* RAILS_ENV=production bundle exec rails assets:precompile      //compile the local assets. Do this before deploying the app
+* gcloud app deploy                                             //upload local code to google cloud 
+
+
 ## Test Criteria for Web App ##
 * Should be able to run a local server using 'bundle exec rails server' and build successfully
 * Should be able to visit localhost:3000 and have the Webapp appear.
@@ -53,6 +57,4 @@ List of useful commands:
     * Extra data includes heartrate data
 * After deploying using gcloud app deploy, should be able to run 'gcloud app describe' and see that the servingStatus field has value SERVING
 * After deploying should visit https://starry-odyssey-221817.appspot.com/ and see that all previous tests for the local server also work on the hosted webapp.  
-
-
 
