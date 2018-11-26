@@ -39,7 +39,11 @@ In the end, we hope to present an application capable of establishing a two way 
 
 The data collected from the patient’s apple watch will be compiled in a database for health history tabulation and analysis. The patient data, like heart rate readings and ECG, will then be displayed on a beautifully designed web interface for the physician to view. 
 
-
+## Notes for using the Rails App ##
+List of useful commands:
+    bundle install              //install all gems
+    bundle exec rails server    //start the local server
+    
 
 
 

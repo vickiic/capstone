@@ -118,39 +118,19 @@
       <div class="row">
         <!-- Column -->
         <div class="col-lg-4 col-xlg-3 col-md-5">
-          <div class="card">
-            <a class="waves-effect waves-dark" href="stats" aria-expanded="false">
-              <div class="card-block">
-                <center class="m-t-30"> <%= image_tag "users/5.jpg", :class => "img-circle", :style => "width:150px"%>
-                  <h4 class="card-title m-t-10">David</h4>
-                  <div class="row text-center justify-content-md-center">
-                  </div>
-                </center>
-              </div>
-            </a>
-          </div>
-          <div class="card">
-            <a class="waves-effect waves-dark" href="stats" aria-expanded="false">
-              <div class="card-block">
-                <center class="m-t-30"> <%= image_tag "users/4.jpg", :class => "img-circle", :style => "width:150px"%>
-                  <h4 class="card-title m-t-10">Calvin</h4>
-                  <div class="row text-center justify-content-md-center">
-                  </div>
-                </center>
-              </div>
-            </a>
-          </div>
-          <div class="card">
-            <a class="waves-effect waves-dark" href="stats" aria-expanded="false">
-              <div class="card-block">
-                <center class="m-t-30"> <%= image_tag "users/8.jpg", :class => "img-circle", :style => "width:150px"%>
-                  <h4 class="card-title m-t-10">Henry</h4>
-                  <div class="row text-center justify-content-md-center">
-                  </div>
-                </center>
-              </div>
-            </a>
-          </div>
+          <% @body["devices"].each do |element| %>
+            <div class="card">
+              <a class="waves-effect waves-dark" href="stats" aria-expanded="false">
+                <div class="card-block">
+                  <center class="m-t-30"> <%= image_tag "users/#{rand(7) + 1}.jpg", :class => "img-circle", :style => "width:150px"%>
+                    <h4 class="card-title m-t-10"><%=element["name"] %></h4>
+                    <div class="row text-center justify-content-md-center">
+                    </div>
+                  </center>
+                </div>
+              </a>
+            </div>
+          <% end %>
         </div>
         <!-- Column -->
       </div>
