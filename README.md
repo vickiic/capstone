@@ -42,10 +42,14 @@ The data collected from the patient’s apple watch will be compiled in a databa
 ## Notes for using the Rails App ##
 List of useful commands:
     
-* bundle install                                                //install all gems
-* bundle exec rails server                                      //start the local server
-* RAILS_ENV=production bundle exec rails assets:precompile      //compile the local assets. Do this before deploying the app
-* gcloud app deploy                                             //upload local code to google cloud 
+* 'bundle install'
+    * install all gems
+* 'bundle exec rails server'                                      
+    * start the local server
+* 'RAILS_ENV=production bundle exec rails assets:precompile'      
+    * compile the local assets. Do this before deploying the app
+* 'gcloud app deploy'                                             
+    * upload local code to google cloud 
 
 
 ## Test Criteria for Web App ##
