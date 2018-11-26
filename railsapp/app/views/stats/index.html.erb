@@ -16,10 +16,8 @@
           <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 
           <!-- Light Logo icon -->
-          <%= image_tag "logo.png", :class => "light-logo" %>
-        </b>
-          <!--End Logo icon -->
-          <!-- Logo text --></a>
+          <img src="../assets/images/logo.png" alt="homepage" class="light-logo" />
+        </b></a>
       </div>
       <!-- ============================================================== -->
       <!-- End Logo -->
@@ -99,7 +97,7 @@
       <!-- ============================================================== -->
       <div class="row page-titles">
         <div class="col-md-5 col-8 align-self-center">
-          <h3 class="text-themecolor">Welcome, Dr.Wang </h3>
+          <h3 class="text-themecolor">Welcome,  Dr.Wang </h3>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
             <li class="breadcrumb-item active">Dashboard</li>
@@ -112,51 +110,89 @@
       <!-- ============================================================== -->
       <!-- Start Page Content -->
       <!-- ============================================================== -->
-      <div class="active-cyan-4 mb-4">
-        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-      </div>
       <div class="row">
         <!-- Column -->
         <div class="col-lg-4 col-xlg-3 col-md-5">
           <div class="card">
-            <a class="waves-effect waves-dark" href="stats" aria-expanded="false">
-              <div class="card-block">
-                <center class="m-t-30"> <%= image_tag "users/5.jpg", :class => "img-circle", :style => "width:150px"%>
-                  <h4 class="card-title m-t-10">David</h4>
-                  <div class="row text-center justify-content-md-center">
-                  </div>
-                </center>
-              </div>
-            </a>
-          </div>
-          <div class="card">
-            <a class="waves-effect waves-dark" href="stats" aria-expanded="false">
-              <div class="card-block">
-                <center class="m-t-30"> <%= image_tag "users/4.jpg", :class => "img-circle", :style => "width:150px"%>
-                  <h4 class="card-title m-t-10">Calvin</h4>
-                  <div class="row text-center justify-content-md-center">
-                  </div>
-                </center>
-              </div>
-            </a>
-          </div>
-          <div class="card">
-            <a class="waves-effect waves-dark" href="stats" aria-expanded="false">
-              <div class="card-block">
-                <center class="m-t-30"> <%= image_tag "users/8.jpg", :class => "img-circle", :style => "width:150px"%>
-                  <h4 class="card-title m-t-10">Henry</h4>
-                  <div class="row text-center justify-content-md-center">
-                  </div>
-                </center>
-              </div>
-            </a>
+            <div class="card-block">
+              <center class="m-t-30"> <%= image_tag "users/5.jpg", :class => "img-circle", :style => "width:150px"%>
+                <h4 class="card-title m-t-10">patient</h4>
+                <div class="row text-center justify-content-md-center">
+                  <div class="col-4"><a href="javascript:void(0)" class="link"><font class="font-medium">25</font></a></div>
+                </div>
+              </center>
+            </div>
           </div>
         </div>
         <!-- Column -->
+        <!-- Column -->
+        <div class="col-lg-8 col-xlg-9 col-md-7">
+          <div class="card">
+            <div class="card-block">
+              <form class="form-horizontal form-material">
+                <div class="form-group">
+                  <label class="col-md-12">Full Name</label>
+                  <div class="col-md-12">
+                    <input type="text" placeholder="Johnathan Doe" class="form-control form-control-line">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-12">Message</label>
+                  <div class="col-md-12">
+                    <textarea rows="3" class="form-control form-control-line"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-12">priority</label>
+                  <div class="col-sm-12">
+                    <select class="form-control form-control-line">
+                      <option>urgent</option>
+                      <option>2</option>
+                      <option>3</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <button class="btn btn-success">contact</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Column -->
+
       </div>
-
-
-
+      <div class="row">
+        <!-- Column -->
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-block">
+              <div class="row">
+                <div class="col-12">
+                  <div class="d-flex flex-wrap">
+                    <div>
+                      <h3 class="card-title">Heartrate</h3>
+                      <h6 class="card-subtitle">this month</h6> </div>
+                    <div class="ml-auto">
+                      <ul class="list-inline">
+                        <li>
+                          <h6 class="text-muted text-success"><i class="fa fa-circle font-10 m-r-10 "></i>patient</h6> </li>
+                        <li>
+                          <h6 class="text-muted  text-info"><i class="fa fa-circle font-10 m-r-10"></i>normal</h6> </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="amp-pxl" style="height: 360px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- ============================================================== -->
       <!-- End PAge Content -->
       <!-- ============================================================== -->
@@ -175,3 +211,4 @@
   <!-- End Page wrapper  -->
   <!-- ============================================================== -->
 </div>
+
