@@ -8,8 +8,11 @@
 
 import UIKit
 import WatchConnectivity
+import FirebaseAuth
 
 class ViewController: UIViewController, WCSessionDelegate  {
+    
+    let store:HealthKitManager = HealthKitManager.getInstance()
 
   public func sessionDidDeactivate(_ session: WCSession) {
     // Code
@@ -42,15 +45,58 @@ class ViewController: UIViewController, WCSessionDelegate  {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    print("Original view did load")
     // Do any additional setup after loading the view, typically from a nib.
   }
 
   @IBOutlet weak var clickStatus: UILabel!
   
-
+    @IBAction func test(_ sender: Any) {
+    }
+    
   @IBAction func click(_ sender: Any) {
     self.clickStatus.text = "Phone Click"
     print("clicked on Phone")
   }
+    
+    @IBAction func SendHealthData(_ sender: Any) {
+        let dm: DeviceManager = DeviceManager.getSharedInstance()
+        dm.writeHeartRateData(apiKey: "api_key", username: "username", uid: "uid", heartRate: "50", timeStamp: "2018-11-19T22:26:12")
+    }
+    
+    @IBOutlet weak var usernameTextfield: UITextField!
+    @IBOutlet weak var passwordTextfield: UITextField!
+    @IBAction func loginTapped(_ sender: Any) {
+        if let email = usernameTextfield.text, let password = passwordTextfield.text {
+            Auth.auth().signIn(withEmail: email, password: password, completion: {
+                (user, error) in
+                if let firebaseError = error {
+                print(firebaseError.localizedDescription)
+                    return
+                }
+                self.presentLoggedInScreen()
+                print("login success!")
+            })
+        }
+    }
+    @IBAction func signupTapped(_ sender: Any) {
+        if let email = usernameTextfield.text, let password = passwordTextfield.text {
+            Auth.auth().createUser(withEmail: email, password: password, completion: {
+                user, error in
+                if let firebaseError = error {
+                print(firebaseError.localizedDescription)
+                    return
+                }
+                self.presentLoggedInScreen()
+                print("success!")
+            })
+        }
+    }
+    
+    func presentLoggedInScreen(){
+        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let loggedInVC:LoggedInVC = storyboard.instantiateViewController(withIdentifier: "LoggedInVC") as! LoggedInVC
+        self.present(loggedInVC, animated: true, completion: nil)
+    }
 }
 
