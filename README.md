@@ -1,7 +1,7 @@
-# UCSB 2018 CS Capstone: InTouch With My Health # 
+# UCSB 2018 CS Capstone: InTouch With Your Health # 
 Company: [InTouch Health](https://intouchhealth.com "InTouch Health Home Website")
 <br />
-Project Name: Apple Watch x Physicians 
+Team Name: InTouch With My Health
 
 ## Team Members ## 
 |       Name       |           Email          |
