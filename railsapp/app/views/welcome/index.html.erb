@@ -11,7 +11,7 @@
       <!-- Logo -->
       <!-- ============================================================== -->
       <div class="navbar-header">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="">
           <!-- Logo icon --><b>
           <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 
@@ -65,11 +65,11 @@
       <!-- Sidebar navigation-->
       <nav class="sidebar-nav">
         <ul id="sidebarnav">
-          <li> <a class="waves-effect waves-dark" href="index.html" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Patients</span></a>
+          <li> <a class="waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Patients</span></a>
           </li>
-          <li> <a class="waves-effect waves-dark" href="pages-messages.html" aria-expanded="false"><i class="mdi mdi-message-text-outline"></i><span class="hide-menu">Messages</span></a>
+          <li> <a class="waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-message-text-outline"></i><span class="hide-menu">Messages</span></a>
           </li>
-          <li> <a class="waves-effect waves-dark" href="pages-setting.html" aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">Settings</span></a>
+          <li> <a class="waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">Settings</span></a>
           </li>
         </ul>
       </nav>
@@ -118,19 +118,61 @@
       <div class="row">
         <!-- Column -->
         <div class="col-lg-4 col-xlg-3 col-md-5">
-          <% @body["devices"].each do |element| %>
-            <div class="card">
-              <a class="waves-effect waves-dark" href="stats" aria-expanded="false">
-                <div class="card-block">
-                  <center class="m-t-30"> <%= image_tag "users/#{rand(7) + 1}.jpg", :class => "img-circle", :style => "width:150px"%>
-                    <h4 class="card-title m-t-10"><%=element["name"] %></h4>
-                    <div class="row text-center justify-content-md-center">
-                    </div>
-                  </center>
-                </div>
-              </a>
-            </div>
-          <% end %>
+          <div class="card">
+            <a class="waves-effect waves-dark" href="stats" aria-expanded="false">
+              <div class="card-block">
+                <center class="m-t-30"> <%= image_tag "CALVIN.png", :class => "img-circle", :style => "width:150px"%>
+                  <h4 class="card-title m-t-10">Calvin</h4>
+                  <div class="row text-center justify-content-md-center">
+                  </div>
+                </center>
+              </div>
+            </a>
+          </div>
+          <div class="card">
+            <a class="waves-effect waves-dark" href="stats" aria-expanded="false">
+              <div class="card-block">
+                <center class="m-t-30"> <%= image_tag "VICKI.png", :class => "img-circle", :style => "width:150px"%>
+                  <h4 class="card-title m-t-10">Vicki</h4>
+                  <div class="row text-center justify-content-md-center">
+                  </div>
+                </center>
+              </div>
+            </a>
+          </div>
+          <div class="card">
+            <a class="waves-effect waves-dark" href="stats" aria-expanded="false">
+              <div class="card-block">
+                <center class="m-t-30"> <%= image_tag "HENRY.jpg", :class => "img-circle", :style => "width:150px"%>
+                  <h4 class="card-title m-t-10">Henry</h4>
+                  <div class="row text-center justify-content-md-center">
+                  </div>
+                </center>
+              </div>
+            </a>
+          </div>
+          <div class="card">
+            <a class="waves-effect waves-dark" href="stats" aria-expanded="false">
+              <div class="card-block">
+                <center class="m-t-30"> <%= image_tag "MITCHELL.png", :class => "img-circle", :style => "width:150px"%>
+                  <h4 class="card-title m-t-10">Matthew</h4>
+                  <div class="row text-center justify-content-md-center">
+                  </div>
+                </center>
+              </div>
+            </a>
+          </div>
+          <div class="card">
+            <a class="waves-effect waves-dark" href="stats" aria-expanded="false">
+              <div class="card-block">
+                <center class="m-t-30"> <%= image_tag "DAVID.png", :class => "img-circle", :style => "width:150px"%>
+                  <h4 class="card-title m-t-10">David</h4>
+                  <div class="row text-center justify-content-md-center">
+                  </div>
+                </center>
+              </div>
+            </a>
+          </div>
         </div>
         <!-- Column -->
       </div>
