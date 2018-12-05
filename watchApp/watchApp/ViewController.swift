@@ -61,7 +61,7 @@ class ViewController: UIViewController, WCSessionDelegate  {
     
     @IBAction func SendHealthData(_ sender: Any) {
         let dm: DeviceManager = DeviceManager.getSharedInstance()
-        dm.writeHeartRateData(apiKey: "insert_api_key", username: "insert_username", uid: "insert_uid", heartRate: "50", timeStamp: "2018-11-19T22:26:12")
+        dm.writeHeartRateData(apiKey: "api_key", username: "username", uid: "uid", heartRate: "50", timeStamp: "2018-11-19T22:26:12")
     }
     
     @IBOutlet weak var usernameTextfield: UITextField!

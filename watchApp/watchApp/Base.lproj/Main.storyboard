@@ -55,6 +55,7 @@
                                 <state key="normal" title="Send Data"/>
                                 <connections>
                                     <action selector="SendHeartRateData:" destination="b49-1i-aGD" eventType="touchUpInside" id="8eS-Rn-lZK"/>
+                                    <action selector="sendHeartRateData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Am1-7o-dPw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5c-D2-vfO">
@@ -83,7 +84,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="b49-1i-aGD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="13.6" y="132.68365817091455"/>
+            <point key="canvasLocation" x="-14" y="126"/>
         </scene>
         <!--AuthorizeHealthKitViewController-->
         <scene sceneID="qZ1-L8-PeO">

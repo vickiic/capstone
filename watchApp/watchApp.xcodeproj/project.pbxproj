@@ -10,13 +10,9 @@
 		1B5EDEBB38BE430C88D4D85A /* Pods_watchAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9710AB4A95767A53545F7ABC /* Pods_watchAppUITests.framework */; };
 		375CE88AC239D1082E3BF3F7 /* Pods_watchApp_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F160496DBB8092DBAC9B65C /* Pods_watchApp_WatchKit_Extension.framework */; };
 		386B2A574D5279A660743AC3 /* Pods_watchApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 985B19C018A887E90E67F2B7 /* Pods_watchApp.framework */; };
-		9B9F129821ACA7C600A2FDC2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B9F129721ACA7C600A2FDC2 /* GoogleService-Info.plist */; };
-		9B9F129921ACA7C600A2FDC2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B9F129721ACA7C600A2FDC2 /* GoogleService-Info.plist */; };
-		9B9F129A21ACA7C600A2FDC2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B9F129721ACA7C600A2FDC2 /* GoogleService-Info.plist */; };
-		9B9F129B21ACA7C600A2FDC2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B9F129721ACA7C600A2FDC2 /* GoogleService-Info.plist */; };
-		9B9F129C21ACA7C600A2FDC2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B9F129721ACA7C600A2FDC2 /* GoogleService-Info.plist */; };
 		9B9F12A021ACB05300A2FDC2 /* LoggedInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9F129F21ACB05300A2FDC2 /* LoggedInVC.swift */; };
 		AC0C44EDD2968F96624F0205 /* Pods_watchAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503F1AC015B76771BA6718B7 /* Pods_watchAppTests.framework */; };
+		CA018EB121AE6452009528B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA018EB021AE6452009528B7 /* GoogleService-Info.plist */; };
 		CA937091218CEF6F000BBF08 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA937090218CEF6F000BBF08 /* HealthKit.framework */; };
 		CA937093218CF0AF000BBF08 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA937092218CF0AF000BBF08 /* HealthKitManager.swift */; };
 		CA937097218CFAA9000BBF08 /* AuthorizeHealthKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA937096218CFAA9000BBF08 /* AuthorizeHealthKitViewController.swift */; };
@@ -105,11 +101,11 @@
 		920BB6C0E44A75613641BBB9 /* Pods_watchApp_WatchKit_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watchApp_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9710AB4A95767A53545F7ABC /* Pods_watchAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watchAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		985B19C018A887E90E67F2B7 /* Pods_watchApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watchApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B9F129721ACA7C600A2FDC2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../.Trash/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9B9F129F21ACB05300A2FDC2 /* LoggedInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInVC.swift; sourceTree = "<group>"; };
 		9F160496DBB8092DBAC9B65C /* Pods_watchApp_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watchApp_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7A9FC73E7A04C4FA0DBD083 /* Pods-watchApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchApp/Pods-watchApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C1EB52A2ADDF811109EB2026 /* Pods-watchAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchAppUITests/Pods-watchAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CA018EB021AE6452009528B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CA37C49E1A598699E22DB22D /* Pods-watchAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchAppTests/Pods-watchAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA93708E218CEF6F000BBF08 /* watchApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = watchApp.entitlements; sourceTree = "<group>"; };
 		CA937090218CEF6F000BBF08 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -241,7 +237,7 @@
 				F086F5432187C69700E125D8 /* Assets.xcassets */,
 				F086F5452187C69700E125D8 /* LaunchScreen.storyboard */,
 				F086F5482187C69700E125D8 /* Info.plist */,
-				9B9F129721ACA7C600A2FDC2 /* GoogleService-Info.plist */,
+				CA018EB021AE6452009528B7 /* GoogleService-Info.plist */,
 				9B9F129F21ACB05300A2FDC2 /* LoggedInVC.swift */,
 			);
 			path = watchApp;
@@ -466,7 +462,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F086F5472187C69700E125D8 /* LaunchScreen.storyboard in Resources */,
-				9B9F129821ACA7C600A2FDC2 /* GoogleService-Info.plist in Resources */,
+				CA018EB121AE6452009528B7 /* GoogleService-Info.plist in Resources */,
 				F086F5442187C69700E125D8 /* Assets.xcassets in Resources */,
 				F086F5422187C69700E125D8 /* Main.storyboard in Resources */,
 			);
@@ -476,7 +472,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B9F129921ACA7C600A2FDC2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,7 +479,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B9F129A21ACA7C600A2FDC2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,7 +487,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F086F56A2187C69800E125D8 /* Assets.xcassets in Resources */,
-				9B9F129B21ACA7C600A2FDC2 /* GoogleService-Info.plist in Resources */,
 				F086F5682187C69700E125D8 /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,7 +496,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F086F57C2187C69800E125D8 /* Assets.xcassets in Resources */,
-				9B9F129C21ACA7C600A2FDC2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -950,7 +942,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = watchApp/watchApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = X6L44JDG2E;
 				INFOPLIST_FILE = watchApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -970,7 +962,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = watchApp/watchApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = X6L44JDG2E;
 				INFOPLIST_FILE = watchApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
