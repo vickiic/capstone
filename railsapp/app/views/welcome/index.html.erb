@@ -120,7 +120,7 @@
         <div class="col-lg-4 col-xlg-3 col-md-5">
           <% @body["devices"].each do |element| %>
             <div class="card">
-              <a class="waves-effect waves-dark" href="stats" aria-expanded="false">
+              <a class="waves-effect waves-dark" href= <%= "stats/" + element["device_uid"] %> aria-expanded="false">
                 <div class="card-block">
                   <center class="m-t-30"> <%= image_tag "users/#{rand(7) + 1}.jpg", :class => "img-circle", :style => "width:150px"%>
                     <h4 class="card-title m-t-10"><%=element["name"] %></h4>
