@@ -173,7 +173,7 @@
                 <div class="col-12">
                   <div class="d-flex flex-wrap">
                     <div>
-                      <h3 class="card-title">Heartrate (bpm)</h3>
+                      <h2 class="card-title">Metrics</h2>
                       <h6 class="card-subtitle">this month</h6> </div>
                     <div class="ml-auto">
                       <ul class="list-inline">
@@ -186,15 +186,7 @@
                   </div>
                 </div>
                 <div class="col-12">
-                  <div class="amp-pxl" style="height: 360px;">
-                    <% @body["values"].each do |element| %>
-                      <div>
-                        <span><%= element["timestamp"]%></span>
-                        <span>   :   </span>
-                        <span><%= element["value"] %></span>
-                      </div>
-                    <% end %>
-                  </div>
+                  <%= image_tag "heartRate.png" %>
                 </div>
               </div>
             </div>
