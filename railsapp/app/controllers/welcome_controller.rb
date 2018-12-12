@@ -1,5 +1,9 @@
 class WelcomeController < ApplicationController
   def index
+    @search = params[:longitude]
+    if @search == nil
+      @search = "test"
+    end
     api = JSON.parse File.read(Rails.root.join("app/assets/api.json"))
     _response = HTTParty.get(
         'https://devices.intouchhealth.com/api/v1/devices',
