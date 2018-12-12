@@ -116,15 +116,11 @@
       <div class="active-cyan-4 mb-4">
 
         <%= form_tag("/welcome/index", method: "get") do %>
-          <%= label_tag :longitude %><br>
-          <%= text_field_tag :longitude %>
+          <%= text_field_tag :longitude, nil, class: 'form-control', placeholder: 'Search' %>
           <p>
             <%= submit_tag("Submit") %>
           </p>
         <% end %>
-
-
-        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
       </div>
       <div class="row">
         <!-- Column -->
