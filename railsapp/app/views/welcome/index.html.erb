@@ -121,6 +121,9 @@
             <%= submit_tag("Submit") %>
           </p>
         <% end %>
+        <% if @search != "" %>
+          <%= link_to "Reset search", welcome_index_path(""), :search => "" %>
+        <% end %>
       </div>
       <div class="row">
         <!-- Column -->
