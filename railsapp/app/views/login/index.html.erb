@@ -1,0 +1,8 @@
+<%= form_tag("authenticate", method: "get") do %>
+  <%= label_tag(:q, "Username:") %>
+  <%= text_field_tag(:q) %>
+  <%= label_tag(:w, "Password:") %>
+  <%= text_field_tag(:w) %>
+  <%= submit_tag("Login") %>
+<% end %>
+<h4>The username is 'admin', no password</h4>
