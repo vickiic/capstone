@@ -5,4 +5,7 @@
   <%= text_field_tag(:w) %>
   <%= submit_tag("Login") %>
 <% end %>
+<% if @incorrect %>
+  <h1>Incorrect Username or Password</h1>
+<% end %>
 <h4>The username is 'admin', no password</h4>
