@@ -115,7 +115,7 @@
       <!-- ============================================================== -->
       <div class="active-cyan-4 mb-4">
 
-        <%= form_tag("/welcome/index", method: "get") do %>
+        <%= form_tag(welcome_index_path, method: "get") do %>
           <%= text_field_tag :longitude, nil, class: 'form-control', placeholder: 'Search' %>
           <p>
             <%= submit_tag("Submit") %>
@@ -131,7 +131,7 @@
           <% @body["devices"].each do |element| %>
             <% if element["name"].include? @search %>
             <div class="card">
-              <%= link_to stats_index_path(element["device_uid"]), :id => element["device_uid"] do %>
+              <%= link_to stats_index_path(:id => element["device_uid"]) do %>
                 <div class="card-block">
                   <center class="m-t-30"> <%= image_tag "users/#{rand(7) + 1}.jpg", :class => "img-circle", :style => "width:150px"%>
                     <h4 class="card-title m-t-10"><%=element["name"] %></h4>
