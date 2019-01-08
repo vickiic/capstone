@@ -122,6 +122,8 @@ class HealthKitManager {
     }
     
     func writeHeartRateData( heartRate: Int ) -> Void {
+      
+        print("writing heart rate data")
         
         // STEP 8.1: "Count units are used to represent raw scalar values. They are often used to represent the number of times an event occurs"
         let heartRateCountUnit = HKUnit.count()
@@ -140,6 +142,8 @@ class HealthKitManager {
     }
     
     func readHeartRateData() -> Void {
+      
+        print("reading heart rate data")
         
         // STEP 9.1: just as in STEP 6, we're telling the `HealthKitStore`
         // that we're interested in reading heart rate data
