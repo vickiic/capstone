@@ -175,6 +175,18 @@
                     <div>
                       <h3 class="card-title">Heartrate (bpm)</h3>
                       <h6 class="card-subtitle">this month</h6> </div>
+                      <%= form_tag(stats_index_path, method: "get") do %>
+                        <%= text_field_tag :startYear, nil, placeholder: 'Year' %>
+                        <%= text_field_tag :startMonth, nil, placeholder: 'Month' %>
+                        <%= text_field_tag :startDay, nil, placeholder: 'Day' %>
+                        <%= text_field_tag :endYear, nil, placeholder: 'Year' %>
+                        <%= text_field_tag :endMonth, nil, placeholder: 'Month' %>
+                        <%= text_field_tag :endDay, nil, placeholder: 'Day' %>
+                        <%= hidden_field_tag :id, @patient %>
+                        <p>
+                          <%= submit_tag("Submit") %>
+                        </p>
+                      <% end %>
                     <div class="ml-auto">
                       <ul class="list-inline">
                         <li>
