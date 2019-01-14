@@ -42,11 +42,11 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>We want to update the info</string>
+	<string>Please allow InTouch with My Health to modify to your heart rate data.</string>
 	<key>NSHealthShareUsageDescription</key>
-	<string>We want to get the info</string>
+	<string>Please allow InTouch with My Health access to your heart rate data.</string>
 	<key>
 </key>
-	<string>We want to change the info</string>
+	<string>Please allow InTouch with My Health to modify to your heart rate data.</string>
 </dict>
 </plist>

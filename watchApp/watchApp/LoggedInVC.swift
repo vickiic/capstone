@@ -18,11 +18,16 @@ class LoggedInVC: UIViewController {
         } catch {
             print("There was a problem logging out")
         }
-        }
+    }
     
     
     @IBAction func sendHeartRateData(_ sender: Any) {
         let dm: DeviceManager = DeviceManager.getSharedInstance()
-        dm.writeHeartRateData(apiKey: "apikey", username: "username", uid: "uid", heartRate: "50", timeStamp: "2018-11-19T22:26:12")
+        let currUid = Auth.auth().currentUser?.uid
+        dm.writeHeartRateData(uid:currUid!, heartRate: "52", timeStamp: "2018-11-19T22:27:12")
+    }
+    
+    
+    @IBAction func continueButton(_ sender: UIButton) {
     }
 }

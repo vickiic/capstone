@@ -9,10 +9,13 @@
 import UIKit
 import WatchConnectivity
 import FirebaseAuth
+import Firebase
 
 class ViewController: UIViewController, WCSessionDelegate  {
     
     let store:HealthKitManager = HealthKitManager.getInstance()
+    let dm:DeviceManager = DeviceManager.getSharedInstance()
+    
 
   public func sessionDidDeactivate(_ session: WCSession) {
     // Code
@@ -59,10 +62,10 @@ class ViewController: UIViewController, WCSessionDelegate  {
     print("clicked on Phone")
   }
     
-    @IBAction func SendHealthData(_ sender: Any) {
+    /*@IBAction func SendHealthData(_ sender: Any) {
         let dm: DeviceManager = DeviceManager.getSharedInstance()
         dm.writeHeartRateData(apiKey: "api_key", username: "username", uid: "uid", heartRate: "50", timeStamp: "2018-11-19T22:26:12")
-    }
+    }*/
     
     @IBOutlet weak var usernameTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
@@ -87,8 +90,13 @@ class ViewController: UIViewController, WCSessionDelegate  {
                 print(firebaseError.localizedDescription)
                     return
                 }
+                if let firebaseUser = user?.user {
+                    let email = firebaseUser.email
+                    let uid = firebaseUser.uid
+                    self.dm.createDevice(username:email!, uid:uid)
+                }
                 self.presentLoggedInScreen()
-                print("success!")
+                print("sign up success!")
             })
         }
     }
@@ -98,5 +106,6 @@ class ViewController: UIViewController, WCSessionDelegate  {
     let loggedInVC:LoggedInVC = storyboard.instantiateViewController(withIdentifier: "LoggedInVC") as! LoggedInVC
     self.present(loggedInVC, animated: true, completion: nil)
   }
+    
 }
 

@@ -11,6 +11,8 @@ import Foundation
 class DeviceManager {
     
     private static var sharedInstance: DeviceManager? = nil
+    private static var APIKEY = ""
+    private static var ITHUSERNAME = "matthew_mitchell"
     
     public static func getSharedInstance() -> DeviceManager{
         if sharedInstance == nil {
@@ -20,12 +22,42 @@ class DeviceManager {
         return sharedInstance!
     }
     
-    public func writeHeartRateData(apiKey: String, username: String, uid: String, heartRate: String, timeStamp: String) {
+    public func createDevice(username:String, uid:String){
+        
+        let params = ["name": username, "device_uid": uid, "device_type": "testing"]
+        
+        guard let url = URL(string: "https://devices.intouchhealth.com/api/v1/devices") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: params, options: []) else { return }
+        request.httpBody = httpBody
+        request.addValue(DeviceManager.APIKEY, forHTTPHeaderField: "ITH-API-Key")
+        request.addValue(DeviceManager.ITHUSERNAME, forHTTPHeaderField: "ITH-Username")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let response = response {
+                print(response)
+            }
+            if let data = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                } catch {
+                    print(error)
+                }
+            }
+        }.resume()
+        
+    }
+    
+    public func writeHeartRateData(uid: String, heartRate: String, timeStamp: String) {
         
         let innerParams = ["value": heartRate,  "timestamp": timeStamp]
         let heartRateParams = ["heartRate": innerParams]
         let metricParams = ["device_uid": uid, "metric_field_values": heartRateParams] as [String : Any]
-        
         
         guard let url = URL(string: "https://devices.intouchhealth.com/api/v1/metric_field_values") else { return }
         var request = URLRequest(url: url)
@@ -33,8 +65,8 @@ class DeviceManager {
         
         guard let httpBody = try? JSONSerialization.data(withJSONObject: metricParams, options: []) else { return }
         request.httpBody = httpBody
-        request.addValue(apiKey, forHTTPHeaderField: "ITH-API-Key")
-        request.addValue(username, forHTTPHeaderField: "ITH-Username")
+        request.addValue(DeviceManager.APIKEY, forHTTPHeaderField: "ITH-API-Key")
+        request.addValue(DeviceManager.ITHUSERNAME, forHTTPHeaderField: "ITH-Username")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let session = URLSession.shared
