@@ -19,6 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 
 #Made my david
 gem 'httparty'
+gem 'rails-controller-testing'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
