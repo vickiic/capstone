@@ -1,6 +1,10 @@
 class StatsController < ApplicationController
   def index
     @patient = params[:id]
+    if @patient == nil then
+      #if one just goes to the stats page, just show one of the patients. Helps with tests as well.
+      @patient = "12345abc"
+    end
     @startYear = params[:startYear]
     @startMonth = params[:startMonth]
     @startDay = params[:startDay]
@@ -27,15 +31,23 @@ class StatsController < ApplicationController
       if @startDay == '' then
         @startDay = '01'
       end
-      if @endYear == '' then
+      if @endYear == '' || @endYear == nil then
         @endYear = Time.now.strftime("%Y")
       end
-      if @endMonth == '' then
+      if @endMonth == '' || @endMonth == nil then
         @endMonth = Time.now.strftime("%m")
       end
-      if @endDay == '' then
+      if @endDay == '' || @endDay == nil then
         @endDay = Time.now.strftime("%d")
       end
+
+      # puts "Start Year: " + @startYear
+      # puts "Start Month: " + @startMonth
+      # puts "Start Day: " + @startDay
+      # puts "End Year: " + @endYear
+      # puts "End Month: " + @endMonth
+      # puts "End Day: " + @endDay
+
 
       #add preceding '0' to day fields if single digits
       if @startDay.length == 1 then
