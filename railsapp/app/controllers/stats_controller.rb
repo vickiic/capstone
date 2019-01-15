@@ -2,7 +2,7 @@ class StatsController < ApplicationController
   def index
     @patient = params[:id]
     if @patient == nil then
-      #if one just goes to the stats page, just show one of the patients. Helps with tests as well. 
+      #if one just goes to the stats page, just show one of the patients. Helps with tests as well.
       @patient = "12345abc"
     end
     @startYear = params[:startYear]
