@@ -13,7 +13,49 @@ import HealthKit
 class HealthKitManager {
     
     public static var sharedInstance:HealthKitManager? = nil
-    public let healthStore:HKHealthStore?
+    public let healthStore:HKHealthStore!
+  
+    init() {
+      print("Made it to initialization")
+      HealthKitManager.authorizeHealthKit { (authorized, error) in
+        guard authorized else {
+          let baseMessage = "HealthKit Authorization Failed"
+          if let error = error {
+            print("\(baseMessage). Reason: \(error.localizedDescription)")
+          } else {
+            print(baseMessage)
+          }
+          return
+        }
+        print("HealthKit Successfully Authorized.")
+      }
+      
+      if(HKHealthStore.isHealthDataAvailable()) {
+        healthStore = HKHealthStore()
+        print("data found")
+        
+        writeableHKQuantityTypes = [HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!]
+        readableHKQuantityTypes = [HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!]
+        
+        healthStore?.requestAuthorization(toShare: writeableHKQuantityTypes,
+                                          read: readableHKQuantityTypes,
+                                          completion: { (success, error) -> Void in
+                                            if success {
+                                              print("Successful authorization.")
+                                              // STEP 9.1: read gender data (see below)
+                                              self.readGenderType()
+                                            } else {
+                                              print(error.debugDescription)
+                                            }
+        })
+        
+      } else {
+        print("no data")
+        healthStore = nil
+        readableHKQuantityTypes = nil
+        writeableHKQuantityTypes = nil
+      }
+    }
     
     private static let heartRate = HKObjectType.quantityType(forIdentifier: .heartRate)
     
@@ -78,49 +120,7 @@ class HealthKitManager {
             completion(success, error)
         })
     }
-    
-    init() {
-        print("Made it to initialization")
-        HealthKitManager.authorizeHealthKit { (authorized, error) in
-            guard authorized else {
-                let baseMessage = "HealthKit Authorization Failed"
-                if let error = error {
-                    print("\(baseMessage). Reason: \(error.localizedDescription)")
-                } else {
-                    print(baseMessage)
-                }
-                return
-            }
-            print("HealthKit Successfully Authorized.")
-        }
-        
-        if(HKHealthStore.isHealthDataAvailable()) {
-            healthStore = HKHealthStore()
-            print("data found")
-            
-            writeableHKQuantityTypes = [HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!]
-            readableHKQuantityTypes = [HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!]
-            
-            healthStore?.requestAuthorization(toShare: writeableHKQuantityTypes,
-                                              read: readableHKQuantityTypes,
-                                              completion: { (success, error) -> Void in
-                                                if success {
-                                                    print("Successful authorization.")
-                                                    // STEP 9.1: read gender data (see below)
-                                                    self.readGenderType()
-                                                } else {
-                                                    print(error.debugDescription)
-                                                }
-            })
-            
-        } else {
-            print("no data")
-            healthStore = nil
-            readableHKQuantityTypes = nil
-            writeableHKQuantityTypes = nil
-        }
-    }
-    
+
     func writeHeartRateData( heartRate: Int ) -> Void {
       
         print("writing heart rate data")
@@ -180,4 +180,86 @@ class HealthKitManager {
         }
         return sharedInstance!
     }
+  
+//  public func subscribeToHeartBeatChanges() {
+//    
+//    // Creating the sample for the heart rate
+//    guard let sampleType: HKSampleType =
+//      HKObjectType.quantityType(forIdentifier: .heartRate) else {
+//        return
+//    }
+//    
+//    /// Creating an observer, so updates are received whenever HealthKit’s
+//    // heart rate data changes.
+//    self.heartRateQuery = HKObserverQuery.init(
+//      sampleType: sampleType,
+//      predicate: nil) { [weak self] _, _, error in
+//        guard error == nil else {
+//          log.warn(error!)
+//          return
+//        }
+//        
+//        /// When the completion is called, an other query is executed
+//        /// to fetch the latest heart rate
+//        self.fetchLatestHeartRateSample(completion: { sample in
+//          guard let sample = sample else {
+//            return
+//          }
+//          
+//          /// The completion in called on a background thread, but we
+//          /// need to update the UI on the main.
+//          DispatchQueue.main.async {
+//            
+//            /// Converting the heart rate to bpm
+//            let heartRateUnit = HKUnit(from: "count/min")
+//            let heartRate = sample
+//              .quantity
+//              .doubleValue(for: heartRateUnit)
+//            
+//            /// Updating the UI with the retrieved value
+//            self?.heartRateLabel.setText("\(Int(heartRate))")
+//          }
+//        })
+//    }
+//  }
+//  
+//  public func fetchLatestHeartRateSample(
+//    completion: @escaping (_ sample: HKQuantitySample?) -> Void) {
+//    
+//    /// Create sample type for the heart rate
+//    guard let sampleType = HKObjectType
+//      .quantityType(forIdentifier: .heartRate) else {
+//        completion(nil)
+//        return
+//    }
+//    
+//    /// Predicate for specifiying start and end dates for the query
+//    let predicate = HKQuery
+//      .predicateForSamples(
+//        withStart: Date.distantPast,
+//        end: Date(),
+//        options: .strictEndDate)
+//    
+//    /// Set sorting by date.
+//    let sortDescriptor = NSSortDescriptor(
+//      key: HKSampleSortIdentifierStartDate,
+//      ascending: false)
+//    
+//    /// Create the query
+//    let query = HKSampleQuery(
+//      sampleType: sampleType,
+//      predicate: predicate,
+//      limit: Int(HKObjectQueryNoLimit),
+//      sortDescriptors: [sortDescriptor]) { (_, results, error) in
+//        
+//        guard error == nil else {
+//          print("Error: \(error!.localizedDescription)")
+//          return
+//        }
+//        
+//        completion(results?[0] as? HKQuantitySample)
+//    }
+//    
+//    self.healthStore.execute(query)
+//  }
 }
