@@ -16,6 +16,7 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
   @IBOutlet weak var beatsPerMinuteLabel: UILabel!
   
   let healthKitInterface = HealthKitManager()
+  private var heartRateQuery:HKObserverQuery?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,19 +27,19 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
 //        guard let sample = sample else {
 //          return
 //        }
-//        
+//
 //        print("fetching" + String(n))
-//        
+//
 //        /// The completion in called on a background thread, but we
 //        /// need to update the UI on the main.
 //        DispatchQueue.main.async {
-//          
+//
 //          /// Converting the heart rate to bpm
 //          let heartRateUnit = HKUnit(from: "count/min")
 //          let heartRate = sample
 //            .quantity
 //            .doubleValue(for: heartRateUnit)
-//          
+//
 //          /// Updating the UI with the retrieved value
 //          print("\(Int(heartRate))")
 //          self.beatsPerMinuteLabel.text = "\(Int(heartRate))"
@@ -46,8 +47,6 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
 //      })
 //    }
   }
-  
-  let store:HealthKitManager = HealthKitManager.getInstance()
 
   public func sessionDidDeactivate(_ session: WCSession) {
     // Code
@@ -85,21 +84,19 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
     print("clicked on Phone")
   }
 
-    @IBAction func logoutTapped(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-            dismiss(animated: true, completion:nil)
-        } catch {
-            print("There was a problem logging out")
-        }
+  @IBAction func logoutTapped(_ sender: Any) {
+      do {
+          try Auth.auth().signOut()
+          dismiss(animated: true, completion:nil)
+      } catch {
+          print("There was a problem logging out")
       }
-  
-    @IBAction func sendHeartRateData(_ sender: Any) {
-        let dm: DeviceManager = DeviceManager.getSharedInstance()
-        dm.writeHeartRateData(apiKey: "apikey", username: "username", uid: "uid", heartRate: "50", timeStamp: "2018-11-19T22:26:12")
     }
-  
-  private var heartRateQuery:HKObserverQuery?
+
+  @IBAction func sendHeartRateData(_ sender: Any) {
+      let dm: DeviceManager = DeviceManager.getSharedInstance()
+      dm.writeHeartRateData(apiKey: "apikey", username: "username", uid: "uid", heartRate: "50", timeStamp: "2018-11-19T22:26:12")
+  }
   
   public func subscribeToHeartBeatChanges() {
     
@@ -112,7 +109,7 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
     /// Creating an observer, so updates are received whenever HealthKit’s
     // heart rate data changes.
     print("subscribeToHeartBeatChanges fxn")
-    self.heartRateQuery = HKObserverQuery.init(
+    let tempQuery = HKObserverQuery.init(
       sampleType: sampleType,
       predicate: nil) { [weak self] _, _, error in
         guard error == nil else {
@@ -149,8 +146,10 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
     }
     
     print("after observer initialization")
-    self.healthKitInterface.healthStore.execute(heartRateQuery ?? nil!)
-  
+    self.healthKitInterface.healthStore.execute(tempQuery)
+//    self.heartRateQuery = tempQuery
+    if let query = heartRateQuery {self.healthKitInterface.healthStore.execute(query)
+    }
   }
   
   public func fetchLatestHeartRateSample(
