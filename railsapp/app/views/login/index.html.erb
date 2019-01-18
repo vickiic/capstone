@@ -1,11 +1,11 @@
 <%= form_tag("authenticate", method: "get") do %>
-  <%= label_tag(:q, "Username:") %>
-  <%= text_field_tag(:q) %>
-  <%= label_tag(:w, "Password:") %>
-  <%= text_field_tag(:w) %>
+  <%= label_tag(:username, "Username:") %>
+  <%= text_field_tag(:username) %>
+  <%= label_tag(:password, "Password:") %>
+  <%= text_field_tag(:password) %>
   <%= submit_tag("Login") %>
 <% end %>
-<% if @incorrect %>
+<% if @invalid %>
   <h1>Incorrect Username or Password</h1>
 <% end %>
 <h4>The username is 'admin', no password</h4>

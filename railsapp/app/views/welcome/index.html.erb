@@ -116,7 +116,7 @@
       <div class="active-cyan-4 mb-4">
 
         <%= form_tag(welcome_index_path, method: "get") do %>
-          <%= text_field_tag :longitude, nil, class: 'form-control', placeholder: 'Search' %>
+          <%= text_field_tag :searchInput, nil, class: 'form-control', placeholder: 'Search' %>
           <p>
             <%= submit_tag("Submit") %>
           </p>

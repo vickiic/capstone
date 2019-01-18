@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @search = params[:longitude]
+    @search = params[:searchInput]
     if @search == nil
       @search = ""
     end
@@ -13,7 +13,6 @@ class WelcomeController < ApplicationController
                    'ITH-Device-Type': 'testing'
         }
     )
-    _body = JSON.parse(_response.body)
-    @body = _body
+    @body = JSON.parse(_response.body)
   end
 end
