@@ -8,7 +8,7 @@ class WelcomeControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index with search" do
-    get welcome_index_url(longitude: "iOS")
+    get welcome_index_url(searchInput: "iOS")
     assert_equal(assigns(:search), "iOS")
     assert_response :success
   end
