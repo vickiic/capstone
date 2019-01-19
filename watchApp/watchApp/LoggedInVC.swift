@@ -17,35 +17,11 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
   
   let healthKitInterface = HealthKitManager()
   private var heartRateQuery:HKObserverQuery?
+  let dm: DeviceManager = DeviceManager.getSharedInstance()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.subscribeToHeartBeatChanges()
-//    for n in 1...10 {
-//      // extra yolo query infinite recursion -- hope to kickstart the observer
-//      self.fetchLatestHeartRateSample(completion: { sample in
-//        guard let sample = sample else {
-//          return
-//        }
-//
-//        print("fetching" + String(n))
-//
-//        /// The completion in called on a background thread, but we
-//        /// need to update the UI on the main.
-//        DispatchQueue.main.async {
-//
-//          /// Converting the heart rate to bpm
-//          let heartRateUnit = HKUnit(from: "count/min")
-//          let heartRate = sample
-//            .quantity
-//            .doubleValue(for: heartRateUnit)
-//
-//          /// Updating the UI with the retrieved value
-//          print("\(Int(heartRate))")
-//          self.beatsPerMinuteLabel.text = "\(Int(heartRate))"
-//        }
-//      })
-//    }
   }
 
   public func sessionDidDeactivate(_ session: WCSession) {
@@ -94,7 +70,7 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
     }
 
   @IBAction func sendHeartRateData(_ sender: Any) {
-      let dm: DeviceManager = DeviceManager.getSharedInstance()
+//      let dm: DeviceManager = DeviceManager.getSharedInstance()
       dm.writeHeartRateData(apiKey: "apikey", username: "username", uid: "uid", heartRate: "50", timeStamp: "2018-11-19T22:26:12")
   }
   
@@ -109,48 +85,90 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
     /// Creating an observer, so updates are received whenever HealthKit’s
     // heart rate data changes.
     print("subscribeToHeartBeatChanges fxn")
-    let tempQuery = HKObserverQuery.init(
-      sampleType: sampleType,
-      predicate: nil) { [weak self] _, _, error in
-        guard error == nil else {
-          print(error!)
+//    let tempQuery = HKObserverQuery.init(
+//      sampleType: sampleType,
+//      predicate: nil) { [weak self] _, _, error in
+//        guard error == nil else {
+//          print(error!)
+//          return
+//        }
+//
+//        print("finna fetch")
+//        /// When the completion is called, an other query is executed
+//        /// to fetch the latest heart rate
+//        self?.fetchLatestHeartRateSample(completion: { sample in
+//          guard let sample = sample else {
+//            return
+//          }
+//
+//          print("fetching")
+//
+//          /// The completion in called on a background thread, but we
+//          /// need to update the UI on the main.
+//          DispatchQueue.main.async {
+//
+//            /// Converting the heart rate to bpm
+//            let heartRateUnit = HKUnit(from: "count/min")
+//            let heartRate = sample
+//              .quantity
+//              .doubleValue(for: heartRateUnit)
+//
+//            /// Updating the UI with the retrieved value
+//            print("\(Int(heartRate))")
+//            self?.beatsPerMinuteLabel.text = "\(Int(heartRate))"
+//
+//          }
+//        })
+//    }
+    
+    let tempQuery = HKObserverQuery(sampleType: sampleType, predicate: nil) { tempQuery, completionHandler, error in
+      print("finna fetch")
+      /// When the completion is called, an other query is executed
+      /// to fetch the latest heart rate
+      self.fetchLatestHeartRateSample(completion: { sample in
+        guard let sample = sample else {
           return
         }
         
-        print("finna fetch")
-        /// When the completion is called, an other query is executed
-        /// to fetch the latest heart rate
-        self?.fetchLatestHeartRateSample(completion: { sample in
-          guard let sample = sample else {
-            return
-          }
+        print("fetching")
+        
+        /// The completion in called on a background thread, but we
+        /// need to update the UI on the main.
+        DispatchQueue.main.async {
           
-          print("fetching")
+          /// Converting the heart rate to bpm
+          let heartRateUnit = HKUnit(from: "count/min")
+          let heartRate = sample
+            .quantity
+            .doubleValue(for: heartRateUnit)
           
-          /// The completion in called on a background thread, but we
-          /// need to update the UI on the main.
-          DispatchQueue.main.async {
-            
-            /// Converting the heart rate to bpm
-            let heartRateUnit = HKUnit(from: "count/min")
-            let heartRate = sample
-              .quantity
-              .doubleValue(for: heartRateUnit)
-            
-            /// Updating the UI with the retrieved value
-            print("\(Int(heartRate))")
-            self?.beatsPerMinuteLabel.text = "\(Int(heartRate))"
-            
-          }
-        })
+          /// Updating the UI with the retrieved value
+          print("\(Int(heartRate))")
+          self.beatsPerMinuteLabel.text = "\(Int(heartRate))"
+          
+          let now = Date()
+          let formatter = DateFormatter()
+          formatter.timeZone = TimeZone.current
+          formatter.dateFormat = "yyyy-MM-dd HH:mm"
+          let dateString = formatter.string(from: now)
+          
+          self.dm.writeHeartRateData(apiKey: "apikey", username: "username", uid: "uid", heartRate: "\(Int(heartRate))", timeStamp: dateString)
+          
+        }
+      })
     }
     
     print("after observer initialization")
     self.healthKitInterface.healthStore.execute(tempQuery)
-//    self.heartRateQuery = tempQuery
     if let query = heartRateQuery {self.healthKitInterface.healthStore.execute(query)
+    
+    // Background delivery for syncup when app is open in the background and we are still able to make queries and send to db 
+    self.healthKitInterface.healthStore.enableBackgroundDelivery(for: sampleType, frequency: .immediate) { (true, nil) in
+      self.healthKitInterface.healthStore.execute(tempQuery)
+      print("error with background delivery in query")
     }
   }
+}
   
   public func fetchLatestHeartRateSample(
     completion: @escaping (_ sample: HKQuantitySample?) -> Void) {
