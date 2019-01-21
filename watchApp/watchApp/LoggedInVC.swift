@@ -17,7 +17,7 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
   
   let healthKitInterface = HealthKitManager()
   private var heartRateQuery:HKObserverQuery?
-  let dm: DeviceManager = DeviceManager.getSharedInstance()
+  let dm: DeviceManager = DeviceManager.getSharedInstance() // possibly create a new session?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -70,8 +70,7 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
     }
 
   @IBAction func sendHeartRateData(_ sender: Any) {
-//      let dm: DeviceManager = DeviceManager.getSharedInstance()
-      dm.writeHeartRateData(apiKey: "apikey", username: "username", uid: "uid", heartRate: "50", timeStamp: "2018-11-19T22:26:12")
+      dm.writeHeartRateData(uid: Api.uid, heartRate: "200")
   }
   
   public func subscribeToHeartBeatChanges() {
@@ -145,15 +144,7 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
           /// Updating the UI with the retrieved value
           print("\(Int(heartRate))")
           self.beatsPerMinuteLabel.text = "\(Int(heartRate))"
-          
-          let now = Date()
-          let formatter = DateFormatter()
-          formatter.timeZone = TimeZone.current
-          formatter.dateFormat = "yyyy-MM-dd HH:mm"
-          let dateString = formatter.string(from: now)
-          
-          self.dm.writeHeartRateData(apiKey: "apikey", username: "username", uid: "uid", heartRate: "\(Int(heartRate))", timeStamp: dateString)
-          
+          self.dm.writeHeartRateData(uid: Api.uid, heartRate: "\(Int(heartRate))")
         }
       })
     }
