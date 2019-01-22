@@ -83,7 +83,8 @@ class ViewController: UIViewController, WCSessionDelegate  {
         }
     }
     @IBAction func signupTapped(_ sender: Any) {
-        if let email = usernameTextfield.text, let password = passwordTextfield.text {
+        
+        /*if let email = usernameTextfield.text, let password = passwordTextfield.text {
             Auth.auth().createUser(withEmail: email, password: password, completion: {
                 user, error in
                 if let firebaseError = error {
@@ -98,7 +99,7 @@ class ViewController: UIViewController, WCSessionDelegate  {
                 self.presentLoggedInScreen()
                 print("sign up success!")
             })
-        }
+        }*/
     }
   
   func presentLoggedInScreen(){

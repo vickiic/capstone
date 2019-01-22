@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8B9880A4639EA57C004D0402 /* Pods_watchApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5132F9A341581302773C5B12 /* Pods_watchApp.framework */; };
 		A62EFCA3E65962533F813345 /* Pods_watchApp_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D8F47C0C708881D44EF02D1 /* Pods_watchApp_WatchKit_App.framework */; };
+		CAF6ABEC21F70B9D007602F2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF6ABEB21F70B9D007602F2 /* SignUpViewController.swift */; };
 		D5D2DC572A520AA7057C3DBA /* Pods_watchApp_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60E5503F39D9702B60431A2C /* Pods_watchApp_WatchKit_Extension.framework */; };
 		E1019D6C21B85CBB000E5F13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1019D6B21B85CBB000E5F13 /* AppDelegate.swift */; };
 		E1019D7121B85CBB000E5F13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1019D6F21B85CBB000E5F13 /* Main.storyboard */; };
@@ -95,6 +96,7 @@
 		9A18FE8FA429FF547EA0C4F1 /* Pods-watchApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchApp/Pods-watchApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B520D1A207EA7BD3C638E72E /* Pods-watchApp WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchApp WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchApp WatchKit Extension/Pods-watchApp WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
 		C53232A444C08BF7EDD95CB8 /* Pods-watchApp WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchApp WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchApp WatchKit Extension/Pods-watchApp WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		CAF6ABEB21F70B9D007602F2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D78569FA0EF30371B11E6116 /* Pods-watchApp WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchApp WatchKit App.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchApp WatchKit App/Pods-watchApp WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
 		E1019D6821B85CBB000E5F13 /* watchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1019D6B21B85CBB000E5F13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				F03C271221B8849D0056F5E9 /* HealthKitManager.swift */,
 				F03C271421B8849D0056F5E9 /* LoggedInVC.swift */,
 				F03C271021B8848E0056F5E9 /* AuthorizeHealthKitViewController.swift */,
+				CAF6ABEB21F70B9D007602F2 /* SignUpViewController.swift */,
 				F03C270E21B883980056F5E9 /* ViewController.swift */,
 				E1019DB321B85FEB000E5F13 /* watchApp.entitlements */,
 				E1019D6B21B85CBB000E5F13 /* AppDelegate.swift */,
@@ -481,16 +484,32 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-watchApp/Pods-watchApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -572,6 +591,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F03C270F21B883980056F5E9 /* ViewController.swift in Sources */,
+				CAF6ABEC21F70B9D007602F2 /* SignUpViewController.swift in Sources */,
 				F03C271121B8848E0056F5E9 /* AuthorizeHealthKitViewController.swift in Sources */,
 				F03C271521B8849D0056F5E9 /* HealthKitManager.swift in Sources */,
 				F03C271721B8849D0056F5E9 /* LoggedInVC.swift in Sources */,
