@@ -1,0 +1,32 @@
+<%= form_with(model: heartrate, local: true) do |form| %>
+  <% if heartrate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(heartrate.errors.count, "error") %> prohibited this heartrate from being saved:</h2>
+
+      <ul>
+      <% heartrate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :device %>
+    <%= form.text_field :device %>
+  </div>
+
+  <div class="field">
+    <%= form.label :value %>
+    <%= form.number_field :value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time %>
+    <%= form.text_field :time %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

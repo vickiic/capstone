@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :heartrates
+  get 'heartrates/index'
   get 'login/index'
   get 'stats/index'
   get 'welcome/index'
@@ -10,5 +12,7 @@ Rails.application.routes.draw do
   get '/login/authenticate', to: 'login#authenticate'
 
 
-  root :to => redirect('/login/index')
+  # root :to => redirect('/login/index')
+  root 'heartrates#index'
 end
+
