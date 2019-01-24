@@ -83,6 +83,33 @@ class DeviceManager {
                 }
             }
         }.resume()
+    }
+    
+    public func writeHeartRateDataToIO(uid: String, heartRate: String, timeStamp:  String){
         
+        let metricParams = ["device": uid, "value": heartRate, "time": timeStamp] as [String: Any]
+        
+        guard let url = URL(string: "https://ithcapstone2019.appspot.com/heartrates") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: metricParams, options: []) else { return }
+        request.httpBody = httpBody
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let response = response {
+                print(response)
+            }
+            if let data = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                } catch {
+                    print(error)
+                }
+            }
+        }.resume()
     }
 }

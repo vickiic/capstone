@@ -24,7 +24,7 @@ class LoggedInVC: UIViewController {
     @IBAction func sendHeartRateData(_ sender: Any) {
         let dm: DeviceManager = DeviceManager.getSharedInstance()
         let currUid = Auth.auth().currentUser?.uid
-        dm.writeHeartRateData(uid:currUid!, heartRate: "52", timeStamp: "2018-11-19T22:27:12")
+        dm.writeHeartRateDataToIO(uid:currUid!, heartRate: "52", timeStamp: "2018-11-19T22:27:12")
     }
     
     
