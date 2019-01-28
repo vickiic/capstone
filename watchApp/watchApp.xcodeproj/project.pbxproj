@@ -32,6 +32,7 @@
 		F03C271721B8849D0056F5E9 /* LoggedInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03C271421B8849D0056F5E9 /* LoggedInVC.swift */; };
 		F03C271921B886DD0056F5E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F03C271821B886DD0056F5E9 /* GoogleService-Info.plist */; };
 		F047BBB521CCDC6100485CFE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; fileRef = F01D47F721B89966001D4B61 /* FirebaseAuth */; };
+		F0745B6E21E95469001352DD /* watchSubscribeToHBChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0745B6D21E95469001352DD /* watchSubscribeToHBChanges.swift */; };
 		F08CF19E21B8882900CEA7C0 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = F08CF19D21B8882900CEA7C0 /* Podfile */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +131,7 @@
 		F03C271421B8849D0056F5E9 /* LoggedInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInVC.swift; sourceTree = "<group>"; };
 		F03C271821B886DD0056F5E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F047BBB321CCDC3E00485CFE /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0745B6D21E95469001352DD /* watchSubscribeToHBChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watchSubscribeToHBChanges.swift; sourceTree = "<group>"; };
 		F08CF19D21B8882900CEA7C0 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,6 +228,7 @@
 				E1019D7221B85CBD000E5F13 /* Assets.xcassets */,
 				E1019D7421B85CBD000E5F13 /* LaunchScreen.storyboard */,
 				E1019D7721B85CBD000E5F13 /* Info.plist */,
+				F0745B6D21E95469001352DD /* watchSubscribeToHBChanges.swift */,
 			);
 			path = watchApp;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 			files = (
 				F03C270F21B883980056F5E9 /* ViewController.swift in Sources */,
 				F03C271121B8848E0056F5E9 /* AuthorizeHealthKitViewController.swift in Sources */,
+				F0745B6E21E95469001352DD /* watchSubscribeToHBChanges.swift in Sources */,
 				F03C271521B8849D0056F5E9 /* HealthKitManager.swift in Sources */,
 				F03C271721B8849D0056F5E9 /* LoggedInVC.swift in Sources */,
 				F03C271621B8849D0056F5E9 /* DeviceManager.swift in Sources */,
