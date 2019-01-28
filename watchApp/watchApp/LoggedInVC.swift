@@ -22,9 +22,9 @@ class LoggedInVC: UIViewController {
     
     
     @IBAction func sendHeartRateData(_ sender: Any) {
-        let dm: DeviceManager = DeviceManager.getSharedInstance()
+        let io: IOWebService = IOWebService.getSharedInstance()
         let currUid = Auth.auth().currentUser?.uid
-        dm.writeHeartRateDataToIO(uid:currUid!, heartRate: "52", timeStamp: "2018-11-19T22:27:12")
+        io.writeHeartRateDataToIO(uid:currUid!, heartRate: "52", timeStamp: "2018-11-19T22:27:12")
     }
     
     
