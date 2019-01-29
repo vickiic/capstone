@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :patients
   resources :heartrates
   get 'heartrates/index'
   get 'login/index'

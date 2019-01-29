@@ -199,12 +199,14 @@
                 </div>
                 <div class="col-12">
                   <div class="amp-pxl" style="height: 360px;">
-                    <% @body["values"].each do |element| %>
+                    <% @heartrates.each do |element| %>
+                      <% if element.device == @patient %>
                       <div>
-                        <span><%= element["timestamp"]%></span>
+                        <span><%= element.time%></span>
                         <span>   :   </span>
-                        <span><%= element["value"] %></span>
+                        <span><%= element.value %></span>
                       </div>
+                      <% end %>
                     <% end %>
                   </div>
                 </div>

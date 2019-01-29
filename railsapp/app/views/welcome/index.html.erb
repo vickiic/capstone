@@ -128,13 +128,13 @@
       <div class="row">
         <!-- Column -->
         <div class="col-lg-4 col-xlg-3 col-md-5">
-          <% @body["devices"].each do |element| %>
-            <% if element["name"].include? @search %>
+          <% @patients.each do |element| %>
+            <% if element.name.include? @search %>
             <div class="card">
-              <%= link_to stats_index_path(:id => element["device_uid"]) do %>
+              <%= link_to stats_index_path(:id => element.device) do %>
                 <div class="card-block">
                   <center class="m-t-30"> <%= image_tag "users/#{rand(7) + 1}.jpg", :class => "img-circle", :style => "width:150px"%>
-                    <h4 class="card-title m-t-10"><%=element["name"] %></h4>
+                    <h4 class="card-title m-t-10"><%=element.name %></h4>
                     <div class="row text-center justify-content-md-center"></div>
                   </center>
                 </div>
