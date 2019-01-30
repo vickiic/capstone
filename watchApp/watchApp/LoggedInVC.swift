@@ -15,8 +15,10 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
   
   @IBOutlet weak var beatsPerMinuteLabel: UILabel!
   
+
   let healthKitInterface = HealthKitManager()
   private var heartRateQuery:HKObserverQuery?
+  let io: IOWebService = IOWebService.getSharedInstance()
   let dm: DeviceManager = DeviceManager.getSharedInstance() // possibly create a new session?
   
   override func viewDidLoad() {
@@ -61,9 +63,7 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
   }
   
   @IBAction func sendHeartRateData(_ sender: Any) {
-        let io: IOWebService = IOWebService.getSharedInstance()
-        let currUid = Auth.auth().currentUser?.uid
-        io.writeHeartRateDataToIO(uid:currUid!, heartRate: "52", timeStamp: "2018-11-19T22:27:12")
+        io.writeHeartRateDataToIO(uid:"testuid", heartRate: "52")
     }
   
   @IBAction func continueButton(_ sender: UIButton) {}
@@ -76,10 +76,6 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
           print("There was a problem logging out")
       }
     }
-
-  @IBAction func sendHeartRateData(_ sender: Any) {
-      dm.writeHeartRateData(uid: Api.uid, heartRate: "200")
-  }
   
   public func subscribeToHeartBeatChanges() {
     
@@ -152,7 +148,8 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
           /// Updating the UI with the retrieved value
           print("\(Int(heartRate))")
           self.beatsPerMinuteLabel.text = "\(Int(heartRate))"
-          self.dm.writeHeartRateData(uid: Api.uid, heartRate: "\(Int(heartRate))")
+          let currUid = Auth.auth().currentUser?.uid
+          self.io.writeHeartRateDataToIO(uid: currUid!, heartRate: "\(Int(heartRate))")
         }
       })
     }

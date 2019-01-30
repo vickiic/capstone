@@ -20,9 +20,13 @@ class IOWebService {
         return sharedInstance!
     }
     
-    public func writeHeartRateDataToIO(uid: String, heartRate: String, timeStamp:  String){
+    public func writeHeartRateDataToIO(uid: String, heartRate: String){
         
-        let metricParams = ["device": uid, "value": heartRate, "time": timeStamp] as [String: Any]
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let innerTime = dateFormatter.string(from: NSDate() as Date)
+        
+        let metricParams = ["device": uid, "value": heartRate, "time": innerTime] as [String: Any]
         
         guard let url = URL(string: "https://ithcapstone2019.appspot.com/heartrates") else { return }
         var request = URLRequest(url: url)

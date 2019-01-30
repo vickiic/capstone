@@ -40,7 +40,7 @@ class SignUpViewController: UIViewController {
                 if let firebaseUser = user?.user {
                     let email = firebaseUser.email
                     let uid = firebaseUser.uid
-                    self.dm.createDevice(username:email!, uid:uid)
+                    //self.dm.createDevice(username:email!, uid:uid)
                     
                     db.collection("users").document(uid).setData([
                         "first": firstName,
