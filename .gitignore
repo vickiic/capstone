@@ -1,8 +1,8 @@
 .DS_Store
 
 ### Xcode Patch ###
-*.xcodeproj/*
-!*.xcodeproj/project.pbxproj
+watchApp/watchApp.xcodeproj/*
+watchApp/watchApp.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
@@ -14,5 +14,5 @@ playground.xcworkspace
 xcuserdata/
 *.pbxuser
 build/
-
+watchApp/watchApp/keys.swift
 
