@@ -59,6 +59,14 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
     self.clickStatus.text = "Phone Click"
     print("clicked on Phone")
   }
+  
+  @IBAction func sendHeartRateData(_ sender: Any) {
+        let io: IOWebService = IOWebService.getSharedInstance()
+        let currUid = Auth.auth().currentUser?.uid
+        io.writeHeartRateDataToIO(uid:currUid!, heartRate: "52", timeStamp: "2018-11-19T22:27:12")
+    }
+  
+  @IBAction func continueButton(_ sender: UIButton) {}
 
   @IBAction func logoutTapped(_ sender: Any) {
       do {
@@ -152,7 +160,7 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
     print("after observer initialization")
     self.healthKitInterface.healthStore.execute(tempQuery)
     if let query = heartRateQuery {self.healthKitInterface.healthStore.execute(query)
-    
+   
     // Background delivery for syncup when app is open in the background and we are still able to make queries and send to db 
     self.healthKitInterface.healthStore.enableBackgroundDelivery(for: sampleType, frequency: .immediate) { (true, nil) in
       self.healthKitInterface.healthStore.execute(tempQuery)

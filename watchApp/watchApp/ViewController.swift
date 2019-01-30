@@ -9,8 +9,9 @@
 import UIKit
 //import WatchConnectivity
 import FirebaseAuth
+import Firebase
 
-//class ViewController: UIViewController, WCSessionDelegate  {
+
 class ViewController: UIViewController {
   
   override func viewDidLoad() {
@@ -40,17 +41,23 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func signupTapped(_ sender: Any) {
-        if let email = usernameTextfield.text, let password = passwordTextfield.text {
+        
+        /*if let email = usernameTextfield.text, let password = passwordTextfield.text {
             Auth.auth().createUser(withEmail: email, password: password, completion: {
                 user, error in
                 if let firebaseError = error {
                 print(firebaseError.localizedDescription)
                     return
                 }
+                if let firebaseUser = user?.user {
+                    let email = firebaseUser.email
+                    let uid = firebaseUser.uid
+                    self.dm.createDevice(username:email!, uid:uid)
+                }
                 self.presentLoggedInScreen()
-                print("success!")
+                print("sign up success!")
             })
-        }
+        }*/
     }
   
   func presentLoggedInScreen(){
@@ -58,5 +65,6 @@ class ViewController: UIViewController {
     let loggedInVC:LoggedInVC = storyboard.instantiateViewController(withIdentifier: "LoggedInVC") as! LoggedInVC
     self.present(loggedInVC, animated: true, completion: nil)
   }
+    
 }
 
