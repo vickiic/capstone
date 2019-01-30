@@ -10,6 +10,7 @@
 		8B9880A4639EA57C004D0402 /* Pods_watchApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5132F9A341581302773C5B12 /* Pods_watchApp.framework */; };
 		A62EFCA3E65962533F813345 /* Pods_watchApp_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D8F47C0C708881D44EF02D1 /* Pods_watchApp_WatchKit_App.framework */; };
 		CA4E679621FEA3A200CD41F2 /* IOWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E679521FEA3A200CD41F2 /* IOWebService.swift */; };
+		CA90FAAB2201374F00B815EB /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA90FAAA2201374F00B815EB /* Api.swift */; };
 		CAF6ABEC21F70B9D007602F2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF6ABEB21F70B9D007602F2 /* SignUpViewController.swift */; };
 		D5D2DC572A520AA7057C3DBA /* Pods_watchApp_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60E5503F39D9702B60431A2C /* Pods_watchApp_WatchKit_Extension.framework */; };
 		E1019D6C21B85CBB000E5F13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1019D6B21B85CBB000E5F13 /* AppDelegate.swift */; };
@@ -34,7 +35,6 @@
 		F03C271721B8849D0056F5E9 /* LoggedInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03C271421B8849D0056F5E9 /* LoggedInVC.swift */; };
 		F03C271921B886DD0056F5E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F03C271821B886DD0056F5E9 /* GoogleService-Info.plist */; };
 		F047BBB521CCDC6100485CFE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; fileRef = F01D47F721B89966001D4B61 /* FirebaseAuth */; };
-		F0745B6E21E95469001352DD /* watchSubscribeToHBChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0745B6D21E95469001352DD /* watchSubscribeToHBChanges.swift */; };
 		F08CF19E21B8882900CEA7C0 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = F08CF19D21B8882900CEA7C0 /* Podfile */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +99,7 @@
 		B520D1A207EA7BD3C638E72E /* Pods-watchApp WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchApp WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchApp WatchKit Extension/Pods-watchApp WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
 		C53232A444C08BF7EDD95CB8 /* Pods-watchApp WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchApp WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchApp WatchKit Extension/Pods-watchApp WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		CA4E679521FEA3A200CD41F2 /* IOWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOWebService.swift; sourceTree = "<group>"; };
+		CA90FAAA2201374F00B815EB /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		CAF6ABEB21F70B9D007602F2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D78569FA0EF30371B11E6116 /* Pods-watchApp WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchApp WatchKit App.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchApp WatchKit App/Pods-watchApp WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
 		E1019D6821B85CBB000E5F13 /* watchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,7 +136,6 @@
 		F03C271421B8849D0056F5E9 /* LoggedInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInVC.swift; sourceTree = "<group>"; };
 		F03C271821B886DD0056F5E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F047BBB321CCDC3E00485CFE /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F0745B6D21E95469001352DD /* watchSubscribeToHBChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watchSubscribeToHBChanges.swift; sourceTree = "<group>"; };
 		F08CF19D21B8882900CEA7C0 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,6 +224,7 @@
 				F03C271321B8849D0056F5E9 /* DeviceManager.swift */,
 				F03C271221B8849D0056F5E9 /* HealthKitManager.swift */,
 				CA4E679521FEA3A200CD41F2 /* IOWebService.swift */,
+				CA90FAAA2201374F00B815EB /* Api.swift */,
 				F03C271421B8849D0056F5E9 /* LoggedInVC.swift */,
 				F03C271021B8848E0056F5E9 /* AuthorizeHealthKitViewController.swift */,
 				CAF6ABEB21F70B9D007602F2 /* SignUpViewController.swift */,
@@ -234,7 +235,6 @@
 				E1019D7221B85CBD000E5F13 /* Assets.xcassets */,
 				E1019D7421B85CBD000E5F13 /* LaunchScreen.storyboard */,
 				E1019D7721B85CBD000E5F13 /* Info.plist */,
-				F0745B6D21E95469001352DD /* watchSubscribeToHBChanges.swift */,
 			);
 			path = watchApp;
 			sourceTree = "<group>";
@@ -596,10 +596,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA90FAAB2201374F00B815EB /* Api.swift in Sources */,
 				F03C270F21B883980056F5E9 /* ViewController.swift in Sources */,
 				CAF6ABEC21F70B9D007602F2 /* SignUpViewController.swift in Sources */,
 				F03C271121B8848E0056F5E9 /* AuthorizeHealthKitViewController.swift in Sources */,
-				F0745B6E21E95469001352DD /* watchSubscribeToHBChanges.swift in Sources */,
 				F03C271521B8849D0056F5E9 /* HealthKitManager.swift in Sources */,
 				CA4E679621FEA3A200CD41F2 /* IOWebService.swift in Sources */,
 				F03C271721B8849D0056F5E9 /* LoggedInVC.swift in Sources */,
