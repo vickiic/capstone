@@ -12,5 +12,8 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require jquery
+//= require moment
+//=Chart.bundle.min
 //= require turbolinks
 //= require_tree .
