@@ -1,0 +1,118 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Heartrates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Device</th>
+      <th>Value</th>
+      <th>Time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @heartrates.each do |heartrate| %>
+      <tr>
+        <td><%= heartrate.device %></td>
+        <td><%= heartrate.value %></td>
+        <td><%= heartrate.time %></td>
+        <td><%= heartrate.created_at %></td>
+        <td><%= link_to 'Show', heartrate %></td>
+        <td><%= link_to 'Edit', edit_heartrate_path(heartrate) %></td>
+        <td><%= link_to 'Destroy', heartrate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Heartrate', new_heartrate_path %>
+
+	<div style="width:1000px">
+		<canvas id="chart1"></canvas>
+	</div>
+	<br>
+	<br>
+	Chart Type:
+	<select id="type">
+		<option value="line">Line</option>
+		<option value="bar">Bar</option>
+	</select>
+	<button id="update">update</button>
+	<script>
+		function randomNumber(min, max) {
+			return Math.random() * (max - min) + min;
+		}
+
+		function randomBar(date, lastClose) {
+			var open = randomNumber(lastClose * 0.95, lastClose * 1.05);
+			var close = randomNumber(open * 0.95, open * 1.05);
+			return {
+				t: date.valueOf(),
+				y: close
+			};
+		}
+
+		var dateFormat = 'MMMM DD YYYY';
+		var date = moment('April 01 2017', dateFormat);
+		var data = [randomBar(date, 30)];
+		var labels = [date];
+		while (data.length < 60) {
+			date = date.clone().add(1, 'd');
+			if (date.isoWeekday() <= 5) {
+				data.push(randomBar(date, data[data.length - 1].y));
+				labels.push(date);
+			}
+		}
+
+		var ctx = document.getElementById('chart1').getContext('2d');
+		ctx.canvas.width = 1000;
+		ctx.canvas.height = 300;
+
+		var color = Chart.helpers.color;
+		var cfg = {
+			type: 'bar',
+			data: {
+				labels: labels,
+				datasets: [{
+					label: 'CHRT - Chart.js Corporation',
+					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.red,
+					data: data,
+					type: 'line',
+					pointRadius: 0,
+					fill: false,
+					lineTension: 0,
+					borderWidth: 2
+				}]
+			},
+			options: {
+				scales: {
+					xAxes: [{
+						type: 'time',
+						distribution: 'series',
+						ticks: {
+							source: 'labels'
+						}
+					}],
+					yAxes: [{
+						scaleLabel: {
+							display: true,
+							labelString: 'Closing price ($)'
+						}
+					}]
+				}
+			}
+		};
+		var chart = new Chart(ctx, cfg);
+
+		document.getElementById('update').addEventListener('click', function() {
+			var type = document.getElementById('type').value;
+			chart.config.data.datasets[0].type = type;
+			chart.update();
+		});
+
+	</script>

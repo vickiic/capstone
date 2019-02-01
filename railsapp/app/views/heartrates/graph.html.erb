@@ -1,0 +1,62 @@
+<h1>Heartrates Graph</h1>
+<canvas id="myChart" width="800" height="400"></canvas>
+
+
+<script>
+var ctx = document.getElementById("myChart").getContext('2d');
+      <% 
+         date = []
+         datapoints = []
+          heartrates.each  do |heartrate|
+          date << heartrate['created_at']
+          datapoints << heartrate['value']
+       end
+       %>
+          var labels1 = <%= raw date.to_json %>;
+          var data = <%= raw datapoints.to_json %>;
+          var labels = [];
+		var dateFormat = 'YYYY-MM-DD HH:mm:ss';
+          for (i=0; i<labels1.length; i++) {
+		labels.push(moment(labels1[i], dateFormat));
+          }
+		var cfg = {
+			type: 'bar',
+			data: {
+				labels: labels,
+				datasets: [{
+			                label: 'HeartRates: <%= deviceID %>',
+					data: data,
+				        backgroundColor: "green",
+				        borderColor: "lightgreen",
+ 					type: 'line',
+					pointRadius: 0,
+					fill: false,
+					lineTension: 0,
+					borderWidth: 2
+				}]
+			},
+			options: {
+			        responsive: false,
+				scales: {
+					xAxes: [{
+						type: 'time',
+						distribution: 'series',
+						ticks: {
+							source: 'labels'
+						}
+					}],
+					yAxes: [{
+						scaleLabel: {
+							display: true,
+							labelString: 'HeartRate Values'
+						},
+				                ticks: {
+				                    beginAtZero:true
+						}
+
+					}]
+				}
+			}
+		};
+		var chart = new Chart(ctx, cfg);
+</script>

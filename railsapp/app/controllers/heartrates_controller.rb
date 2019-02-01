@@ -61,6 +61,23 @@ class HeartratesController < ApplicationController
     end
   end
 
+  #/heartrates/device
+  def device
+    connection = SQLite3::Database.new 'db/development.sqlite3'
+    connection.results_as_hash = true
+    devices = connection.execute("SELECT DISTINCT device FROM heartrates")
+    render 'heartrates/device', locals: {devices: devices}
+  end
+
+  #/heartrates/graph:id
+  def graph
+    connection = SQLite3::Database.new 'db/development.sqlite3'
+    connection.results_as_hash = true
+
+    heartrates = connection.execute("SELECT * FROM heartrates WHERE heartrates.device = ?", params['id'])
+    render 'heartrates/graph', locals: {heartrates: heartrates, deviceID: 'device:'+params['id']}
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_heartrate
