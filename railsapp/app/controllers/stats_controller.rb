@@ -71,6 +71,7 @@ class StatsController < ApplicationController
       # )
     end
     # @body = JSON.parse(_response.body)
-    @heartrates = Heartrate.all
+    @heartrates = Heartrate.where("device = ?", @patient)
+    # @heartrates = Heartrate.all.where(:device, @patient)
   end
 end
