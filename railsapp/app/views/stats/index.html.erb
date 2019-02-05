@@ -199,13 +199,78 @@
                 </div>
                 <div class="col-12">
                   <div class="amp-pxl" style="height: 360px;">
-                    <% @body["values"].each do |element| %>
+                    <% @heartrates.each do |element| %>
+                      <% if element.device == @patient %>
                       <div>
-                        <span><%= element["timestamp"]%></span>
+                        <span><%= element.time%></span>
                         <span>   :   </span>
-                        <span><%= element["value"] %></span>
+                        <span><%= element.value %></span>
                       </div>
+                      <% end %>
                     <% end %>
+                    <div style="width:1000px">
+                      <canvas id="chart1"></canvas>
+                    </div>
+                    <script>
+                      <% 
+                        date = []
+                        datapoints = []
+                        @heartrates.each  do |heartrate|
+                          date << heartrate['created_at']
+                          datapoints << heartrate['value']
+                        end
+                      %>
+                      var labels1 = <%= raw date.to_json %>;
+                      var data = <%= raw datapoints.to_json %>;
+                      var labels = [];
+                      var dateFormat = 'YYYY-MM-DD HH:mm:ss';
+                      for (i=0; i<labels1.length; i++) {
+                        labels.push(moment(labels1[i], dateFormat));
+                      }
+                      var ctx = document.getElementById('chart1').getContext('2d');
+                      ctx.canvas.width = 1000;
+                      ctx.canvas.height = 300;
+                      var color = Chart.helpers.color;
+                      var cfg = {
+                        type: 'bar',
+                        data: {
+                          labels: labels,
+                          datasets: [{
+                            label: 'HeartRates',
+                            data: data,
+                                  backgroundColor: "green",
+                                  borderColor: "lightgreen",
+                            type: 'line',
+                            pointRadius: 0,
+                            fill: false,
+                            lineTension: 0,
+                            borderWidth: 2
+                          }]
+                        },
+                        options: {
+                          responsive: false,
+                          scales: {
+                            xAxes: [{
+                              type: 'time',
+                              distribution: 'series',
+                              ticks: {
+                                source: 'labels'
+                              }
+                            }],
+                            yAxes: [{
+                              scaleLabel: {
+                                display: true,
+                                labelString: 'HeartRate Values'
+                              },
+                                ticks: {
+                                beginAtZero:true
+                              }
+                            }]
+                          }
+                        }
+                      };
+                      var chart = new Chart(ctx, cfg);
+                    </script>
                   </div>
                 </div>
               </div>

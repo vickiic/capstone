@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Device:</strong>
+  <%= @heartrate.device %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @heartrate.value %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @heartrate.time %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @heartrate.created_at %>
+</p>
+
+<%= link_to 'Edit', edit_heartrate_path(@heartrate) %> |
+<%= link_to 'Back', heartrates_path %>
