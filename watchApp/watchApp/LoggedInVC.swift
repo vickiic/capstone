@@ -23,7 +23,7 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.subscribeToHeartBeatChanges()
+//    self.subscribeToHeartBeatChanges()
   }
 
   public func sessionDidDeactivate(_ session: WCSession) {
