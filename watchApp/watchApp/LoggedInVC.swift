@@ -65,8 +65,6 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
   @IBAction func sendHeartRateData(_ sender: Any) {
         io.writeHeartRateDataToIO(uid:"testuid", heartRate: "52")
     }
-  
-  @IBAction func continueButton(_ sender: UIButton) {}
 
   @IBAction func logoutTapped(_ sender: Any) {
       do {
