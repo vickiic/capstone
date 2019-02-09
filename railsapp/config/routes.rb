@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   resources :heartrates
 
   # root :to => redirect('/login/index')
-  root 'heartrates#index'
+  root 'welcome#index'
 end
 
