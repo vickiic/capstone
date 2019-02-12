@@ -40,7 +40,7 @@
       <!-- Sidebar navigation-->
       <nav class="sidebar-nav">
         <ul id="sidebarnav">
-          <li> <a class="waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Patients</span></a>
+          <li> <a class="waves-effect waves-dark" href="/welcome/index" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Patients</span></a>
           </li>
           <li> <a class="waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-message-text-outline"></i><span class="hide-menu">Messages</span></a>
           </li>
@@ -70,7 +70,15 @@
                 <%= if Rails.application.assets.find_asset("users/#{@picture.pic}") == nil then image_tag "users/DEFAULT.png", :class => "img-circle", :style => "width:150px" end %>                    
                 <h4 class="card-title m-t-10"><%= @picture.name%></h4>
                 <div class="row text-center justify-content-md-center">
-                  <div class="col-4"><font class="font-medium"><%= @picture.age%></font></div>
+                  <div class="col-4">
+                    <font class="font-medium">
+                      <span>
+                        <div>Age: <%= @picture.age%></div>                      
+                        <div>Height: <%= @picture.height%></div>
+                        <div>Weight: <%= @picture.weight%></div>
+                      <span>
+                    </font>
+                  </div>
                 </div>
               </center>
             </div>
@@ -88,10 +96,12 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="card">
-            <%= link_to 'Graph', stats_index_path(:id => @patient) %>
-            <%= link_to 'Prescription', stats_prescription_path(:id => @patient) %>
-            <%= link_to 'Medical History', stats_history_path(:id => @patient) %>
-            <%= link_to 'Notes', stats_notes_path(:id => @patient) %>
+            <span>
+              <%= link_to 'Heartrate', stats_index_path(:id => @patient) %>
+              <%= link_to 'Prescription', stats_prescription_path(:id => @patient) %>
+              <%= link_to 'Medical History', stats_history_path(:id => @patient) %>
+              <%= link_to 'Notes', stats_notes_path(:id => @patient) %>
+            </span>
             <div class="card-block">
               <div class="row">
                 <div class="col-12">

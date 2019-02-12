@@ -40,7 +40,7 @@
       <!-- Sidebar navigation-->
       <nav class="sidebar-nav">
         <ul id="sidebarnav">
-          <li> <a class="waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Patients</span></a>
+          <li> <a class="waves-effect waves-dark" href="/welcome/index" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Patients</span></a>
           </li>
           <li> <a class="waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-message-text-outline"></i><span class="hide-menu">Messages</span></a>
           </li>
@@ -70,7 +70,15 @@
                 <%= if Rails.application.assets.find_asset("users/#{@picture.pic}") == nil then image_tag "users/DEFAULT.png", :class => "img-circle", :style => "width:150px" end %>                    
                 <h4 class="card-title m-t-10"><%= @picture.name%></h4>
                 <div class="row text-center justify-content-md-center">
-                  <div class="col-4"><font class="font-medium"><%= @picture.age%></font></div>
+                  <div class="col-4">
+                    <font class="font-medium">
+                      <span>
+                        <div>Age: <%= @picture.age%></div>                      
+                        <div>Height: <%= @picture.height%></div>
+                        <div>Weight: <%= @picture.weight%></div>
+                      <span>
+                    </font>
+                  </div>
                 </div>
               </center>
             </div>
@@ -88,24 +96,29 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="card">
-            <%= link_to 'Graph', stats_index_path(:id => @patient) %>
-            <%= link_to 'Prescription', stats_prescription_path(:id => @patient) %>
-            <%= link_to 'Medical History', stats_history_path(:id => @patient) %>
-            <%= link_to 'Notes', stats_notes_path(:id => @patient) %>
+            <span>
+              <%= link_to 'Heartrate', stats_index_path(:id => @patient) %>
+              <%= link_to 'Prescription', stats_prescription_path(:id => @patient) %>
+              <%= link_to 'Medical History', stats_history_path(:id => @patient) %>
+              <%= link_to 'Notes', stats_notes_path(:id => @patient) %>
+            </span>
             <div class="card-block">
               <div class="row">
                 <div class="col-12">
                   <div class="d-flex flex-wrap">
                     <div>
                       <h3 class="card-title">Heartrate (bpm)</h3>
-                      <h6 class="card-subtitle">this month</h6> </div>
                       <%= form_tag(stats_index_path, method: "get") do %>
-                        <%= text_field_tag :startYear, nil, placeholder: 'Year' %>
-                        <%= text_field_tag :startMonth, nil, placeholder: 'Month' %>
-                        <%= text_field_tag :startDay, nil, placeholder: 'Day' %>
-                        <%= text_field_tag :endYear, nil, placeholder: 'Year' %>
-                        <%= text_field_tag :endMonth, nil, placeholder: 'Month' %>
-                        <%= text_field_tag :endDay, nil, placeholder: 'Day' %>
+                        <div>
+                          <%= text_field_tag :startYear, nil, placeholder: 'Year' %>
+                          <%= text_field_tag :startMonth, nil, placeholder: 'Month' %>
+                          <%= text_field_tag :startDay, nil, placeholder: 'Day' %>
+                        </div>
+                        <div>
+                          <%= text_field_tag :endYear, nil, placeholder: 'Year' %>
+                          <%= text_field_tag :endMonth, nil, placeholder: 'Month' %>
+                          <%= text_field_tag :endDay, nil, placeholder: 'Day' %>
+                        </div>
                         <%= hidden_field_tag :id, @patient %>
                         <p>
                           <%= submit_tag("Submit") %>
