@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'heartrates/index'
   get 'login/index'
   get 'stats/index'
+  get 'stats/prescription'
+  get 'stats/history'
+  get 'stats/notes'
   get 'welcome/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -16,6 +19,6 @@ Rails.application.routes.draw do
   resources :heartrates
 
   # root :to => redirect('/login/index')
-  root 'heartrates#index'
+  root 'welcome#index'
 end
 

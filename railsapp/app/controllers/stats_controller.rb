@@ -41,4 +41,31 @@ class StatsController < ApplicationController
       @heartrates = Heartrate.where("device = ? AND created_at > ? AND created_at < ?", @patient, _startDate, _endDate)
     end
   end
+
+  def history
+    @patient = params[:id]
+    if @patient == nil then
+      #if one just goes to the stats page, just show one of the patients. Helps with tests as well.
+      @patient = "12345abc"
+    end
+    @picture = Patient.where(device: @patient).take
+  end
+
+  def prescription
+    @patient = params[:id]
+    if @patient == nil then
+      #if one just goes to the stats page, just show one of the patients. Helps with tests as well.
+      @patient = "12345abc"
+    end
+    @picture = Patient.where(device: @patient).take
+  end
+
+  def notes
+    @patient = params[:id]
+    if @patient == nil then
+      #if one just goes to the stats page, just show one of the patients. Helps with tests as well.
+      @patient = "12345abc"
+    end
+    @picture = Patient.where(device: @patient).take
+  end
 end
