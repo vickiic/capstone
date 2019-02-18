@@ -23,7 +23,7 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.subscribeToHeartBeatChanges()
+//    self.subscribeToHeartBeatChanges()
   }
 
   public func sessionDidDeactivate(_ session: WCSession) {
@@ -65,8 +65,6 @@ class LoggedInVC: UIViewController, WCSessionDelegate {
   @IBAction func sendHeartRateData(_ sender: Any) {
         io.writeHeartRateDataToIO(uid:"testuid", heartRate: "52")
     }
-  
-  @IBAction func continueButton(_ sender: UIButton) {}
 
   @IBAction func logoutTapped(_ sender: Any) {
       do {
