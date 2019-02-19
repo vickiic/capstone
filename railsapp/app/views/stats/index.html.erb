@@ -168,7 +168,7 @@
                                   backgroundColor: "green",
                                   borderColor: "lightgreen",
                             type: 'line',
-                            pointRadius: 0,
+                            pointRadius: 3,
                             fill: false,
                             lineTension: 0,
                             borderWidth: 2
@@ -236,7 +236,7 @@
                                   backgroundColor: "green",
                                   borderColor: "lightgreen",
                             type: 'line',
-                            pointRadius: 0,
+                            pointRadius: 3,
                             fill: false,
                             lineTension: 0,
                             borderWidth: 2
@@ -244,9 +244,6 @@
                         },
                         options: {
                           responsive: false,
-                          plugins: {
-                            
-                          }
                           scales: {
                             xAxes: [{
                               type: 'time',
@@ -303,10 +300,10 @@
                           datasets: [{
                             label: 'Warnings',
                             data: data,
-                                  backgroundColor: "red",
+                                  backgroundColor: "green",
                                   borderColor: "lightgreen",
                             type: 'line',
-                            pointRadius: 0,
+                            pointRadius: 10,
                             fill: false,
                             lineTension: 0,
                             borderWidth: 2
@@ -314,6 +311,35 @@
                         },
                         options: {
                           responsive: false,
+                          tooltips: {
+                            callbacks:{
+                              label: function(tooltipItem, data){
+                                var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || 'Other';
+                                var label = data.labels[tooltipItem.index];
+                                var datanumber = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                if (datanumber > 100){
+                                return  'HIGH BPM';
+                                }
+                                else if (datanumber < 55){
+                                  return 'LOW BPM';
+                                }
+                                else {
+                                  return datanumber;
+                                }
+                              }
+                            }
+                          },
+                          plugins: {
+                            datapoints: {
+                              color: function(context) {
+                                var index = context.dataIndex;
+                                var value = context.data.datasets[index];
+                                return value > 100 ? 'yellow' : 
+                                'green';
+                              }
+                            }
+
+                          },
                           scales: {
                             xAxes: [{
                               type: 'time',
@@ -373,7 +399,7 @@
                                   backgroundColor: "green",
                                   borderColor: "lightgreen",
                             type: 'line',
-                            pointRadius: 0,
+                            pointRadius: 3,
                             fill: false,
                             lineTension: 0,
                             borderWidth: 2
