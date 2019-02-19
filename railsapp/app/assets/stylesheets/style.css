@@ -2335,7 +2335,7 @@ ul#themecolors {
  Card title
 *******************/
 .card {
-  margin-bottom: 30px; }
+  margin: 15px; }
   .card .card-subtitle {
     font-weight: 300;
     margin-bottom: 15px;
