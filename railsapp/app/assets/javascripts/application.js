@@ -16,4 +16,5 @@
 //= require moment
 //=Chart.bundle.min
 //= require turbolinks
-//= require_tree .
+//= require_tree
+//= extras

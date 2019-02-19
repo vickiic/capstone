@@ -126,7 +126,13 @@
                       <% end %>
                   </div>
                 </div>
+              <div class ="tab">
+                <button class="tablinks" onclick="openGraph(event, 'Main')" id="defaultOpen">Main</button>
+                <button class="tablinks" onclick="openGraph(event, 'Outliers')">Outliers</button>
+                <button class="tablinks" onclick="openGraph(event, 'Warnings')">Warnings</button>
+              </div>
                 <div class="col-12">
+                <div id="Main" class="tabcontent">
                   <div class="amp-pxl" style="height: 360px;">
                     <div style="width:1000px">
                       <canvas id="chart1"></canvas>
@@ -193,6 +199,141 @@
                     </script>
                   </div>
                 </div>
+                </div>
+                <div id="Outliers" class="tabcontent">
+                  <div class="amp-pxl" style="height: 360px;">
+                    <div style="width:1000px">
+                      <canvas id="chart2"></canvas>
+                    </div>
+                    <script>
+                      <% 
+                        date = []
+                        datapoints = []
+                        @heartrates.each  do |heartrate|
+                          date << heartrate['created_at']
+                          datapoints << heartrate['value']
+                        end
+                      %>
+                      var labels1 = <%= raw date.to_json %>;
+                      var data = <%= raw datapoints.to_json %>;
+                      var labels = [];
+                      var dateFormat = 'YYYY-MM-DD HH:mm:ss';
+                      for (i=0; i<labels1.length; i++) {
+                        labels.push(moment(labels1[i], dateFormat));
+                      }
+                      var ctx = document.getElementById('chart2').getContext('2d');
+                      ctx.canvas.width = 1000;
+                      ctx.canvas.height = 300;
+                      var color = Chart.helpers.color;
+                      var cfg = {
+                        type: 'bar',
+                        data: {
+                          labels: labels,
+                          datasets: [{
+                            label: 'HeartRates w/Outliers',
+                            data: data,
+                                  backgroundColor: "green",
+                                  borderColor: "lightgreen",
+                            type: 'line',
+                            pointRadius: 0,
+                            fill: false,
+                            lineTension: 0,
+                            borderWidth: 2
+                          }]
+                        },
+                        options: {
+                          responsive: false,
+                          scales: {
+                            xAxes: [{
+                              type: 'time',
+                              distribution: 'series',
+                              ticks: {
+                                source: 'labels'
+                              }
+                            }],
+                            yAxes: [{
+                              scaleLabel: {
+                                display: true,
+                                labelString: 'HeartRate Values'
+                              },
+                                ticks: {
+                                beginAtZero:true
+                              }
+                            }]
+                          }
+                        }
+                      };
+                      var chart = new Chart(ctx, cfg);
+                    </script>
+                  </div>
+                </div>
+                <div id="Warnings" class="tabcontent">
+                  <div class="amp-pxl" style="height: 360px;">
+                    <div style="width:1000px">
+                      <canvas id="chart3"></canvas>
+                    </div>
+                    <script>
+                      <% 
+                        date = []
+                        datapoints = []
+                        @heartrates.each  do |heartrate|
+                          date << heartrate['created_at']
+                          datapoints << heartrate['value']
+                        end
+                      %>
+                      var labels1 = <%= raw date.to_json %>;
+                      var data = <%= raw datapoints.to_json %>;
+                      var labels = [];
+                      var dateFormat = 'YYYY-MM-DD HH:mm:ss';
+                      for (i=0; i<labels1.length; i++) {
+                        labels.push(moment(labels1[i], dateFormat));
+                      }
+                      var ctx = document.getElementById('chart3').getContext('2d');
+                      ctx.canvas.width = 1000;
+                      ctx.canvas.height = 300;
+                      var color = Chart.helpers.color;
+                      var cfg = {
+                        type: 'bar',
+                        data: {
+                          labels: labels,
+                          datasets: [{
+                            label: 'Warnings',
+                            data: data,
+                                  backgroundColor: "red",
+                                  borderColor: "lightgreen",
+                            type: 'line',
+                            pointRadius: 0,
+                            fill: false,
+                            lineTension: 0,
+                            borderWidth: 2
+                          }]
+                        },
+                        options: {
+                          responsive: false,
+                          scales: {
+                            xAxes: [{
+                              type: 'time',
+                              distribution: 'series',
+                              ticks: {
+                                source: 'labels'
+                              }
+                            }],
+                            yAxes: [{
+                              scaleLabel: {
+                                display: true,
+                                labelString: 'HeartRate Values'
+                              },
+                                ticks: {
+                                beginAtZero:true
+                              }
+                            }]
+                          }
+                        }
+                      };
+                      var chart = new Chart(ctx, cfg);
+                    </script>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -202,3 +343,7 @@
   </div>
 </div>
 
+<script>
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
+</script>
