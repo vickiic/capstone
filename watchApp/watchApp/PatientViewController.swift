@@ -11,6 +11,8 @@ import FirebaseAuth
 import FirebaseFirestore
 import Firebase
 class PatientViewController: UIViewController {
+    
+    let io: IOWebService = IOWebService.getSharedInstance()
 
     @IBOutlet weak var patientEmailTF: UILabel!
     @IBOutlet weak var patientNameTF: UILabel!
@@ -68,7 +70,29 @@ class PatientViewController: UIViewController {
     }
     
     
-
+    @IBAction func reportButtonClicked(_ sender: UIButton) {
+        
+        let currUid = Auth.auth().currentUser?.uid
+        
+        let alert = UIAlertController(title: "Symptom Report", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        alert.addTextField(configurationHandler: { textField in
+            textField.placeholder = "Describe your symptom..."
+        })
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            
+            if let symptom = alert.textFields?.first?.text {
+                self.io.writeSymptom(uid: currUid!, message: symptom);
+            }
+        }))
+        
+        self.present(alert, animated: true)
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 
