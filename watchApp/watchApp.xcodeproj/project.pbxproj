@@ -11,7 +11,7 @@
 		9B22A659220A6B3300A871AA /* PatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22A658220A6B3300A871AA /* PatientViewController.swift */; };
 		9B22A663220A7E8300A871AA /* PhysicianViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22A662220A7E8300A871AA /* PhysicianViewController.swift */; };
 		A62EFCA3E65962533F813345 /* Pods_watchApp_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D8F47C0C708881D44EF02D1 /* Pods_watchApp_WatchKit_App.framework */; };
-		CA4353942212A8A300C84B12 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CA4353932212A8A300C84B12 /* icon.png */; };
+		CA1381AF221CB35700FFE0BD /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1381AE221CB35700FFE0BD /* TabViewController.swift */; };
 		CA4E679621FEA3A200CD41F2 /* IOWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E679521FEA3A200CD41F2 /* IOWebService.swift */; };
 		CAD7C5C82209239C00EF67A7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7C5C72209239C00EF67A7 /* SettingsViewController.swift */; };
 		CAF6ABEC21F70B9D007602F2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF6ABEB21F70B9D007602F2 /* SignUpViewController.swift */; };
@@ -103,7 +103,7 @@
 		9B22A662220A7E8300A871AA /* PhysicianViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicianViewController.swift; sourceTree = "<group>"; };
 		B520D1A207EA7BD3C638E72E /* Pods-watchApp WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchApp WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchApp WatchKit Extension/Pods-watchApp WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
 		C53232A444C08BF7EDD95CB8 /* Pods-watchApp WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchApp WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchApp WatchKit Extension/Pods-watchApp WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
-		CA4353932212A8A300C84B12 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../../../../Desktop/icon.png; sourceTree = "<group>"; };
+		CA1381AE221CB35700FFE0BD /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		CA4E679521FEA3A200CD41F2 /* IOWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOWebService.swift; sourceTree = "<group>"; };
 		CAD7C5C72209239C00EF67A7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CAF6ABEB21F70B9D007602F2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -230,6 +230,7 @@
 				F03C271321B8849D0056F5E9 /* DeviceManager.swift */,
 				F03C271221B8849D0056F5E9 /* HealthKitManager.swift */,
 				CAD7C5C72209239C00EF67A7 /* SettingsViewController.swift */,
+				CA1381AE221CB35700FFE0BD /* TabViewController.swift */,
 				CA4E679521FEA3A200CD41F2 /* IOWebService.swift */,
 				F03C271421B8849D0056F5E9 /* LoggedInVC.swift */,
 				F03C271021B8848E0056F5E9 /* AuthorizeHealthKitViewController.swift */,
@@ -242,7 +243,6 @@
 				E1019D7221B85CBD000E5F13 /* Assets.xcassets */,
 				E1019D7421B85CBD000E5F13 /* LaunchScreen.storyboard */,
 				E1019D7721B85CBD000E5F13 /* Info.plist */,
-				CA4353932212A8A300C84B12 /* icon.png */,
 				9B22A662220A7E8300A871AA /* PhysicianViewController.swift */,
 			);
 			path = watchApp;
@@ -435,7 +435,6 @@
 			files = (
 				F08CF19E21B8882900CEA7C0 /* Podfile in Resources */,
 				E1019D7621B85CBD000E5F13 /* LaunchScreen.storyboard in Resources */,
-				CA4353942212A8A300C84B12 /* icon.png in Resources */,
 				F03C271921B886DD0056F5E9 /* GoogleService-Info.plist in Resources */,
 				E1019D7321B85CBD000E5F13 /* Assets.xcassets in Resources */,
 				E1019D7121B85CBB000E5F13 /* Main.storyboard in Resources */,
@@ -606,6 +605,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA1381AF221CB35700FFE0BD /* TabViewController.swift in Sources */,
 				F03C270F21B883980056F5E9 /* ViewController.swift in Sources */,
 				CAF6ABEC21F70B9D007602F2 /* SignUpViewController.swift in Sources */,
 				CAD7C5C82209239C00EF67A7 /* SettingsViewController.swift in Sources */,

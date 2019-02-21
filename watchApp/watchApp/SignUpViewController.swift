@@ -22,6 +22,10 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
 
         // Do any additional setup after loading the view.
     }
@@ -61,10 +65,12 @@ class SignUpViewController: UIViewController {
     }
     
     func presentLoggedInScreen(){
-        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let loggedInVC:LoggedInVC = storyboard.instantiateViewController(withIdentifier: "LoggedInVC") as! LoggedInVC
-        self.present(loggedInVC, animated: true, completion: nil)
+        //let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        //let loggedInVC:LoggedInVC = storyboard.instantiateViewController(withIdentifier: "LoggedInVC") as! LoggedInVC
+        //self.present(loggedInVC, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "signUpSegue", sender: self)
     }
+    
     
     /*
     // MARK: - Navigation
