@@ -6,7 +6,7 @@
 	<string>Watch My Health</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>icon.png</string>
+		<string>Assets.xcassets/AppIcon</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>

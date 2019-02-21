@@ -98,7 +98,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="b49-1i-aGD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-182" y="-243"/>
+            <point key="canvasLocation" x="-466" y="-1836"/>
         </scene>
         <!--Settings-->
         <scene sceneID="R9i-6j-3QP">
@@ -118,7 +118,7 @@
                                             <constraint firstAttribute="height" constant="35" id="Cad-E9-XPz"/>
                                             <constraint firstAttribute="width" constant="180" id="xbE-Ge-Ocz"/>
                                         </constraints>
-                                        <state key="normal" title="change password">
+                                        <state key="normal" title="Change Password">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
@@ -129,7 +129,7 @@
                                             <constraint firstAttribute="width" constant="180" id="1KD-TW-3PQ"/>
                                             <constraint firstAttribute="height" constant="35" id="ven-5T-Gt0"/>
                                         </constraints>
-                                        <state key="normal" title="edit personal information">
+                                        <state key="normal" title="Edit Personal Information">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
@@ -140,7 +140,7 @@
                                             <constraint firstAttribute="height" constant="35" id="AO6-UK-kII"/>
                                             <constraint firstAttribute="width" constant="180" id="PgA-gx-6YR"/>
                                         </constraints>
-                                        <state key="normal" title="help">
+                                        <state key="normal" title="Help">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
@@ -151,7 +151,7 @@
                                             <constraint firstAttribute="width" constant="180" id="ODU-0S-uaP"/>
                                             <constraint firstAttribute="height" constant="35" id="cdP-Wc-YMf"/>
                                         </constraints>
-                                        <state key="normal" title="logout">
+                                        <state key="normal" title="Logout">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -182,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HHM-GE-AwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2596" y="720.98950524737631"/>
+            <point key="canvasLocation" x="2596" y="757"/>
         </scene>
         <!--Heartrate-->
         <scene sceneID="FjP-oW-14l">
@@ -223,12 +223,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="au2-82-5li" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2596" y="-1423.152709359606"/>
+            <point key="canvasLocation" x="2596" y="-1374"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab View Controller-->
         <scene sceneID="W0y-Yc-d36">
             <objects>
-                <tabBarController id="WIn-ha-Vtq" sceneMemberID="viewController">
+                <tabBarController id="WIn-ha-Vtq" customClass="TabViewController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iOG-5n-sdv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -318,7 +318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FiT-31-nQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2471.1999999999998" y="33.733133433283363"/>
+            <point key="canvasLocation" x="2596" y="34"/>
         </scene>
         <!--Patient Info-->
         <scene sceneID="4pD-ZA-nqj">
@@ -335,10 +335,10 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dy9-HA-ygX">
-                                <rect key="frame" x="97" y="505" width="180" height="44"/>
+                                <rect key="frame" x="93" y="506" width="177" height="41"/>
                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="8fx-hF-zA6"/>
+                                    <constraint firstAttribute="height" constant="41" id="8fx-hF-zA6"/>
                                 </constraints>
                                 <state key="normal" title="Report a Symptom">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -347,8 +347,8 @@
                                     <action selector="reportButtonClicked:" destination="nYr-N4-oSj" eventType="touchUpInside" id="EU2-uC-LJD"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="K0t-4n-Tqg">
-                                <rect key="frame" x="97" y="451" width="98.333333333333314" height="115"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="K0t-4n-Tqg">
+                                <rect key="frame" x="93" y="341" width="98.5" height="115.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="patientName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvq-UR-cYq">
                                         <rect key="frame" x="0.0" y="0.0" width="98.333333333333329" height="20.333333333333332"/>
@@ -444,7 +444,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MHK-Hu-K7Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2298" y="-1103"/>
+            <point key="canvasLocation" x="-1676" y="-1108"/>
         </scene>
         <!--Startup page-->
         <scene sceneID="iV7-rv-lQR">
@@ -534,11 +534,12 @@
                         <outlet property="passwordTextfield" destination="VkW-8R-40m" id="NW4-KJ-6Vy"/>
                         <outlet property="usernameTextfield" destination="Kmo-5q-v6V" id="ynh-8C-OrD"/>
                         <segue destination="BYZ-38-t0r" kind="show" id="jWK-gk-GLf"/>
+                        <segue destination="WIn-ha-Vtq" kind="show" identifier="loginSegue" id="Bgy-t6-bOq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S5I-b8-lEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1804" y="-220"/>
+            <point key="canvasLocation" x="-1676" y="-242"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="QAb-TB-gxD">
@@ -548,19 +549,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="a1R-SP-eZn">
-                                <rect key="frame" x="119" y="124" width="136" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="a1R-SP-eZn">
+                                <rect key="frame" x="119" y="100" width="136" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="0YS-2u-nFJ"/>
                                     <constraint firstAttribute="width" constant="136" id="i4s-E9-3pu"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5sH-Rc-PHw">
-                                <rect key="frame" x="87" y="270" width="200" height="263"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5sH-Rc-PHw">
+                                <rect key="frame" x="87" y="233" width="200" height="201"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="cOX-2U-pJd">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="263"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="201"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="FIrst" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iUx-EV-11u">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
@@ -589,27 +589,36 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aJ-Sr-EKG">
-                                                <rect key="frame" x="0.0" y="228" width="200" height="35"/>
-                                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="CBW-NT-tsm"/>
-                                                    <constraint firstAttribute="height" constant="35" id="Sgg-zy-mIx"/>
-                                                </constraints>
-                                                <state key="normal" title="Sign Up">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="signUpButtonClick:" destination="rch-i1-C0E" eventType="touchUpInside" id="vDd-Wl-b54"/>
-                                                    <action selector="signupTapped:" destination="rCK-Ui-ZA5" eventType="touchUpInside" id="t5E-cY-U9q"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aJ-Sr-EKG">
+                                <rect key="frame" x="127" y="467" width="120" height="35"/>
+                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="CBW-NT-tsm"/>
+                                    <constraint firstAttribute="height" constant="35" id="Sgg-zy-mIx"/>
+                                </constraints>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUpButtonClick:" destination="rch-i1-C0E" eventType="touchUpInside" id="vDd-Wl-b54"/>
+                                    <action selector="signupTapped:" destination="rCK-Ui-ZA5" eventType="touchUpInside" id="t5E-cY-U9q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="a1R-SP-eZn" firstAttribute="centerX" secondItem="Em0-bt-06Z" secondAttribute="centerX" id="0Xc-qI-TG5"/>
+                            <constraint firstItem="2aJ-Sr-EKG" firstAttribute="top" secondItem="5sH-Rc-PHw" secondAttribute="bottom" constant="39" id="Dje-xL-VzL"/>
+                            <constraint firstItem="5sH-Rc-PHw" firstAttribute="top" secondItem="a1R-SP-eZn" secondAttribute="bottom" constant="18" id="Qv9-cF-dhV"/>
+                            <constraint firstItem="2aJ-Sr-EKG" firstAttribute="centerX" secondItem="Em0-bt-06Z" secondAttribute="centerX" id="aKo-cR-X1r"/>
+                            <constraint firstItem="2aJ-Sr-EKG" firstAttribute="leading" secondItem="VnR-QO-Ev3" secondAttribute="leading" constant="87" id="oLf-OG-3im"/>
+                            <constraint firstItem="a1R-SP-eZn" firstAttribute="centerX" secondItem="5sH-Rc-PHw" secondAttribute="centerX" id="oQM-fL-MUK"/>
+                            <constraint firstItem="a1R-SP-eZn" firstAttribute="top" secondItem="VnR-QO-Ev3" secondAttribute="top" constant="104" id="pHn-Ov-LFQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VnR-QO-Ev3"/>
                     </view>
                     <connections>
@@ -618,17 +627,18 @@
                         <outlet property="lastNameTextField" destination="mdQ-Pl-42r" id="li4-NL-FCI"/>
                         <outlet property="passwordTextField" destination="67o-Yp-d10" id="7te-Jc-bkr"/>
                         <outlet property="signUpButton" destination="2aJ-Sr-EKG" id="V9S-Qf-SEo"/>
+                        <segue destination="WIn-ha-Vtq" kind="show" identifier="signUpSegue" id="iXp-2B-BYr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POE-c7-viS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1012" y="232.53373313343329"/>
+            <point key="canvasLocation" x="-354.39999999999998" y="326.98650674662673"/>
         </scene>
         <!--Settings-->
         <scene sceneID="mNc-HY-YB4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zTd-Ek-aFQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="LBO-Wg-Clw"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="LBO-Wg-Clw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="1HP-We-H2N">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
@@ -641,13 +651,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tUj-KB-vZQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1656.8" y="720.98950524737631"/>
+            <point key="canvasLocation" x="1657" y="757"/>
         </scene>
         <!--Metrics-->
         <scene sceneID="zyo-OV-jgZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KvN-2k-xUJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Metrics" id="3Z8-73-CU9"/>
+                    <tabBarItem key="tabBarItem" title="Metrics" image="heartbeat" id="3Z8-73-CU9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="dTQ-Iq-H6V">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
@@ -660,13 +670,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yRl-pb-gyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1656.8" y="-1422.6386806596702"/>
+            <point key="canvasLocation" x="1657" y="-1374"/>
         </scene>
         <!--Patient-->
         <scene sceneID="KzL-kI-QeE">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5D2-Iq-Tt3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Patient" id="2ww-Xu-E5i"/>
+                    <tabBarItem key="tabBarItem" title="Patient" image="patient" id="2ww-Xu-E5i"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="vfA-xu-yX5">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
@@ -679,13 +689,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vHf-Q0-2F1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1656.8" y="-660.71964017991013"/>
+            <point key="canvasLocation" x="1657" y="-661"/>
         </scene>
         <!--Physician-->
         <scene sceneID="Vdt-xf-anz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DSX-mz-9b4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Physician" id="n57-5n-58F"/>
+                    <tabBarItem key="tabBarItem" title="Physician" image="physician" id="n57-5n-58F"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Zfn-yl-sEP">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
@@ -698,10 +708,17 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRv-sg-qkE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1532" y="33.733133433283363"/>
+            <point key="canvasLocation" x="1657" y="34"/>
         </scene>
     </scenes>
     <resources>
+        <image name="heartbeat" width="30" height="30"/>
         <image name="icon" width="768" height="768"/>
+        <image name="patient" width="30" height="30"/>
+        <image name="physician" width="30" height="30"/>
+        <image name="settings" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="iXp-2B-BYr"/>
+    </inferredMetricsTieBreakers>
 </document>
