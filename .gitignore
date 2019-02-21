@@ -15,4 +15,6 @@ xcuserdata/
 *.pbxuser
 build/
 watchApp/watchApp/keys.swift
+*Pods/*
+*keys.swift
 
