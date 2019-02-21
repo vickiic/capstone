@@ -69,8 +69,8 @@ class DeviceManager {
       
       guard let httpBody = try? JSONSerialization.data(withJSONObject: metricParams, options: []) else { return }
       request.httpBody = httpBody
-      request.addValue(Api.apiKey, forHTTPHeaderField: "ITH-API-Key")
-      request.addValue(Api.username, forHTTPHeaderField: "ITH-Username")
+      //request.addValue(Api.apiKey, forHTTPHeaderField: "ITH-API-Key")
+      //request.addValue(Api.username, forHTTPHeaderField: "ITH-Username")
       request.addValue("application/json", forHTTPHeaderField: "Content-Type")
       
       let session = URLSession.shared

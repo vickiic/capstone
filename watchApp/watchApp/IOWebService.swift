@@ -51,4 +51,12 @@ class IOWebService {
             }
             }.resume()
     }
+    
+    public func writeSymptom(uid: String, message: String){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let innerTime = dateFormatter.string(from: NSDate() as Date)
+        
+        /* insert rest of code to send symptom */
+    }
 }
