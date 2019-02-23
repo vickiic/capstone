@@ -9,6 +9,7 @@ target 'watchApp' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'Charts'
   target 'watchAppTests' do
     inherit! :search_paths
     # Pods for testing
