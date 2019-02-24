@@ -68,4 +68,13 @@ class StatsController < ApplicationController
     end
     @picture = Patient.where(device: @patient).take
   end
+
+  def messaging
+    @patient = params[:id]
+    if @patient == nil then
+      #if one just goes to the stats page, just show one of the patients. Helps with tests as well.
+      @patient = "12345abc"
+    end
+    @picture = Patient.where(device: @patient).take
+  end
 end

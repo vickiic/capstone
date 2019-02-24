@@ -34,23 +34,6 @@
       </div>
     </nav>
   </header>
-  <aside class="left-sidebar">
-    <!-- Sidebar scroll-->
-    <div class="scroll-sidebar">
-      <!-- Sidebar navigation-->
-      <nav class="sidebar-nav">
-        <ul id="sidebarnav">
-          <li> <a class="waves-effect waves-dark" href="/welcome/index" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Patients</span></a>
-          </li>
-          <li> <a class="waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-message-text-outline"></i><span class="hide-menu">Messages</span></a>
-          </li>
-          <li> <a class="waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">Settings</span></a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </aside>
-  <div class="page-wrapper">
     <div class="container-fluid">
       <div class="row page-titles">
         <div class="col-md-5 col-8 align-self-center">
@@ -101,6 +84,7 @@
               <%= link_to 'Prescription', stats_prescription_path(:id => @patient) %>
               <%= link_to 'Medical History', stats_history_path(:id => @patient) %>
               <%= link_to 'Notes', stats_notes_path(:id => @patient) %>
+              <%= link_to 'Messages', stats_messaging_path(:id => @patient) %>              
             </span>
             <div class="card-block">
               <div class="row">
@@ -302,6 +286,7 @@
                             data: data,
                                   backgroundColor: "green",
                                   borderColor: "lightgreen",
+                                  pointBackgroundColor: "green",
                             type: 'line',
                             pointRadius: 10,
                             fill: false,
@@ -329,17 +314,6 @@
                               }
                             }
                           },
-                          plugins: {
-                            datapoints: {
-                              color: function(context) {
-                                var index = context.dataIndex;
-                                var value = context.data.datasets[index];
-                                return value > 100 ? 'yellow' : 
-                                'green';
-                              }
-                            }
-
-                          },
                           scales: {
                             xAxes: [{
                               type: 'time',
@@ -360,7 +334,16 @@
                           }
                         }
                       };
-                      var chart = new Chart(ctx, cfg);
+                      
+                      var myChart = new Chart(ctx, cfg);
+                      for (i = 0; i < myChart.data.datasets[datasetIndex].data.length; i++) {
+                        if (myChart.data.datasets[0].data[i] > 100) {
+                              pointBackgroundColors.push("#90cd8a");
+                          } else {
+                              pointBackgroundColors.push("#f58368");
+                          }
+                      }
+                      myChart.update();
                     </script>
                   </div>
                 </div>
@@ -434,7 +417,6 @@
       </div>
     </div>
   </div>
-</div>
 
 <script>
   // Get the element with id="defaultOpen" and click on it
