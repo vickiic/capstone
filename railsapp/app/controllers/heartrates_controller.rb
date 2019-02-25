@@ -24,6 +24,14 @@ class HeartratesController < ApplicationController
   # POST /heartrates
   # POST /heartrates.json
   def create
+    _device = params[:device]
+    _value = params[:value]
+
+    _lastHeartrate = Heartrate.where("device = ?", _device).last
+    if(_lastHeartrate.created_at > DateTime.now - 0.02 && _lastHeartrate.value == _value)
+      return
+    end
+
     @heartrate = Heartrate.new(heartrate_params)
 
     respond_to do |format|

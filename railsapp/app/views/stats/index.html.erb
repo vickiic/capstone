@@ -39,8 +39,7 @@
         <div class="col-md-5 col-8 align-self-center">
           <h3 class="text-themecolor">Welcome,  Dr.Wang </h3>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item"><a href="/welcome/index">Home</a></li>
           </ol>
         </div>
       </div>
@@ -143,7 +142,7 @@
                       ctx.canvas.height = 300;
                       var color = Chart.helpers.color;
                       var cfg = {
-                        type: 'bar',
+                        type: 'line',
                         data: {
                           labels: labels,
                           datasets: [{
@@ -163,7 +162,7 @@
                           scales: {
                             xAxes: [{
                               type: 'time',
-                              distribution: 'series',
+                              distribution: 'linear',
                               ticks: {
                                 source: 'labels'
                               }
