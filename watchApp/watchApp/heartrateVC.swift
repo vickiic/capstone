@@ -16,7 +16,7 @@ class heartrateVC: UIViewController {
   @IBOutlet weak var liveBPM: UILabel!
   @IBOutlet weak var bpmGraph: LineChartView!
   
-  let healthKitInterface = HealthKitManager()
+  var healthKitInterface = HealthKitManager()
   private var heartRateQuery:HKObserverQuery?
   let io: IOWebService = IOWebService.getSharedInstance()
   let dm: DeviceManager = DeviceManager.getSharedInstance()
@@ -28,27 +28,26 @@ class heartrateVC: UIViewController {
     self.getLastDay()
     
     var runCount = 0
-    
+
     Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { timer in
       print("timer fired")
+      self.healthKitInterface = HealthKitManager()
       self.subscribeToHeartBeatChanges()
       runCount += 1
-      
+
       if runCount == 50 {
         timer.invalidate()
       }
     }
-    
-        self.title = "Heart Rate Chart"
-    
-        let xAxis = bpmGraph.xAxis
-        xAxis.labelPosition = .topInside
-        xAxis.labelFont = .systemFont(ofSize: 10, weight: .light)
-        xAxis.labelTextColor = UIColor(red: 255/255, green: 192/255, blue: 56/255, alpha: 1)
-        xAxis.drawAxisLineEnabled = false
-        xAxis.drawGridLinesEnabled = true
-        xAxis.centerAxisLabelsEnabled = true
-        xAxis.granularity = 3600
+
+    let xAxis = bpmGraph.xAxis
+    xAxis.labelPosition = .topInside
+    xAxis.labelFont = .systemFont(ofSize: 10, weight: .light)
+    xAxis.labelTextColor = UIColor(red: 255/255, green: 192/255, blue: 56/255, alpha: 1)
+    xAxis.drawAxisLineEnabled = false
+    xAxis.drawGridLinesEnabled = true
+    xAxis.centerAxisLabelsEnabled = true
+    xAxis.granularity = 3600
 //        xAxis.valueFormatter = DateFormatter()
     
   }
@@ -104,13 +103,11 @@ class heartrateVC: UIViewController {
   
   public func getLastDay() {
     
-//    var recentBPM = [ChartDataEntry]()
-    
-    // Creating the sample for the heart rate
     guard let sampleType: HKSampleType =
       HKObjectType.quantityType(forIdentifier: .heartRate) else {
         return
     }
+    
     let prevQuery = HKObserverQuery(sampleType: sampleType, predicate: nil) { prevQuery, completionHandler, error in
       print("finna fetch last N hrs ")
       self.getRecentData(completion: { samples in
@@ -131,10 +128,10 @@ class heartrateVC: UIViewController {
     self.healthKitInterface.healthStore.execute(prevQuery)
   }
   
+  // This gets the recent data N hours ago
   public func getRecentData(
     completion: @escaping (_ samples: [HKQuantitySample]?) -> Void) {
     
-    /// Create sample type for the heart rate
     guard let sampleType = HKObjectType
       .quantityType(forIdentifier: .heartRate) else {
         completion(nil)
@@ -144,7 +141,7 @@ class heartrateVC: UIViewController {
     /// Predicate for specifiying start and end dates for the query
     let predicate = HKQuery
       .predicateForSamples(
-        withStart: Calendar.current.date(byAdding: .hour, value: -2, to: Date()),
+        withStart: Calendar.current.date(byAdding: .hour, value: -1, to: Date()),
         end: Date(),
         options: .strictEndDate)
     
@@ -168,7 +165,6 @@ class heartrateVC: UIViewController {
         completion(results as? [HKQuantitySample])
     }
     
-    /// Execute the query in the health store
     self.healthKitInterface.healthStore.execute(query)
   }
   
@@ -188,28 +184,28 @@ class heartrateVC: UIViewController {
           let heartRate = sample.quantity.doubleValue(for: HKUnit(from: "count/min"))
           let time = sample.startDate.timeIntervalSince1970
           let newTime = Date(timeIntervalSince1970: time)
-          
+
           print("\(Int(heartRate))", time, newTime)
-          
+
           if (Int(heartRate) != self.prevBPM) {
             self.prevBPM = Int(heartRate)
             self.recentBPM.append(ChartDataEntry(x: time, y: heartRate))
             self.liveBPM.text = "\(Int(heartRate))"
             let currUid = Auth.auth().currentUser?.uid
             self.io.writeHeartRateDataToIO(uid: currUid!, heartRate: "\(Int(heartRate))")
-            
+
             self.bpmGraph.notifyDataSetChanged()
-            self.bpmGraph.animate(xAxisDuration: 0.3, yAxisDuration: 0.3, easingOption: .linear)
+            self.bpmGraph.animate(xAxisDuration: 0.5, yAxisDuration: 0.5, easingOption: .linear)
           }
         }
       })
     }
+    
     self.healthKitInterface.healthStore.execute(tempQuery)
-    if let query = heartRateQuery {self.healthKitInterface.healthStore.execute(query)
-      
-      self.healthKitInterface.healthStore.enableBackgroundDelivery(for: sampleType, frequency: .immediate) { (true, nil) in
-        self.healthKitInterface.healthStore.execute(tempQuery)
-      }
+    if let query = heartRateQuery { self.healthKitInterface.healthStore.execute(query)
+      self.healthKitInterface.healthStore.enableBackgroundDelivery(for: sampleType, frequency: .immediate){
+        (true, nil) in self.healthKitInterface.healthStore.execute(tempQuery)
+        }
     }
   }
   
@@ -252,6 +248,4 @@ class heartrateVC: UIViewController {
     
     self.healthKitInterface.healthStore.execute(query)
   }
-  
-  
 }
