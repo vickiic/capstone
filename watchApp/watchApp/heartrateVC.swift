@@ -20,10 +20,11 @@ class heartrateVC: UIViewController {
   private var heartRateQuery:HKObserverQuery?
   let io: IOWebService = IOWebService.getSharedInstance()
   let dm: DeviceManager = DeviceManager.getSharedInstance()
+  var recentBPM = [ChartDataEntry]()
+  var prevBPM: Int = 0
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    //    self.subscribeToHeartBeatChanges()
     self.getLastDay()
     
     var runCount = 0
@@ -103,7 +104,7 @@ class heartrateVC: UIViewController {
   
   public func getLastDay() {
     
-    var recentBPM = [ChartDataEntry]()
+//    var recentBPM = [ChartDataEntry]()
     
     // Creating the sample for the heart rate
     guard let sampleType: HKSampleType =
@@ -111,21 +112,21 @@ class heartrateVC: UIViewController {
         return
     }
     let prevQuery = HKObserverQuery(sampleType: sampleType, predicate: nil) { prevQuery, completionHandler, error in
-      print("finna fetch last 24 hrs ")
+      print("finna fetch last N hrs ")
       self.getRecentData(completion: { samples in
         guard let samples = samples else {
           return
         }
-        print("fetching last 24 hrs")
+        print("fetching last N hrs")
         print(samples)
         for sample in samples {
           let doubleSample = sample.quantity.doubleValue(for: HKUnit(from: "count/min"))
           let timeSample = sample.endDate.timeIntervalSince1970
-          recentBPM.append(ChartDataEntry(x: timeSample, y: doubleSample))
+          self.recentBPM.append(ChartDataEntry(x: timeSample, y: doubleSample))
           print(Int(doubleSample))
         }
       })
-      self.setChartValues(recentBPM)
+      self.setChartValues(self.recentBPM)
     }
     self.healthKitInterface.healthStore.execute(prevQuery)
   }
@@ -143,7 +144,7 @@ class heartrateVC: UIViewController {
     /// Predicate for specifiying start and end dates for the query
     let predicate = HKQuery
       .predicateForSamples(
-        withStart: Calendar.current.date(byAdding: .hour, value: -6, to: Date()),
+        withStart: Calendar.current.date(byAdding: .hour, value: -2, to: Date()),
         end: Date(),
         options: .strictEndDate)
     
@@ -189,12 +190,17 @@ class heartrateVC: UIViewController {
           let newTime = Date(timeIntervalSince1970: time)
           
           print("\(Int(heartRate))", time, newTime)
-          self.liveBPM.text = "\(Int(heartRate))"
-          let currUid = Auth.auth().currentUser?.uid
-          self.io.writeHeartRateDataToIO(uid: currUid!, heartRate: "\(Int(heartRate))")
-          // TODO: Need to add that to the dataset first
-          //          self.bpmGraph.notifyDataSetChanged()
-          //          self.bpmGraph.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .linear)
+          
+          if (Int(heartRate) != self.prevBPM) {
+            self.prevBPM = Int(heartRate)
+            self.recentBPM.append(ChartDataEntry(x: time, y: heartRate))
+            self.liveBPM.text = "\(Int(heartRate))"
+            let currUid = Auth.auth().currentUser?.uid
+            self.io.writeHeartRateDataToIO(uid: currUid!, heartRate: "\(Int(heartRate))")
+            
+            self.bpmGraph.notifyDataSetChanged()
+            self.bpmGraph.animate(xAxisDuration: 0.3, yAxisDuration: 0.3, easingOption: .linear)
+          }
         }
       })
     }
