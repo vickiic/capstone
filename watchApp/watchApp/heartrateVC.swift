@@ -19,82 +19,90 @@ class heartrateVC: UIViewController {
   var healthKitInterface = HealthKitManager()
   private var heartRateQuery:HKObserverQuery?
   let io: IOWebService = IOWebService.getSharedInstance()
+  let currUid = Auth.auth().currentUser?.uid
   let dm: DeviceManager = DeviceManager.getSharedInstance()
   var recentBPM = [ChartDataEntry]()
   var prevBPM: Int = 0
   
+  // test for date value formatter
+  final class DateValueFormatter: IAxisValueFormatter {
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+      return formatter.string(from: Date(timeIntervalSince1970: value))
+    }
+    
+    let formatter: DateFormatter
+    
+    init(formatter: DateFormatter) {
+      self.formatter = formatter
+    }
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.getLastDay()
+
+    let xAxis = bpmGraph.xAxis
+    xAxis.enabled = true
+    xAxis.drawAxisLineEnabled = false
+    xAxis.drawGridLinesEnabled = false
+    xAxis.drawLabelsEnabled = true
+    xAxis.labelPosition = .bottom
+    xAxis.spaceMin = 0.5
+    xAxis.spaceMax = 0.5
+    xAxis.labelRotationAngle = -45.0
+    xAxis.granularity = 1.0
+    xAxis.spaceMin = xAxis.granularity / 5
+    xAxis.spaceMax = xAxis.granularity / 5
+    xAxis.avoidFirstLastClippingEnabled = true
+    xAxis.axisLineWidth = 1.0
+    
+    // RIGHT axis
+    bpmGraph.rightAxis.drawGridLinesEnabled = false
+    bpmGraph.rightAxis.enabled = false
+    bpmGraph.rightAxis.drawAxisLineEnabled = false
+    
+    // LEFT axis:
+    bpmGraph.leftAxis.enabled = true
+    bpmGraph.leftAxis.drawGridLinesEnabled = false
+    bpmGraph.leftAxis.drawAxisLineEnabled = true
+    bpmGraph.leftAxis.axisMinimum = 50
+    bpmGraph.leftAxis.axisMaximum = 180
+    
+    let f = DateFormatter()
+    f.dateStyle = .short
+    bpmGraph.xAxis.valueFormatter = DateValueFormatter(formatter: f)
     
     var runCount = 0
-
+    
     Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { timer in
       print("timer fired")
       self.healthKitInterface = HealthKitManager()
       self.subscribeToHeartBeatChanges()
       runCount += 1
-
-      if runCount == 50 {
+      
+      if runCount == 1000 {
         timer.invalidate()
       }
     }
-
-    let xAxis = bpmGraph.xAxis
-    xAxis.labelPosition = .topInside
-    xAxis.labelFont = .systemFont(ofSize: 10, weight: .light)
-    xAxis.labelTextColor = UIColor(red: 255/255, green: 192/255, blue: 56/255, alpha: 1)
-    xAxis.drawAxisLineEnabled = false
-    xAxis.drawGridLinesEnabled = true
-    xAxis.centerAxisLabelsEnabled = true
-    xAxis.granularity = 3600
-//        xAxis.valueFormatter = DateFormatter()
-    
   }
-  
-  // TODO: Override the IndexAxisValueFormatter class (Or iAxis??) for the stringForValue function
-  //  class formatXaxis: IndexAxisValueFormatter {
-  //    override func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-  //      // need to take value and format it into string for dates of xAxis -- will use time since 1970
-  //      let date = Date(timeIntervalSince1970: value)
-  //      return DateFormatter.string(from: date)
-  //    }
-  //  }
-  
-  //  func getTimeZoneString(sample: HKSample? = nil, shouldReturnDefaultTimeZoneInExceptions: Bool = true) -> String? {
-  //    var timeZone: TimeZone?
-  //    print("sample?.metadata?[HKMetadataKeyTimeZone]: \(String(describing: sample?.metadata?[HKMetadataKeyTimeZone]))") // I have steps data recorded by my iPhone6s, not getting the timezone information for that health data.
-  //
-  //    if let metaDataTimeZoneValue = sample?.metadata?[HKMetadataKeyTimeZone] as? String {
-  //      timeZone = TimeZone(identifier: metaDataTimeZoneValue)
-  //    }
-  //
-  //    if shouldReturnDefaultTimeZoneInExceptions == true && timeZone == nil {
-  //      timeZone = TimeZone.current
-  //    }
-  //
-  //    var timeZoneString: String?
-  //
-  //    if let timeZone = timeZone {
-  //      let seconds = timeZone.secondsFromGMT()
-  //
-  //      let hours = seconds/3600
-  //      let minutes = abs(seconds/60) % 60
-  //
-  //      timeZoneString = String(format: "%+.2d:%.2d", hours, minutes)
-  //    }
-  //
-  //    return timeZoneString
-  //  }
-  
+
   
   public func setChartValues(_ newVals: [ChartDataEntry], count: Int = 20) {
-    
-    //    bpmGraph.xAxis.valueFormatter = IndexAxisValueFormatter().stringForValue(<#T##value: Double##Double#>, axis: <#T##AxisBase?#>)
-    
     //    print("values")
     //    print(values)
-    let set1 = LineChartDataSet(values: newVals, label: "Last 6 hrs BPM")
+    let set1 = LineChartDataSet(values: newVals, label: "Last couple hrs BPM")
+//    set1.mode = .cubicBezier
+    set1.drawCirclesEnabled = false
+    set1.drawValuesEnabled = false
+    set1.drawFilledEnabled = true
+    set1.fillAlpha = 0.25
+    set1.fillColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
+    set1.highlightColor = #colorLiteral(red: 0.4513868093, green: 0.9930960536, blue: 1, alpha: 1)
+    set1.highlightLineWidth = 5.0
+    set1.drawHorizontalHighlightIndicatorEnabled = false
+    set1.formSize = 15.0
+    set1.colors = [#colorLiteral(red: 1, green: 0.3699793715, blue: 0.3755039136, alpha: 0.5973619435)]
+    
     print("set1")
     print(set1)
     let data = LineChartData(dataSet: set1)
@@ -109,13 +117,10 @@ class heartrateVC: UIViewController {
     }
     
     let prevQuery = HKObserverQuery(sampleType: sampleType, predicate: nil) { prevQuery, completionHandler, error in
-      print("finna fetch last N hrs ")
       self.getRecentData(completion: { samples in
         guard let samples = samples else {
           return
         }
-        print("fetching last N hrs")
-        print(samples)
         for sample in samples {
           let doubleSample = sample.quantity.doubleValue(for: HKUnit(from: "count/min"))
           let timeSample = sample.endDate.timeIntervalSince1970
@@ -138,19 +143,16 @@ class heartrateVC: UIViewController {
         return
     }
     
-    /// Predicate for specifiying start and end dates for the query
     let predicate = HKQuery
       .predicateForSamples(
-        withStart: Calendar.current.date(byAdding: .hour, value: -1, to: Date()),
+        withStart: Calendar.current.date(byAdding: .hour, value: -6, to: Date()),
         end: Date(),
         options: .strictEndDate)
     
-    /// Set sorting by date.
     let sortDescriptor = NSSortDescriptor(
       key: HKSampleSortIdentifierStartDate,
       ascending: true)
     
-    /// Create the query
     let query = HKSampleQuery(
       sampleType: sampleType,
       predicate: predicate,
@@ -191,8 +193,7 @@ class heartrateVC: UIViewController {
             self.prevBPM = Int(heartRate)
             self.recentBPM.append(ChartDataEntry(x: time, y: heartRate))
             self.liveBPM.text = "\(Int(heartRate))"
-            let currUid = Auth.auth().currentUser?.uid
-            self.io.writeHeartRateDataToIO(uid: currUid!, heartRate: "\(Int(heartRate))")
+            self.io.writeHeartRateDataToIO(uid: self.currUid!, heartRate: "\(Int(heartRate))")
 
             self.bpmGraph.notifyDataSetChanged()
             self.bpmGraph.animate(xAxisDuration: 0.5, yAxisDuration: 0.5, easingOption: .linear)
