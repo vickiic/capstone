@@ -288,6 +288,9 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="mI1-LK-rSi" kind="show" id="coj-3I-Dnr"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UdH-90-43J">
                                 <rect key="frame" x="93" y="161" width="189" height="156"/>
@@ -320,6 +323,21 @@
             </objects>
             <point key="canvasLocation" x="2596" y="34"/>
         </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="XOf-xK-ZKe">
+            <objects>
+                <viewController id="mI1-LK-rSi" customClass="ChatViewController" customModule="watchApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xY2-cA-xCL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="syF-cG-cxd"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SbI-Kf-VZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3506" y="34"/>
+        </scene>
         <!--Patient Info-->
         <scene sceneID="4pD-ZA-nqj">
             <objects>
@@ -348,7 +366,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="K0t-4n-Tqg">
-                                <rect key="frame" x="93" y="341" width="98.5" height="115.5"/>
+                                <rect key="frame" x="93" y="341" width="98.333333333333314" height="115"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="patientName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvq-UR-cYq">
                                         <rect key="frame" x="0.0" y="0.0" width="98.333333333333329" height="20.333333333333332"/>
@@ -719,6 +737,6 @@
         <image name="settings" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iXp-2B-BYr"/>
+        <segue reference="Bgy-t6-bOq"/>
     </inferredMetricsTieBreakers>
 </document>

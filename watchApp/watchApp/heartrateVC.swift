@@ -38,7 +38,7 @@ class heartrateVC: UIViewController {
       }
     }
     
-        self.title = "Heart Rate Chart"
+        self.title = "Metrics"
     
         let xAxis = bpmGraph.xAxis
         xAxis.labelPosition = .topInside
