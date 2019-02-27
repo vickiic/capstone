@@ -10,6 +10,7 @@ target 'watchApp' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Database'
+  pod 'Firebase/Storage'
   pod 'Charts'
   pod 'JSQMessagesViewController'
   target 'watchAppTests' do

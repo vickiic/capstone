@@ -315,6 +315,7 @@
                     <navigationItem key="navigationItem" title="Physician" id="4eV-mL-DHA"/>
                     <connections>
                         <outlet property="physicianEmailTF" destination="dz0-oI-OEb" id="Oot-aT-x5C"/>
+                        <outlet property="physicianImage" destination="UdH-90-43J" id="WBW-5V-aSJ"/>
                         <outlet property="physicianLocationTF" destination="Zfp-EV-cqF" id="2ra-cn-cga"/>
                         <outlet property="physicianNameTF" destination="EcQ-D2-BEi" id="qNa-GJ-rJc"/>
                     </connections>
@@ -406,6 +407,7 @@
                     <connections>
                         <outlet property="patientAgeTF" destination="GGJ-MA-mvW" id="YUj-eT-5Qi"/>
                         <outlet property="patientEmailTF" destination="xhD-9w-Y0M" id="ISj-0K-Wv8"/>
+                        <outlet property="patientImage" destination="B6Q-Kh-D6U" id="Vod-yd-TGc"/>
                         <outlet property="patientNameTF" destination="Hvq-UR-cYq" id="G06-NY-9o8"/>
                     </connections>
                 </viewController>
@@ -737,6 +739,6 @@
         <image name="settings" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Bgy-t6-bOq"/>
+        <segue reference="vCb-te-TsC"/>
     </inferredMetricsTieBreakers>
 </document>

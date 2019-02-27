@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseAuth
+import FirebaseStorage
 import Firebase
 
 class PhysicianViewController: UIViewController {
@@ -19,8 +20,13 @@ class PhysicianViewController: UIViewController {
     var physicianName = ""
     var physicianEmail = ""
     var physicianLocation = ""
+    @IBOutlet weak var physicianImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        physicianImage.contentMode = .scaleAspectFit
+        
         let db = Firestore.firestore()
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
@@ -40,6 +46,9 @@ class PhysicianViewController: UIViewController {
                 if let physicianEmail = document.data()?["physicianEmail"] {
                     self.physicianEmailTF.text = physicianEmail as? String
                 }
+                if let imageLoc = document.data()?["physicianImage"] {
+                    self.downloadImage(loc: imageLoc as! String)
+                }
             
             } else {
                 print("Document does not exist")
@@ -47,6 +56,21 @@ class PhysicianViewController: UIViewController {
             }
         }
         // Do any additional setup after loading the view.
+    }
+    
+    func downloadImage(loc: String){
+        let location = "images/" + loc
+        let pathReference = Storage.storage().reference(withPath: location)
+        
+        pathReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                // Uh-oh, an error occurred!
+                print("Error downloading image: " + error.localizedDescription)
+            } else{
+                // Data for "images/island.jpg" is returned
+                self.physicianImage.image = UIImage(data: data!)
+            }
+        }
     }
 
     

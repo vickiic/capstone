@@ -9,7 +9,9 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 import Firebase
+
 class PatientViewController: UIViewController {
     
     let io: IOWebService = IOWebService.getSharedInstance()
@@ -17,9 +19,8 @@ class PatientViewController: UIViewController {
     @IBOutlet weak var patientEmailTF: UILabel!
     @IBOutlet weak var patientNameTF: UILabel!
     @IBOutlet weak var patientAgeTF: UILabel!
-//    @IBOutlet weak var physicianNameTF: UILabel!
-//    @IBOutlet weak var physicianEmailTF: UILabel!
-//    @IBOutlet weak var physicianLocationTF: UILabel!
+    @IBOutlet weak var patientImage: UIImageView!
+
     var physicianName = ""
     var physicianEmail = ""
     var physicianLocation = ""
@@ -29,6 +30,8 @@ class PatientViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        patientImage.contentMode = .scaleAspectFit
         
         let db = Firestore.firestore()
         let settings = db.settings
@@ -50,16 +53,10 @@ class PatientViewController: UIViewController {
                 if let patientEmail = document.data()?["email"] {
                     self.patientEmailTF.text = (patientEmail as! String)
                 }
-//                if let physicianName = document.data()?["physicianName"]{
-//                    self.physicianNameTF.text = (physicianName as! String)
-//                }
-//                if let physicianLocation = document.data()?["physicianLocation"] {
-//                    self.physicianLocationTF.text = (physicianLocation as! String)
-//                }
-//                if let physicianEmail = document.data()?["physicianEmail"] {
-//                    self.physicianEmailTF.text = physicianEmail as? String
-//                }
-//
+                if let imageLoc = document.data()?["image"] {
+                    self.downloadImage(loc: imageLoc as! String)
+                }
+                
             } else {
                 print("Document does not exist")
                 return
@@ -67,6 +64,21 @@ class PatientViewController: UIViewController {
         }
     
        //  Do any additional setup after loading the view.
+    }
+    
+    func downloadImage(loc: String){
+        let location = "images/" + loc
+        let pathReference = Storage.storage().reference(withPath: location)
+        
+        pathReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                // Uh-oh, an error occurred!
+                print("Error downloading image: " + error.localizedDescription)
+            } else{
+                // Data for "images/island.jpg" is returned
+                self.patientImage.image = UIImage(data: data!)
+            }
+        }
     }
     
     
