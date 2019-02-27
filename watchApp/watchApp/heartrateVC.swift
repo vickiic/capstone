@@ -16,12 +16,18 @@ class heartrateVC: UIViewController {
   @IBOutlet weak var liveBPM: UILabel!
   @IBOutlet weak var bpmGraph: LineChartView!
   
+  struct batchTuple {
+    var bpm: Double
+    var time: TimeInterval
+  }
+  
   var healthKitInterface = HealthKitManager()
   private var heartRateQuery:HKObserverQuery?
   let io: IOWebService = IOWebService.getSharedInstance()
   let currUid = Auth.auth().currentUser?.uid
   let dm: DeviceManager = DeviceManager.getSharedInstance()
   var recentBPM = [ChartDataEntry]()
+  var batch = [batchTuple]()
   var prevBPM: Int = 0
   
   // test for date value formatter
@@ -86,6 +92,11 @@ class heartrateVC: UIViewController {
     }
   }
 
+  func batchSend() {
+    for tuple in self.batch {
+      self.io.sendBatchBPM(uid: self.currUid!, heartRate: tuple.bpm, time: tuple.time)
+    }
+  }
   
   public func setChartValues(_ newVals: [ChartDataEntry], count: Int = 20) {
     //    print("values")
@@ -101,7 +112,7 @@ class heartrateVC: UIViewController {
     set1.highlightLineWidth = 5.0
     set1.drawHorizontalHighlightIndicatorEnabled = false
     set1.formSize = 15.0
-    set1.colors = [#colorLiteral(red: 1, green: 0.3699793715, blue: 0.3755039136, alpha: 0.5973619435)]
+    set1.colors = [#colorLiteral(red: 1, green: 0.3699793715, blue: 0.3755039136, alpha: 0.6)]
     
     print("set1")
     print(set1)
@@ -125,6 +136,9 @@ class heartrateVC: UIViewController {
           let doubleSample = sample.quantity.doubleValue(for: HKUnit(from: "count/min"))
           let timeSample = sample.endDate.timeIntervalSince1970
           self.recentBPM.append(ChartDataEntry(x: timeSample, y: doubleSample))
+          let tuple = batchTuple(bpm: doubleSample, time: timeSample)
+          self.batch.append(tuple)
+//          self.io.sendBatchBPM(uid: self.currUid!, heartRate: doubleSample, time: timeSample)
           print(Int(doubleSample))
         }
       })
