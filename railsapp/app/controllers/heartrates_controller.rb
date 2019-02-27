@@ -26,6 +26,12 @@ class HeartratesController < ApplicationController
   def create
     _device = params[:device]
     _value = params[:value]
+    _time = params[:time]
+
+    exists = Heartrate.where("device = ? AND value = ? AND time = ?", _device, _value, _time)
+    if(exists.exists?)
+      return
+    end
 
     _lastHeartrate = Heartrate.where("device = ?", _device).last
     if(_lastHeartrate.created_at > DateTime.now - 0.02 && _lastHeartrate.value == _value)
