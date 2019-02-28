@@ -80,6 +80,9 @@ class heartrateVC: UIViewController {
     
     var runCount = 0
     
+    self.subscribeToHeartBeatChanges()
+    batchSend()
+    
     Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { timer in
       print("timer fired")
       self.healthKitInterface = HealthKitManager()
