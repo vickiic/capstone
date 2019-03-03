@@ -17,14 +17,12 @@ class heartrateVC: UIViewController {
   @IBOutlet weak var bpmGraph: LineChartView!
   
   struct batchTuple {
-    var bpm: String // Double prev
+    var bpm: String
     var time: TimeInterval
   }
   
   final class DateValueFormatter: IAxisValueFormatter {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-      print("time axis")
-      print(Date(timeIntervalSince1970: value))
       return formatter.string(from: Date(timeIntervalSince1970: value))
     }
     
@@ -54,7 +52,6 @@ class heartrateVC: UIViewController {
     self.batchSend()
     
     Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { timer in
-      print("timer fired")
       self.healthKitInterface = HealthKitManager()
       self.subscribeToHeartBeatChanges()
     }
@@ -100,8 +97,6 @@ class heartrateVC: UIViewController {
   }
   
   public func setChartValues(_ newVals: [ChartDataEntry]) {
-    //    print("values")
-    //    print(values)
     let set1 = LineChartDataSet(values: newVals, label: "Last couple hrs BPM")
     set1.drawCirclesEnabled = false
     set1.drawValuesEnabled = false
@@ -114,8 +109,6 @@ class heartrateVC: UIViewController {
     set1.formSize = 15.0
     set1.colors = [#colorLiteral(red: 1, green: 0.3699793715, blue: 0.3755039136, alpha: 0.6)]
     
-    print("set1")
-    print(set1)
     let data = LineChartData(dataSet: set1)
     bpmGraph.data = data
   }
