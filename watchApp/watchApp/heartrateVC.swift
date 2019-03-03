@@ -17,8 +17,23 @@ class heartrateVC: UIViewController {
   @IBOutlet weak var bpmGraph: LineChartView!
   
   struct batchTuple {
-    var bpm: Double
+    var bpm: String // Double prev
     var time: TimeInterval
+  }
+  
+  final class DateValueFormatter: IAxisValueFormatter {
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+      print("time axis")
+      print(Date(timeIntervalSince1970: value))
+      return formatter.string(from: Date(timeIntervalSince1970: value))
+    }
+    
+    let formatter: DateFormatter
+    
+    init(formatter: DateFormatter) {
+      formatter.dateFormat = "HH:mm"
+      self.formatter = formatter
+    }
   }
   
   var healthKitInterface = HealthKitManager()
@@ -30,23 +45,22 @@ class heartrateVC: UIViewController {
   var batch = [batchTuple]()
   var prevBPM: Int = 0
   
-  // test for date value formatter
-  final class DateValueFormatter: IAxisValueFormatter {
-    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-      return formatter.string(from: Date(timeIntervalSince1970: value))
-    }
-    
-    let formatter: DateFormatter
-    
-    init(formatter: DateFormatter) {
-      self.formatter = formatter
-    }
-  }
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.getLastDay()
-
+    self.formatGraph()
+    
+    self.subscribeToHeartBeatChanges()
+    self.batchSend()
+    
+    Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { timer in
+      print("timer fired")
+      self.healthKitInterface = HealthKitManager()
+      self.subscribeToHeartBeatChanges()
+    }
+  }
+  
+  public func formatGraph() {
     let xAxis = bpmGraph.xAxis
     xAxis.enabled = true
     xAxis.drawAxisLineEnabled = false
@@ -55,7 +69,7 @@ class heartrateVC: UIViewController {
     xAxis.labelPosition = .bottom
     xAxis.spaceMin = 0.5
     xAxis.spaceMax = 0.5
-    xAxis.labelRotationAngle = -45.0
+    xAxis.labelRotationAngle = -30.0
     xAxis.granularity = 1.0
     xAxis.spaceMin = xAxis.granularity / 5
     xAxis.spaceMax = xAxis.granularity / 5
@@ -77,35 +91,18 @@ class heartrateVC: UIViewController {
     let f = DateFormatter()
     f.dateStyle = .short
     bpmGraph.xAxis.valueFormatter = DateValueFormatter(formatter: f)
-    
-    var runCount = 0
-    
-    self.subscribeToHeartBeatChanges()
-    batchSend()
-    
-    Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { timer in
-      print("timer fired")
-      self.healthKitInterface = HealthKitManager()
-      self.subscribeToHeartBeatChanges()
-      runCount += 1
-      
-      if runCount == 1000 {
-        timer.invalidate()
-      }
-    }
   }
 
-  func batchSend() {
+  public func batchSend() {
     for tuple in self.batch {
       self.io.sendBatchBPM(uid: self.currUid!, heartRate: tuple.bpm, time: tuple.time)
     }
   }
   
-  public func setChartValues(_ newVals: [ChartDataEntry], count: Int = 20) {
+  public func setChartValues(_ newVals: [ChartDataEntry]) {
     //    print("values")
     //    print(values)
     let set1 = LineChartDataSet(values: newVals, label: "Last couple hrs BPM")
-//    set1.mode = .cubicBezier
     set1.drawCirclesEnabled = false
     set1.drawValuesEnabled = false
     set1.drawFilledEnabled = true
@@ -139,9 +136,10 @@ class heartrateVC: UIViewController {
           let doubleSample = sample.quantity.doubleValue(for: HKUnit(from: "count/min"))
           let timeSample = sample.endDate.timeIntervalSince1970
           self.recentBPM.append(ChartDataEntry(x: timeSample, y: doubleSample))
-          let tuple = batchTuple(bpm: doubleSample, time: timeSample)
+          
+          let tuple = batchTuple(bpm: String(doubleSample), time: timeSample)
           self.batch.append(tuple)
-//          self.io.sendBatchBPM(uid: self.currUid!, heartRate: doubleSample, time: timeSample)
+          
           print(Int(doubleSample))
         }
       })
@@ -205,15 +203,17 @@ class heartrateVC: UIViewController {
           let newTime = Date(timeIntervalSince1970: time)
 
           print("\(Int(heartRate))", time, newTime)
-
+      
           if (Int(heartRate) != self.prevBPM) {
             self.prevBPM = Int(heartRate)
             self.recentBPM.append(ChartDataEntry(x: time, y: heartRate))
             self.liveBPM.text = "\(Int(heartRate))"
             self.io.writeHeartRateDataToIO(uid: self.currUid!, heartRate: "\(Int(heartRate))")
+            
+            print(self.recentBPM)
 
             self.bpmGraph.notifyDataSetChanged()
-            self.bpmGraph.animate(xAxisDuration: 0.5, yAxisDuration: 0.5, easingOption: .linear)
+            self.bpmGraph.animate(xAxisDuration: 0.5, yAxisDuration: 0, easingOption: .linear)
           }
         }
       })

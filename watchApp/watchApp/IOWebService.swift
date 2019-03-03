@@ -52,7 +52,7 @@ class IOWebService {
             }.resume()
     }
   
-  public func sendBatchBPM(uid: String, heartRate: Double, time: TimeInterval){
+  public func sendBatchBPM(uid: String, heartRate: String, time: TimeInterval){
     
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
