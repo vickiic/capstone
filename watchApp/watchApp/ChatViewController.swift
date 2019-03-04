@@ -49,6 +49,8 @@ class ChatViewController: JSQMessagesViewController {
             }
         }
         
+        self.tabBarController?.tabBar.isHidden = true
+        
         senderId = Auth.auth().currentUser?.uid
         senderDisplayName = displayName
         
