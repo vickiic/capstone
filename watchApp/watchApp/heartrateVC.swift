@@ -73,10 +73,13 @@ class heartrateVC: UIViewController {
     xAxis.avoidFirstLastClippingEnabled = true
     xAxis.axisLineWidth = 1.0
     
+    self.title = "Metrics"
+
     // RIGHT axis
     bpmGraph.rightAxis.drawGridLinesEnabled = false
     bpmGraph.rightAxis.enabled = false
     bpmGraph.rightAxis.drawAxisLineEnabled = false
+
     
     // LEFT axis:
     bpmGraph.leftAxis.enabled = true

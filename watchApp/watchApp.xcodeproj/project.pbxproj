@@ -12,6 +12,10 @@
 		9B22A663220A7E8300A871AA /* PhysicianViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22A662220A7E8300A871AA /* PhysicianViewController.swift */; };
 		A62EFCA3E65962533F813345 /* Pods_watchApp_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D8F47C0C708881D44EF02D1 /* Pods_watchApp_WatchKit_App.framework */; };
 		CA1381AF221CB35700FFE0BD /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1381AE221CB35700FFE0BD /* TabViewController.swift */; };
+		CA309E98221F742400C32D48 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CA309E97221F742400C32D48 /* icon.png */; };
+		CA309E9A221F77CF00C32D48 /* heartrateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA309E99221F77CF00C32D48 /* heartrateVC.swift */; };
+		CA406AF92224EA4A00B2F6E3 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA406AF82224EA4A00B2F6E3 /* ChatViewController.swift */; };
+		CA406AFC2224F2BF00B2F6E3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA406AFB2224F2BF00B2F6E3 /* Constants.swift */; };
 		CA4E679621FEA3A200CD41F2 /* IOWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E679521FEA3A200CD41F2 /* IOWebService.swift */; };
 		CAD7C5C82209239C00EF67A7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7C5C72209239C00EF67A7 /* SettingsViewController.swift */; };
 		CAF6ABEC21F70B9D007602F2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF6ABEB21F70B9D007602F2 /* SignUpViewController.swift */; };
@@ -32,7 +36,6 @@
 		E1EEBEEDFC9AADD77C530515 /* Pods_watchAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F98D6AD1AE66490BB4309BF /* Pods_watchAppTests.framework */; };
 		F01D47FB21B89A9B001D4B61 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F01D47F921B89A9B001D4B61 /* Interface.storyboard */; };
 		F03C270F21B883980056F5E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03C270E21B883980056F5E9 /* ViewController.swift */; };
-		F03C271121B8848E0056F5E9 /* AuthorizeHealthKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03C271021B8848E0056F5E9 /* AuthorizeHealthKitViewController.swift */; };
 		F03C271521B8849D0056F5E9 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03C271221B8849D0056F5E9 /* HealthKitManager.swift */; };
 		F03C271621B8849D0056F5E9 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03C271321B8849D0056F5E9 /* DeviceManager.swift */; };
 		F03C271721B8849D0056F5E9 /* LoggedInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03C271421B8849D0056F5E9 /* LoggedInVC.swift */; };
@@ -104,6 +107,11 @@
 		B520D1A207EA7BD3C638E72E /* Pods-watchApp WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchApp WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchApp WatchKit Extension/Pods-watchApp WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
 		C53232A444C08BF7EDD95CB8 /* Pods-watchApp WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchApp WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchApp WatchKit Extension/Pods-watchApp WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		CA1381AE221CB35700FFE0BD /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		CA309E97221F742400C32D48 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Assets.xcassets/AppIcon.imageset/icon.png; sourceTree = "<group>"; };
+		CA309E99221F77CF00C32D48 /* heartrateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = heartrateVC.swift; sourceTree = "<group>"; };
+		CA406AF82224EA4A00B2F6E3 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		CA406AFA2224EBB500B2F6E3 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		CA406AFB2224F2BF00B2F6E3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CA4E679521FEA3A200CD41F2 /* IOWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOWebService.swift; sourceTree = "<group>"; };
 		CAD7C5C72209239C00EF67A7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CAF6ABEB21F70B9D007602F2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -136,7 +144,6 @@
 		F01D47FC21B89B97001D4B61 /* Pods-watchApp WatchKit Extension */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Pods-watchApp WatchKit Extension"; path = "Pods/Target Support Files/Pods-watchApp WatchKit Extension"; sourceTree = "<group>"; };
 		F01D47FE21B89BDA001D4B61 /* Target Support Files */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Target Support Files"; path = "Pods/Target Support Files"; sourceTree = "<group>"; };
 		F03C270E21B883980056F5E9 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F03C271021B8848E0056F5E9 /* AuthorizeHealthKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizeHealthKitViewController.swift; sourceTree = "<group>"; };
 		F03C271221B8849D0056F5E9 /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		F03C271321B8849D0056F5E9 /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		F03C271421B8849D0056F5E9 /* LoggedInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInVC.swift; sourceTree = "<group>"; };
@@ -201,6 +208,7 @@
 		E1019D5F21B85CBB000E5F13 = {
 			isa = PBXGroup;
 			children = (
+				CA406AFA2224EBB500B2F6E3 /* Bridging-Header.h */,
 				F08CF19D21B8882900CEA7C0 /* Podfile */,
 				F03C271821B886DD0056F5E9 /* GoogleService-Info.plist */,
 				E1019D6A21B85CBB000E5F13 /* watchApp */,
@@ -227,14 +235,17 @@
 		E1019D6A21B85CBB000E5F13 /* watchApp */ = {
 			isa = PBXGroup;
 			children = (
+				CA309E97221F742400C32D48 /* icon.png */,
 				F03C271321B8849D0056F5E9 /* DeviceManager.swift */,
 				F03C271221B8849D0056F5E9 /* HealthKitManager.swift */,
 				CAD7C5C72209239C00EF67A7 /* SettingsViewController.swift */,
 				CA1381AE221CB35700FFE0BD /* TabViewController.swift */,
 				CA4E679521FEA3A200CD41F2 /* IOWebService.swift */,
 				F03C271421B8849D0056F5E9 /* LoggedInVC.swift */,
-				F03C271021B8848E0056F5E9 /* AuthorizeHealthKitViewController.swift */,
+				CA309E99221F77CF00C32D48 /* heartrateVC.swift */,
+				CA406AF82224EA4A00B2F6E3 /* ChatViewController.swift */,
 				CAF6ABEB21F70B9D007602F2 /* SignUpViewController.swift */,
+				CA406AFB2224F2BF00B2F6E3 /* Constants.swift */,
 				F03C270E21B883980056F5E9 /* ViewController.swift */,
 				9B22A658220A6B3300A871AA /* PatientViewController.swift */,
 				E1019DB321B85FEB000E5F13 /* watchApp.entitlements */,
@@ -435,6 +446,7 @@
 			files = (
 				F08CF19E21B8882900CEA7C0 /* Podfile in Resources */,
 				E1019D7621B85CBD000E5F13 /* LaunchScreen.storyboard in Resources */,
+				CA309E98221F742400C32D48 /* icon.png in Resources */,
 				F03C271921B886DD0056F5E9 /* GoogleService-Info.plist in Resources */,
 				E1019D7321B85CBD000E5F13 /* Assets.xcassets in Resources */,
 				E1019D7121B85CBB000E5F13 /* Main.storyboard in Resources */,
@@ -500,8 +512,11 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-watchApp/Pods-watchApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
@@ -516,8 +531,11 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
@@ -606,15 +624,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA1381AF221CB35700FFE0BD /* TabViewController.swift in Sources */,
+				CA309E9A221F77CF00C32D48 /* heartrateVC.swift in Sources */,
 				F03C270F21B883980056F5E9 /* ViewController.swift in Sources */,
 				CAF6ABEC21F70B9D007602F2 /* SignUpViewController.swift in Sources */,
 				CAD7C5C82209239C00EF67A7 /* SettingsViewController.swift in Sources */,
-				F03C271121B8848E0056F5E9 /* AuthorizeHealthKitViewController.swift in Sources */,
 				9B22A659220A6B3300A871AA /* PatientViewController.swift in Sources */,
 				F03C271521B8849D0056F5E9 /* HealthKitManager.swift in Sources */,
 				CA4E679621FEA3A200CD41F2 /* IOWebService.swift in Sources */,
 				F03C271721B8849D0056F5E9 /* LoggedInVC.swift in Sources */,
+				CA406AFC2224F2BF00B2F6E3 /* Constants.swift in Sources */,
 				F03C271621B8849D0056F5E9 /* DeviceManager.swift in Sources */,
+				CA406AF92224EA4A00B2F6E3 /* ChatViewController.swift in Sources */,
 				E1019D6C21B85CBB000E5F13 /* AppDelegate.swift in Sources */,
 				9B22A663220A7E8300A871AA /* PhysicianViewController.swift in Sources */,
 			);
@@ -908,6 +928,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.capstoneucsb.watchApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -929,6 +950,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.capstoneucsb.watchApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

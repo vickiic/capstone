@@ -288,6 +288,9 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="mI1-LK-rSi" kind="show" id="coj-3I-Dnr"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UdH-90-43J">
                                 <rect key="frame" x="93" y="161" width="189" height="156"/>
@@ -312,6 +315,7 @@
                     <navigationItem key="navigationItem" title="Physician" id="4eV-mL-DHA"/>
                     <connections>
                         <outlet property="physicianEmailTF" destination="dz0-oI-OEb" id="Oot-aT-x5C"/>
+                        <outlet property="physicianImage" destination="UdH-90-43J" id="WBW-5V-aSJ"/>
                         <outlet property="physicianLocationTF" destination="Zfp-EV-cqF" id="2ra-cn-cga"/>
                         <outlet property="physicianNameTF" destination="EcQ-D2-BEi" id="qNa-GJ-rJc"/>
                     </connections>
@@ -319,6 +323,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FiT-31-nQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2596" y="34"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="XOf-xK-ZKe">
+            <objects>
+                <viewController id="mI1-LK-rSi" customClass="ChatViewController" customModule="watchApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xY2-cA-xCL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="syF-cG-cxd"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SbI-Kf-VZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3506" y="34"/>
         </scene>
         <!--Patient Info-->
         <scene sceneID="4pD-ZA-nqj">
@@ -388,6 +407,7 @@
                     <connections>
                         <outlet property="patientAgeTF" destination="GGJ-MA-mvW" id="YUj-eT-5Qi"/>
                         <outlet property="patientEmailTF" destination="xhD-9w-Y0M" id="ISj-0K-Wv8"/>
+                        <outlet property="patientImage" destination="B6Q-Kh-D6U" id="Vod-yd-TGc"/>
                         <outlet property="patientNameTF" destination="Hvq-UR-cYq" id="G06-NY-9o8"/>
                     </connections>
                 </viewController>
@@ -719,6 +739,6 @@
         <image name="settings" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iXp-2B-BYr"/>
+        <segue reference="vCb-te-TsC"/>
     </inferredMetricsTieBreakers>
 </document>
