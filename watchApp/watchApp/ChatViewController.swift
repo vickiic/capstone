@@ -19,7 +19,7 @@ class ChatViewController: JSQMessagesViewController {
     var displayName = ""
     
     lazy var outgoingBubble: JSQMessagesBubbleImage = {
-        return JSQMessagesBubbleImageFactory()!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+        return JSQMessagesBubbleImageFactory()!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleRed())
     }()
     
     lazy var incomingBubble: JSQMessagesBubbleImage = {
