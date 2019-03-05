@@ -69,6 +69,11 @@ class PhysicianViewController: UIViewController {
             } else{
                 // Data for "images/island.jpg" is returned
                 self.physicianImage.image = UIImage(data: data!)
+                self.physicianImage.layer.borderWidth = 3.0
+                self.physicianImage.layer.cornerRadius = 154/2
+                let borderColor = UIColor(red: 255.0/255.0, green: 139.0/255.0, blue: 127.0/255.0, alpha: 1.0)
+                self.physicianImage.layer.borderColor = borderColor.cgColor
+                self.physicianImage.clipsToBounds = true
             }
         }
     }
