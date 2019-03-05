@@ -1,0 +1,18 @@
+<h1>Heartrates:Device</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Device</th>
+      <th>HeartRate Graph</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% devices.each do |device| %>
+      <tr>
+        <td><%= raw device['device'].to_s %></td>
+        <td><a href="/heartrates/graph/<%=raw device['device'].to_s%>">device <%=raw device['device'].to_s%> heartrate graph</a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

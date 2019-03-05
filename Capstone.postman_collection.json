@@ -1,0 +1,250 @@
+{
+	"info": {
+		"_postman_id": "1fa6d56b-2a57-4d0d-9023-ed3c2c21d826",
+		"name": "Capstone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authenticate User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "ITH-Username",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "ITH-API-Key",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://devices.intouchhealth.com/api/v1/authenticate",
+					"protocol": "https",
+					"host": [
+						"devices",
+						"intouchhealth",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get devices",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "ITH-Username",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "ITH-API-Key",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "ITH-Device-Type",
+						"value": "testing",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n  \"name\": \"testing\",\r\n  \"device_uid\": \"6ea1f358-2499-4a03-8689-36zza17dc627\",\r\n  \"device_type\": \"testing\"\r\n}"
+				},
+				"url": {
+					"raw": "https://devices.intouchhealth.com/api/v1/devices",
+					"protocol": "https",
+					"host": [
+						"devices",
+						"intouchhealth",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create device",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "ITH-Username",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "ITH-API-Key",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"device_uid\": \"6ea1f358-2499-4a03-8689-36fda17dc627\",\r\n  \"metric_field_values\": { \"cpu_usage\": [{ \"name\": \"Core 1 CPU\",\r\n                                           \"value\": \"20\",\r\n                                           \"timestamp\": \"2011-10-05T22:26:12\" },\r\n                                         { \"name\": \"Core 2 CPU\",\r\n                                           \"value\": \"21\",\r\n                                           \"timestamp\": \"2011-10-05T22:26:12\" }],\r\n                           \"disk_space\": { \"value\": \"50\",\r\n                                           \"timestamp\": \"2011-10-05T22:26:12\" } } }"
+				},
+				"url": {
+					"raw": "https://devices.intouchhealth.com/api/v1/metric_field_values",
+					"protocol": "https",
+					"host": [
+						"devices",
+						"intouchhealth",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"metric_field_values"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post metric",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "ITH-Username",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "ITH-API-Key",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"device_uid\": \"ccb53ec5-cb64-4de4-bdd0-9bdc6e331683\",\r\n\t\"metric_field_values\": { \r\n\t\t\"heartRate\": \r\n\t  \t\t{ \r\n\t\t        \"value\": \"20\",\r\n\t\t        \"timestamp\": \"2011-10-05T22:26:12\"\r\n\t  \t\t}\r\n\t}\r\n}"
+				},
+				"url": {
+					"raw": "https://devices.intouchhealth.com/api/v1/metric_field_values",
+					"protocol": "https",
+					"host": [
+						"devices",
+						"intouchhealth",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"metric_field_values"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Metrics",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "ITH-Username",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "ITH-API-Key",
+						"value": "8cc3c2ae-61ff-4738-826b-b16ae7f1fc63",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "device_uid",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://devices.intouchhealth.com/api/v1/static_field_values/heartRate?device_uid=ccb53ec5-cb64-4de4-bdd0-9bdc6e331683\n",
+					"protocol": "https",
+					"host": [
+						"devices",
+						"intouchhealth",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"static_field_values",
+						"heartRate"
+					],
+					"query": [
+						{
+							"key": "device_uid",
+							"value": "ccb53ec5-cb64-4de4-bdd0-9bdc6e331683\n"
+						},
+						{
+							"key": "datetime_begin",
+							"value": "2011-10-05T22:26:12-07:00",
+							"disabled": true
+						},
+						{
+							"key": "datetime_end",
+							"value": "2011-10-05T23:41:37-07:0",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

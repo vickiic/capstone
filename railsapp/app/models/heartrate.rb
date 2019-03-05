@@ -1,0 +1,2 @@
+class Heartrate < ApplicationRecord
+end

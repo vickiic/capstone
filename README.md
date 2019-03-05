@@ -1,7 +1,7 @@
-# UCSB 2018 CS Capstone: InTouch With My Health # 
+# UCSB 2018 CS Capstone: InTouch With Your Health # 
 Company: [InTouch Health](https://intouchhealth.com "InTouch Health Home Website")
 <br />
-Project Name: Apple Watch x Physicians 
+Team Name: InTouch With My Health
 
 ## Team Members ## 
 |       Name       |           Email          |
@@ -39,7 +39,26 @@ In the end, we hope to present an application capable of establishing a two way 
 
 The data collected from the patient’s apple watch will be compiled in a database for health history tabulation and analysis. The patient data, like heart rate readings and ECG, will then be displayed on a beautifully designed web interface for the physician to view. 
 
+## Notes for using the Rails App ##
+List of useful commands:
+    
+* 'bundle install'
+    * install all gems
+* 'bundle exec rails server'                                      
+    * start the local server
+* 'RAILS_ENV=production bundle exec rails assets:precompile'      
+    * compile the local assets. Do this before deploying the app
+* 'gcloud app deploy'                                             
+    * upload local code to google cloud 
 
 
-
+## Test Criteria for Web App ##
+* Should be able to run a local server using 'bundle exec rails server' and build successfully
+* Should be able to visit localhost:3000 and have the Webapp appear.
+    * The webapp should display using the proper colorscheme of ITH
+    * The home page should display a list of patient cards with names and pictures
+* Should be able to click on an individual patient card and see extra info about that patient
+    * Extra data includes heartrate data
+* After deploying using gcloud app deploy, should be able to run 'gcloud app describe' and see that the servingStatus field has value SERVING
+* After deploying should visit https://starry-odyssey-221817.appspot.com/ and see that all previous tests for the local server also work on the hosted webapp.  
 

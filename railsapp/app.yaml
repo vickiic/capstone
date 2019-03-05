@@ -1,0 +1,9 @@
+entrypoint: bundle exec rackup --port $PORT
+env: flex
+runtime: ruby
+
+env_variables:
+  SECRET_KEY_BASE: 461e252f1bd6984a798f724c4c295ed5f8e939367c1dfa0205744a15c59b5d8c4da6e612a38b7a01159a0f65f11f15ddcb8428cc4c14c88768c6fa8a2d4e03b7
+
+beta_settings:
+  cloud_sql_instances: ithcapstone2019:us-west2:heartrates

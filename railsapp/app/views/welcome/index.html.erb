@@ -1,0 +1,168 @@
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper">
+  <!-- ============================================================== -->
+  <!-- Topbar header - style you can find in pages.scss -->
+  <!-- ============================================================== -->
+  <header class="topbar">
+    <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
+      <!-- ============================================================== -->
+      <!-- Logo -->
+      <!-- ============================================================== -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">
+          <!-- Logo icon --><b>
+          <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+
+          <!-- Light Logo icon -->
+          <%= image_tag "logo.png", :class => "light-logo" %>
+          </b>
+          <!--End Logo icon -->
+          <!-- Logo text --></a>
+      </div>
+      <!-- ============================================================== -->
+      <!-- End Logo -->
+      <!-- ============================================================== -->
+      <div class="navbar-collapse">
+        <!-- ============================================================== -->
+        <!-- toggle and nav items -->
+        <!-- ============================================================== -->
+        <ul class="navbar-nav mr-auto mt-md-0">
+          <!-- This is  -->
+          <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
+          <!-- ============================================================== -->
+          <!-- Search -->
+          <!-- ============================================================== -->
+          <li class="nav-item hidden-sm-down search-box"> <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
+            <form class="app-search">
+              <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a>
+            </form>
+          </li>
+        </ul>
+        <!-- ============================================================== -->
+        <!-- User profile and search -->
+        <!-- ============================================================== -->
+        <ul class="navbar-nav my-lg-0">
+          <!-- ============================================================== -->
+          <!-- Profile -->
+          <!-- ============================================================== -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= image_tag "users/d2.jpg", :class => "profile-pic m-r-10"%>Dr. Wang</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- ============================================================== -->
+  <!-- End Topbar header -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Left Sidebar - style you can find in sidebar.scss  -->
+  <!-- ============================================================== -->
+  <aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+      <!-- Sidebar navigation-->
+      <nav class="sidebar-nav">
+        <ul id="sidebarnav">
+          <li> <a class="waves-effect waves-dark" href="/welcome/index" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Patients</span></a>
+          </li>
+          <li> <a class="waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-message-text-outline"></i><span class="hide-menu">Messages</span></a>
+          </li>
+          <li> <a class="waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">Settings</span></a>
+          </li>
+        </ul>
+      </nav>
+      <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+    <!-- Bottom points-->
+    <div class="sidebar-footer">
+      <!-- item--><a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
+      <!-- item--><a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
+      <!-- item--><a href="" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a> </div>
+    <!-- End Bottom points-->
+  </aside>
+  <!-- ============================================================== -->
+  <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Page wrapper  -->
+  <!-- ============================================================== -->
+  <div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+      <!-- ============================================================== -->
+      <!-- Bread crumb and right sidebar toggle -->
+      <!-- ============================================================== -->
+      <div class="row page-titles">
+        <div class="col-md-5 col-8 align-self-center">
+          <h3 class="text-themecolor">Welcome, Dr.Wang </h3>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+          </ol>
+        </div>
+      </div>
+      <!-- ============================================================== -->
+      <!-- End Bread crumb and right sidebar toggle -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- Start Page Content -->
+      <!-- ============================================================== -->
+      <div class="active-cyan-4 mb-4">
+
+        <%= form_tag(welcome_index_path, method: "get") do %>
+          <%= text_field_tag :searchInput, nil, class: 'form-control', placeholder: 'Search' %>
+          <p>
+            <%= submit_tag("Submit") %>
+          </p>
+        <% end %>
+        <% if @search != "" %>
+          <%= link_to "Reset search", welcome_index_path(""), :search => "" %>
+        <% end %>
+      </div>
+      <div class="row">
+          <% @patients.each do |element| %>
+            <% if element.name.include? @search %>
+            <span>
+            <div class="card">
+              <%= link_to stats_index_path(:id => element.device) do %>
+                <div class="card-block">
+                  <center class="m-t-30"> 
+                    <%= if Rails.application.assets.find_asset("users/#{element.pic}") != nil then image_tag "users/#{element.pic}", :class => "img-circle", :style => "width:150px" end %>
+                    <%= if Rails.application.assets.find_asset("users/#{element.pic}") == nil then image_tag "users/DEFAULT.jpg", :class => "img-circle", :style => "width:150px" end %>                    
+                    <h4 class="card-title m-t-10"><%=element.name %></h4>
+                    <div class="row text-center justify-content-md-center"></div>
+                  </center>
+                </div>
+              <% end %>
+            </div>
+            </span>
+            <% end %>
+          <% end %>
+      </div>
+
+
+
+      <!-- ============================================================== -->
+      <!-- End PAge Content -->
+      <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Page wrapper  -->
+  <!-- ============================================================== -->
+</div>
