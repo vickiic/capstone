@@ -40,8 +40,8 @@ class heartrateVC: UIViewController {
   let currUid = Auth.auth().currentUser?.uid
   let dm: DeviceManager = DeviceManager.getSharedInstance()
   var recentBPM = [ChartDataEntry]()
-  var batch = [batchTuple]()
   var prevBPM: Int = 0
+  let windowSize: Int = -3
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -49,7 +49,6 @@ class heartrateVC: UIViewController {
     self.formatGraph()
     
     self.subscribeToHeartBeatChanges()
-    self.batchSend()
     
     Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { timer in
       self.healthKitInterface = HealthKitManager()
@@ -92,12 +91,6 @@ class heartrateVC: UIViewController {
     f.dateStyle = .short
     bpmGraph.xAxis.valueFormatter = DateValueFormatter(formatter: f)
   }
-
-  public func batchSend() {
-    for tuple in self.batch {
-      self.io.sendBatchBPM(uid: self.currUid!, heartRate: tuple.bpm, time: tuple.time)
-    }
-  }
   
   public func setChartValues(_ newVals: [ChartDataEntry]) {
     let set1 = LineChartDataSet(values: newVals, label: "Last couple hrs BPM")
@@ -133,10 +126,7 @@ class heartrateVC: UIViewController {
           let timeSample = sample.endDate.timeIntervalSince1970
           self.recentBPM.append(ChartDataEntry(x: timeSample, y: doubleSample))
           
-          let tuple = batchTuple(bpm: String(doubleSample), time: timeSample)
-          self.batch.append(tuple)
-          
-          print(Int(doubleSample))
+          self.io.sendBatchBPM(uid: self.currUid!, heartRate: String(doubleSample), time: timeSample)
         }
       })
       self.setChartValues(self.recentBPM)
@@ -156,7 +146,7 @@ class heartrateVC: UIViewController {
     
     let predicate = HKQuery
       .predicateForSamples(
-        withStart: Calendar.current.date(byAdding: .hour, value: -6, to: Date()),
+        withStart: Calendar.current.date(byAdding: .hour, value: self.windowSize, to: Date()),
         end: Date(),
         options: .strictEndDate)
     

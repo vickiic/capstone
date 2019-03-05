@@ -255,8 +255,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="s0u-vS-t3P">
-                                <rect key="frame" x="93" y="452" width="177" height="121"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="s0u-vS-t3P">
+                                <rect key="frame" x="178" y="173" width="177" height="121"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="physicianName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcQ-D2-BEi">
                                         <rect key="frame" x="0.0" y="0.0" width="177" height="20.333333333333332"/>
@@ -265,51 +266,56 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="physicianEmail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dz0-oI-OEb">
-                                        <rect key="frame" x="0.0" y="50.333333333333314" width="177" height="20.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="50.333333333333336" width="177" height="20.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="physicianLocation         " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfp-EV-cqF">
-                                        <rect key="frame" x="0.0" y="100.66666666666663" width="177" height="20.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="100.66666666666667" width="177" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ar-v2-Hj5">
-                                <rect key="frame" x="93" y="506" width="177" height="41"/>
-                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="bVc-Hg-xhK"/>
-                                </constraints>
-                                <state key="normal" title="Contact">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UdH-90-43J">
+                                <rect key="frame" x="16" y="156" width="154" height="154"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ar-v2-Hj5">
+                                <rect key="frame" x="87" y="652" width="200" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Message">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <segue destination="mI1-LK-rSi" kind="show" id="coj-3I-Dnr"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UdH-90-43J">
-                                <rect key="frame" x="93" y="161" width="189" height="156"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="156" id="eeZ-Ao-07r"/>
-                                </constraints>
-                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CZ-if-lsV">
+                                <rect key="frame" x="87" y="575" width="200" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Doctor's Notes">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brS-IG-Ek8">
+                                <rect key="frame" x="87" y="496" width="200" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Appointment">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="UdH-90-43J" firstAttribute="top" secondItem="phf-YD-nnx" secondAttribute="top" constant="63" id="0wd-aq-7Wf"/>
-                            <constraint firstItem="UdH-90-43J" firstAttribute="leading" secondItem="phf-YD-nnx" secondAttribute="leading" constant="93" id="Li4-sO-mJw"/>
-                            <constraint firstItem="3Ar-v2-Hj5" firstAttribute="top" secondItem="s0u-vS-t3P" secondAttribute="bottom" constant="44" id="Lrm-v9-K1U"/>
-                            <constraint firstItem="3Ar-v2-Hj5" firstAttribute="leading" secondItem="UdH-90-43J" secondAttribute="leading" id="WDo-RG-J6x"/>
-                            <constraint firstItem="3Ar-v2-Hj5" firstAttribute="leading" secondItem="s0u-vS-t3P" secondAttribute="leading" id="eDY-EF-fQn"/>
-                            <constraint firstItem="UdH-90-43J" firstAttribute="centerX" secondItem="Yh3-DT-g2j" secondAttribute="centerX" id="hKI-fB-2Cg"/>
-                            <constraint firstItem="3Ar-v2-Hj5" firstAttribute="centerX" secondItem="Yh3-DT-g2j" secondAttribute="centerX" id="iNA-GB-o6R"/>
-                            <constraint firstItem="phf-YD-nnx" firstAttribute="bottom" secondItem="3Ar-v2-Hj5" secondAttribute="bottom" constant="71" id="nOT-NW-W5s"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="phf-YD-nnx"/>
                     </view>
                     <navigationItem key="navigationItem" title="Physician" id="4eV-mL-DHA"/>
@@ -347,60 +353,87 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B6Q-Kh-D6U" userLabel="Patient">
-                                <rect key="frame" x="97" y="179" width="181" height="154"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="154" id="yRe-Dr-IHa"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B6Q-Kh-D6U" userLabel="Patient">
+                                <rect key="frame" x="16" y="154" width="154" height="154"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dy9-HA-ygX">
-                                <rect key="frame" x="93" y="506" width="177" height="41"/>
-                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="8fx-hF-zA6"/>
-                                </constraints>
-                                <state key="normal" title="Report a Symptom">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="reportButtonClicked:" destination="nYr-N4-oSj" eventType="touchUpInside" id="EU2-uC-LJD"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="K0t-4n-Tqg">
-                                <rect key="frame" x="93" y="341" width="98.333333333333314" height="115"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="K0t-4n-Tqg">
+                                <rect key="frame" x="185" y="181" width="175.66666666666666" height="101"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="patientName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvq-UR-cYq">
-                                        <rect key="frame" x="0.0" y="0.0" width="98.333333333333329" height="20.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="175.66666666666666" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="patientEmail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhD-9w-Y0M">
-                                        <rect key="frame" x="0.0" y="47.333333333333314" width="98.333333333333329" height="20.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="patientEmailEmailEmail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhD-9w-Y0M">
+                                        <rect key="frame" x="0.0" y="40.333333333333336" width="175.66666666666666" height="20.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="patientAge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGJ-MA-mvW">
-                                        <rect key="frame" x="0.0" y="94.666666666666629" width="98.333333333333329" height="20.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="80.666666666666671" width="175.66666666666666" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dy9-HA-ygX">
+                                <rect key="frame" x="87" y="652" width="200" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.4464383740564698" blue="0.38815806211330439" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Report Symptom">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="reportButtonClicked:" destination="nYr-N4-oSj" eventType="touchUpInside" id="EU2-uC-LJD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ViO-GF-3e3">
+                                <rect key="frame" x="87" y="575" width="200" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Health Summary">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="reportButtonClicked:" destination="nYr-N4-oSj" eventType="touchUpInside" id="gKv-Ns-4PV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LCS-Ls-1u2">
+                                <rect key="frame" x="87" y="496" width="200" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Billing">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QaB-9Q-Ybv">
+                                <rect key="frame" x="87" y="415" width="200" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Test Results">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OkW-nR-g25">
+                                <rect key="frame" x="87" y="333" width="200" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Medications">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="B6Q-Kh-D6U" firstAttribute="top" secondItem="wYj-65-CkJ" secondAttribute="top" constant="39" id="2uO-IS-sIR"/>
-                            <constraint firstItem="Dy9-HA-ygX" firstAttribute="centerX" secondItem="qoc-8S-B9g" secondAttribute="centerX" id="64r-KT-PNL"/>
-                            <constraint firstItem="Dy9-HA-ygX" firstAttribute="leading" secondItem="K0t-4n-Tqg" secondAttribute="leading" id="CqB-Bi-4do"/>
-                            <constraint firstItem="Dy9-HA-ygX" firstAttribute="leading" secondItem="B6Q-Kh-D6U" secondAttribute="leading" id="DJw-pY-aaG"/>
-                            <constraint firstItem="wYj-65-CkJ" firstAttribute="bottom" secondItem="Dy9-HA-ygX" secondAttribute="bottom" constant="69" id="fzO-pY-Giv"/>
-                            <constraint firstItem="Dy9-HA-ygX" firstAttribute="top" secondItem="K0t-4n-Tqg" secondAttribute="bottom" constant="50" id="hst-ch-Jrb"/>
-                            <constraint firstItem="Dy9-HA-ygX" firstAttribute="leading" secondItem="wYj-65-CkJ" secondAttribute="leading" constant="97" id="oNI-Wc-YQ5"/>
-                            <constraint firstItem="B6Q-Kh-D6U" firstAttribute="centerX" secondItem="qoc-8S-B9g" secondAttribute="centerX" id="pEE-dQ-38O"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wYj-65-CkJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Patient" id="x1q-9d-hCK"/>
@@ -413,7 +446,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TsO-Od-0q3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2596" y="-660.71964017991013"/>
+            <point key="canvasLocation" x="2596" y="-661.33004926108379"/>
         </scene>
         <!--Authorize Health Kit View Controller-->
         <scene sceneID="SJn-qZ-cFd">
