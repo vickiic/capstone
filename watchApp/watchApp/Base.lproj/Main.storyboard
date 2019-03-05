@@ -797,4 +797,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="iXp-2B-BYr"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="1" green="0.5450980392" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
