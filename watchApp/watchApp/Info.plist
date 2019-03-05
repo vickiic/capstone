@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleDisplayName</key>
+	<string>Watch My Health</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Assets.xcassets/AppIcon</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -41,5 +47,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Please allow InTouch with My Health to modify to your heart rate data.</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Please allow InTouch with My Health access to your heart rate data.</string>
+	<key>
+</key>
+	<string>Please allow InTouch with My Health to modify to your heart rate data.</string>
 </dict>
 </plist>

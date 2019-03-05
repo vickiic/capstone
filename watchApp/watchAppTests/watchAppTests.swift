@@ -2,8 +2,8 @@
 //  watchAppTests.swift
 //  watchAppTests
 //
-//  Created by Calvin Wang on 10/29/18.
-//  Copyright © 2018 Calvin Wang. All rights reserved.
+//  Created by philippe bertin on 12/5/18.
+//  Copyright © 2018 InTouchTechnologies. All rights reserved.
 //
 
 import XCTest
