@@ -327,7 +327,7 @@
         <!--Chat View Controller-->
         <scene sceneID="XOf-xK-ZKe">
             <objects>
-                <viewController id="mI1-LK-rSi" customClass="ChatViewController" customModule="watchApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="mI1-LK-rSi" customClass="ChatViewController" customModule="watchApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xY2-cA-xCL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -739,6 +739,6 @@
         <image name="settings" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vCb-te-TsC"/>
+        <segue reference="iXp-2B-BYr"/>
     </inferredMetricsTieBreakers>
 </document>
