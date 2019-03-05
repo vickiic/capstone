@@ -126,7 +126,7 @@
                         date = []
                         datapoints = []
                         @heartrates.each  do |heartrate|
-                          date << heartrate['created_at']
+                          date << heartrate['time']
                           datapoints << heartrate['value']
                         end
                       %>
@@ -148,11 +148,11 @@
                           datasets: [{
                             label: 'HeartRates',
                             data: data,
-                                  backgroundColor: "green",
-                                  borderColor: "lightgreen",
+                            backgroundColor: "rgb(252, 161, 136)",
+					                  borderColor: "red",
                             type: 'line',
                             pointRadius: 3,
-                            fill: false,
+                            fill: true,
                             lineTension: 0,
                             borderWidth: 2
                           }]
@@ -176,6 +176,11 @@
                                 beginAtZero:true
                               }
                             }]
+                          },
+                          plugins: {
+                            datalabels: {
+                                display: false,
+                            },
                           }
                         }
                       };
