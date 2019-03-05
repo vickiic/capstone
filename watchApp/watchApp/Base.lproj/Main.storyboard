@@ -363,35 +363,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B6Q-Kh-D6U" userLabel="Patient">
-                                <rect key="frame" x="16" y="154" width="154" height="136"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="154" id="SRk-iZ-xoa"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B6Q-Kh-D6U" userLabel="Patient">
+                                <rect key="frame" x="16" y="154" width="154" height="154"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="K0t-4n-Tqg">
-                                <rect key="frame" x="185" y="181" width="175.66666666666663" height="100.99999999999997"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="patientName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvq-UR-cYq">
-                                        <rect key="frame" x="0.0" y="0.0" width="175.66666666666666" height="20.333333333333332"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="patientEmailEmailEmail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhD-9w-Y0M">
-                                        <rect key="frame" x="0.0" y="40.333333333333343" width="175.66666666666666" height="20.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="patientAge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGJ-MA-mvW">
-                                        <rect key="frame" x="0.0" y="80.666666666666686" width="175.66666666666666" height="20.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="rO1-S9-H2j">
                                 <rect key="frame" x="97" y="365" width="180" height="310"/>
                                 <subviews>
@@ -446,16 +421,35 @@
                                     <constraint firstAttribute="width" constant="180" id="wpW-q6-iHe"/>
                                 </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="K0t-4n-Tqg">
+                                <rect key="frame" x="178" y="173" width="175.66666666666666" height="121"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="patientName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvq-UR-cYq">
+                                        <rect key="frame" x="0.0" y="0.0" width="175.66666666666666" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="patientEmailEmailEmail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhD-9w-Y0M">
+                                        <rect key="frame" x="0.0" y="50.333333333333336" width="175.66666666666666" height="20.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="patientAge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGJ-MA-mvW">
+                                        <rect key="frame" x="0.0" y="100.66666666666667" width="175.66666666666666" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wYj-65-CkJ" firstAttribute="bottom" secondItem="rO1-S9-H2j" secondAttribute="bottom" constant="63" id="40R-gF-SHy"/>
-                            <constraint firstItem="B6Q-Kh-D6U" firstAttribute="top" secondItem="wYj-65-CkJ" secondAttribute="top" constant="14" id="AjG-pN-QIF"/>
-                            <constraint firstItem="B6Q-Kh-D6U" firstAttribute="centerY" secondItem="K0t-4n-Tqg" secondAttribute="centerY" id="HMA-pL-IOJ"/>
-                            <constraint firstItem="K0t-4n-Tqg" firstAttribute="leading" secondItem="B6Q-Kh-D6U" secondAttribute="trailing" constant="15" id="T4X-fg-fzL"/>
                             <constraint firstItem="rO1-S9-H2j" firstAttribute="centerX" secondItem="qoc-8S-B9g" secondAttribute="centerX" id="kRu-fK-7Sg"/>
-                            <constraint firstItem="rO1-S9-H2j" firstAttribute="top" secondItem="B6Q-Kh-D6U" secondAttribute="bottom" constant="66" id="kZB-0V-Qab"/>
-                            <constraint firstItem="B6Q-Kh-D6U" firstAttribute="leading" secondItem="qoc-8S-B9g" secondAttribute="leadingMargin" id="zww-sF-NL6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wYj-65-CkJ"/>
                     </view>
