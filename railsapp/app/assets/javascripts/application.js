@@ -14,8 +14,11 @@
 //= require activestorage
 //= require jquery
 //= require moment
-//=Chart.bundle.min
+//= require Chart.bundle.min
 //= require turbolinks
 //= require_tree
-//= extras
-//= chartjs-plugin-datalabels.min
+//= require extras
+//= require chartjs-plugin-datalabels.min
+//= require bootstrap.min
+//= require firebase
+//= require fbmessage

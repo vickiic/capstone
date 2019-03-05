@@ -1,4 +1,4 @@
-
+<body>
 <div id="main-wrapper">
   <header class="topbar">
     <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
@@ -34,23 +34,6 @@
       </div>
     </nav>
   </header>
-  <aside class="left-sidebar">
-    <!-- Sidebar scroll-->
-    <div class="scroll-sidebar">
-      <!-- Sidebar navigation-->
-      <nav class="sidebar-nav">
-        <ul id="sidebarnav">
-          <li> <a class="waves-effect waves-dark" href="/welcome/index" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Patients</span></a>
-          </li>
-          <li> <a class="waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-message-text-outline"></i><span class="hide-menu">Messages</span></a>
-          </li>
-          <li> <a class="waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">Settings</span></a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </aside>
-  <div class="page-wrapper">
     <div class="container-fluid">
       <div class="row page-titles">
         <div class="col-md-5 col-8 align-self-center">
@@ -107,6 +90,52 @@
               <div class="row">
                 <div class="col-12">
                   <div class="amp-pxl" style="height: 360px;">
+                            <div class="mesgs">
+                        <%-#chat starts here -%>
+          <div class="msg_history">
+            <div class="incoming_msg">
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>Test which is a new approach to have all
+                    solutions</p>
+                  <span class="time_date"> 11:01 AM    |    June 9</span></div>
+              </div>
+            </div>
+            <div class="outgoing_msg">
+              <div class="sent_msg">
+                <p>Test which is a new approach to have all
+                  solutions</p>
+                <span class="time_date"> 11:01 AM    |    June 9</span> </div>
+            </div>
+            <div class="incoming_msg">
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>Test, which is a new approach to have</p>
+                  <span class="time_date"> 11:01 AM    |    Yesterday</span></div>
+              </div>
+            </div>
+            <div class="outgoing_msg">
+              <div class="sent_msg">
+                <p>Apollo University, Delhi, India Test</p>
+                <span class="time_date"> 11:01 AM    |    Today</span> </div>
+            </div>
+            <div class="incoming_msg">
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>We work directly with our designers and suppliers,
+                    and sell direct to you, which means quality, exclusive
+                    products, at a price anyone can afford.</p>
+                  <span class="time_date"> 11:10 AM    |    Today</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="type_msg">
+            <div class="input_msg_write">
+              <input type="text" data-key="text" class="add-user-input" placeholder="Write a message"><br>
+              <button type="button" id="add-user-btn">send</button>
+            </div>
+          </div>
+        </div>
                   </div>
                 </div>
               </div>
@@ -115,5 +144,37 @@
         </div>
       </div>
     </div>
-  </div>
 </div>
+        <section id="add-user-module" >
+        <button id="open-add-user-form-btn">+</button>
+        <form>
+            <h2>Add User</h2>
+            name:<br>
+            <input type='text' data-key='name' class='user-input'><br>
+            sender_id:<br>
+            <input type='text' data-key='sender_id' class='user-input'><br>
+            text:<br>
+            <input type='text' data-key='text' class='user-input'><br>
+            <button type='button' id="add-user-btn">add user</button>
+        </form>
+    </section>
+    </p>
+        <section id="edit-user-module">
+        <form>
+            <h2>Edit user</h2>
+            <input type="hidden" class="edit-userid">
+            name:<br>
+            <input type='text' data-key='name' class='edit-user-input'><br>
+            sender_id:<br>
+            <input type='text' data-key='sender_id' class='edit-user-input'><br>
+            text:<br>
+            <input type='text' data-key='text' class='edit-user-input'><br>
+            <button type='button' id="edit-user-btn">save</button>
+        </form>
+    </section>
+             <ul id="user-list"></ul>
+    <div id="user-detail"></div>
+    <p id="user-list-once">
+    </p>
+        <%= javascript_include_tag "fbmessage", "data-turbolinks-track" => true  %>
+</body>
