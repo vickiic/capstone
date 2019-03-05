@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
+import FirebaseDatabase
 import Firebase
 
 class PatientViewController: UIViewController {
@@ -84,7 +85,15 @@ class PatientViewController: UIViewController {
     
     @IBAction func reportButtonClicked(_ sender: UIButton) {
         
+        
         let currUid = Auth.auth().currentUser?.uid
+        
+        let symptomsRef = Database.database().reference().child("symptoms")
+        let currSymRef = symptomsRef.childByAutoId()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let innerTime = dateFormatter.string(from: NSDate() as Date)
         
         let alert = UIAlertController(title: "Symptom Report", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -96,7 +105,8 @@ class PatientViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             
             if let symptom = alert.textFields?.first?.text {
-                self.io.writeSymptom(uid: currUid!, message: symptom);
+                let message = ["symptom": symptom, "user": currUid, "time": innerTime]
+                currSymRef.setValue(message)
             }
         }))
         

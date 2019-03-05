@@ -37,7 +37,7 @@ class ChatViewController: JSQMessagesViewController {
                 let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                 print("Document data: \(dataDescription)")
                 if let physicianName = document.data()?["physicianName"]{
-                    self.title = physicianName as! String
+                    self.title = physicianName as? String
                 }
                 if let firstName = document.data()?["firstName"]{
                     self.displayName = firstName as! String
@@ -49,9 +49,8 @@ class ChatViewController: JSQMessagesViewController {
             }
         }
         
-        self.tabBarController?.tabBar.isHidden = true
-        
         senderId = Auth.auth().currentUser?.uid
+        displayName = Auth.auth().currentUser?.displayName ?? "Calvin"
         senderDisplayName = displayName
         
         inputToolbar.contentView.leftBarButtonItem = nil
@@ -90,9 +89,13 @@ class ChatViewController: JSQMessagesViewController {
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!)
     {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let innerTime = dateFormatter.string(from: NSDate() as Date)
+        
         let ref = Constants.refs.databaseChats.childByAutoId()
         
-        let message = ["sender_id": senderId, "name": senderDisplayName, "text": text]
+        let message = ["sender_id": senderId, "name": senderDisplayName, "text": text, "time": innerTime]
         
         ref.setValue(message)
         
@@ -107,6 +110,19 @@ class ChatViewController: JSQMessagesViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         return messages.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
+        
+        if messages[indexPath.item].senderId! == senderId {
+                cell.textView.textColor = UIColor.white
+            }else{
+                cell.textView.textColor = UIColor.black
+            }
+        cell.textView.linkTextAttributes = [NSAttributedString.Key.foregroundColor: cell.textView.textColor ?? UIColor.white]
+        return cell
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource!
