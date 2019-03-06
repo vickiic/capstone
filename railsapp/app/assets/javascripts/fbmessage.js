@@ -10,12 +10,12 @@ var config = {
   };
   firebase.initializeApp(config);
 // Firebase Database Reference and the child
-const dbRef = firebase.database().ref();
-const usersRef = dbRef.child('chats');
+var dbRef = firebase.database().ref();
+var usersRef = dbRef.child('chats');
 
 readUserData(); 
 
-const userListUIOnce = document.getElementById("user-list-once");
+var userListUIOnce = document.getElementById("user-list-once");
 userListUIOnce.innerHTML = "123456"
 usersRef.once("value", function(snapshot) {
   userListUIOnce.innerHTML = ""
@@ -31,7 +31,7 @@ createChat();
 // --------------------------
 function readUserData() {
 
-	const userListUI = document.getElementById("user-list");
+	var userListUI = document.getElementById("user-list");
 
 	usersRef.on("value", snap => {
 
@@ -80,8 +80,8 @@ function userClicked(e) {
 
 		var userID = e.target.getAttribute("user-key");
 
-		const userRef = dbRef.child('chats/' + userID);
-		const userDetailUI = document.getElementById("user-detail");
+		var userRef = dbRef.child('chats/' + userID);
+		var userDetailUI = document.getElementById("user-detail");
 
 		userRef.on("value", snap => {
 
@@ -106,17 +106,17 @@ function userClicked(e) {
 // ADD
 // --------------------------
 
-const addUserBtnUI = document.getElementById("add-user-btn");
-addUserBtnUI.addEventListener("click",  addUserBtnClicked);
-const addUserBtnUI1 = document.getElementById("add-user-btn1");
+var addUserBtnUI = document.getElementById("add-user-btn");
+addUserBtnUI.addEventListener("click", addUserBtnClicked)
+var addUserBtnUI1 = document.getElementById("add-user-btn1");
 addUserBtnUI1.addEventListener("click", addUserBtnClicked)
 
 
 function addUserBtnClicked() {
 
-	const usersRef = dbRef.child('chats');
+	var usersRef = dbRef.child('chats');
 
-	const addUserInputsUI = document.getElementsByClassName("user-input");
+	var addUserInputsUI = document.getElementsByClassName("user-input");
 
  	// this object will hold the new user information
     let newUser = {};
@@ -148,7 +148,7 @@ function deleteButtonClicked(e) {
 
 		var userID = e.target.getAttribute("userid");
 
-		const userRef = dbRef.child('chats/' + userID);
+		var userRef = dbRef.child('chats/' + userID);
 		
 		userRef.remove();
 
@@ -165,10 +165,10 @@ function editButtonClicked(e) {
 	//set user id to the hidden input field
 	document.querySelector(".edit-userid").value = e.target.getAttribute("userid");
 
-	const userRef = dbRef.child('chats/' + e.target.getAttribute("userid"));
+	var userRef = dbRef.child('chats/' + e.target.getAttribute("userid"));
 
 	// set data to the user field
-	const editUserInputsUI = document.querySelectorAll(".edit-user-input");
+	var editUserInputsUI = document.querySelectorAll(".edit-user-input");
 
 
 	userRef.on("value", snap => {
@@ -184,19 +184,19 @@ function editButtonClicked(e) {
 
 
 
-	const saveBtn = document.querySelector("#edit-user-btn");
+	var saveBtn = document.querySelector("#edit-user-btn");
 	saveBtn.addEventListener("click", saveUserBtnClicked)
 }
 
 
 function saveUserBtnClicked(e) {
  
-	const userID = document.querySelector(".edit-userid").value;
-	const userRef = dbRef.child('chats/' + userID);
+	var userID = document.querySelector(".edit-userid").value;
+	var userRef = dbRef.child('chats/' + userID);
 
 	var editedUserObject = {}
 
-	const editUserInputsUI = document.querySelectorAll(".edit-user-input");
+	var editUserInputsUI = document.querySelectorAll(".edit-user-input");
 
 	editUserInputsUI.forEach(function(textField) {
 		let key = textField.getAttribute("data-key");
@@ -215,8 +215,7 @@ function saveUserBtnClicked(e) {
 //const userListUI = document.getElementById("chat-list");
 function createChat() {
 
-	const userListUI = document.getElementById("chat-list");
-//	alert("OK");
+	var userListUI = document.getElementById("chat-list");
 	usersRef.on("value", snap => {
 
 		userListUI.innerHTML = "";
