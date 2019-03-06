@@ -110,8 +110,8 @@
                   </div>
                 </div>
               <div class ="tab">
-                <button class="tablinks" onclick="openGraph(event, 'Main')" id="defaultOpen">Main</button>
-                <button class="tablinks" onclick="openGraph(event, 'Outliers')">Outliers</button>
+                <button class="tablinks" onclick="openGraph(event, 'Main')" id="defaultOpen">Raw</button>
+                <button class="tablinks" onclick="openGraph(event, 'Outliers')">Hourly Averages</button>
                 <button class="tablinks" onclick="openGraph(event, 'Warnings')">Warnings</button>
                 <button class="tablinks" onclick="openGraph(event, 'Live')">Live</button>
               </div>
@@ -126,7 +126,7 @@
                         date = []
                         datapoints = []
                         @heartrates.each  do |heartrate|
-                          date << heartrate['created_at']
+                          date << heartrate['time']
                           datapoints << heartrate['value']
                         end
                       %>
@@ -148,13 +148,13 @@
                           datasets: [{
                             label: 'HeartRates',
                             data: data,
-                                  backgroundColor: "green",
-                                  borderColor: "lightgreen",
+                            backgroundColor: "rgb(252, 161, 136)",
+					                  borderColor: "red",
                             type: 'line',
                             pointRadius: 3,
-                            fill: false,
+                            fill: true,
                             lineTension: 0,
-                            borderWidth: 2
+                            borderWidth: 2,
                           }]
                         },
                         options: {
@@ -163,19 +163,21 @@
                             xAxes: [{
                               type: 'time',
                               distribution: 'linear',
-                              ticks: {
-                                source: 'labels'
-                              }
                             }],
                             yAxes: [{
                               scaleLabel: {
                                 display: true,
                                 labelString: 'HeartRate Values'
                               },
-                                ticks: {
+                              ticks: {
                                 beginAtZero:true
                               }
                             }]
+                          },
+                          plugins: {
+                            datalabels: {
+                                display: false,
+                            },
                           }
                         }
                       };
@@ -191,12 +193,12 @@
                     </div>
                     <script>
                       <% 
-                        date = []
-                        datapoints = []
-                        @heartrates.each  do |heartrate|
-                          date << heartrate['created_at']
-                          datapoints << heartrate['value']
-                        end
+                        date = @averageTimes
+                        datapoints = @averageValues
+                        # @heartrates.each  do |heartrate|
+                        #   date << heartrate['created_at']
+                        #   datapoints << heartrate['value']
+                        # end
                       %>
                       var labels1 = <%= raw date.to_json %>;
                       var data = <%= raw datapoints.to_json %>;
@@ -210,17 +212,17 @@
                       ctx.canvas.height = 300;
                       var color = Chart.helpers.color;
                       var cfg = {
-                        type: 'bar',
+                        type: 'line',
                         data: {
                           labels: labels,
                           datasets: [{
                             label: 'HeartRates w/Outliers',
                             data: data,
-                                  backgroundColor: "green",
-                                  borderColor: "lightgreen",
+                            backgroundColor: "rgb(252, 161, 136)",
+					                  borderColor: "red",
                             type: 'line',
                             pointRadius: 3,
-                            fill: false,
+                            fill: true,
                             lineTension: 0,
                             borderWidth: 2
                           }]
@@ -231,19 +233,21 @@
                             xAxes: [{
                               type: 'time',
                               distribution: 'series',
-                              ticks: {
-                                source: 'labels'
-                              }
                             }],
                             yAxes: [{
                               scaleLabel: {
                                 display: true,
                                 labelString: 'HeartRate Values'
                               },
-                                ticks: {
+                              ticks: {
                                 beginAtZero:true
                               }
                             }]
+                          },
+                          plugins: {
+                            datalabels: {
+                                display: false,
+                            },
                           }
                         }
                       };

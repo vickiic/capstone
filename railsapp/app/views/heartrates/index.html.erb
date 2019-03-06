@@ -43,21 +43,21 @@
 	</select>
 	<button id="update">update</button>
 	<script>
-      <% 
-         date = []
-         datapoints = []
-          @heartrates.each  do |heartrate|
-          date << heartrate['created_at']
-          datapoints << heartrate['value']
-       end
-       %>
-          var labels1 = <%= raw date.to_json %>;
-          var data = <%= raw datapoints.to_json %>;
-          var labels = [];
+		<% 
+			date = []
+			datapoints = []
+			@heartrates.each  do |heartrate|
+			date << heartrate['time']
+			datapoints << heartrate['value']
+			end
+		%>
+		var labels1 = <%= raw date.to_json %>;
+		var data = <%= raw datapoints.to_json %>;
+		var labels = [];
 		var dateFormat = 'YYYY-MM-DD HH:mm:ss';
-          for (i=0; i<labels1.length; i++) {
-		labels.push(moment(labels1[i], dateFormat));
-          }
+		for (i=0; i<labels1.length; i++) {
+			labels.push(moment(labels1[i], dateFormat));
+		}
 		var ctx = document.getElementById('chart1').getContext('2d');
 		ctx.canvas.width = 1000;
 		ctx.canvas.height = 300;
@@ -70,24 +70,25 @@
 				datasets: [{
 					label: 'HeartRates',
 					data: data,
-				        backgroundColor: "green",
-				        borderColor: "lightgreen",
+					backgroundColor: "rgb(252, 161, 136)",
+					borderColor: "red",
  					type: 'line',
-					pointRadius: 0,
-					fill: false,
+					pointRadius: 3,
+					fill: true,
 					lineTension: 0,
 					borderWidth: 2
 				}]
 			},
 			options: {
-			        responsive: false,
+				responsive: false,
 				scales: {
 					xAxes: [{
 						type: 'time',
-						distribution: 'series',
-						ticks: {
-							source: 'labels'
-						}
+						distribution: 'linear',
+						// ticks: {
+						// 	source: 'labels',
+						// 	maxTicksLimit: 1
+						// }
 					}],
 					yAxes: [{
 						scaleLabel: {
@@ -99,6 +100,11 @@
 						}
 
 					}]
+				}, 
+				plugins: {
+					datalabels: {
+							display: false,
+					},
 				}
 			}
 		};
