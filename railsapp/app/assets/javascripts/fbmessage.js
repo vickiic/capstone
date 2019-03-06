@@ -25,7 +25,7 @@ usersRef.once("value", function(snapshot) {
   });
 });
 
-	
+createChat();
 // --------------------------
 // READ
 // --------------------------
@@ -108,7 +108,8 @@ function userClicked(e) {
 
 const addUserBtnUI = document.getElementById("add-user-btn");
 addUserBtnUI.addEventListener("click", addUserBtnClicked)
-
+const addUserBtnUI1 = document.getElementById("add-user-btn1");
+addUserBtnUI1.addEventListener("click", addUserBtnClicked)
 
 
 function addUserBtnClicked() {
@@ -210,6 +211,76 @@ function saveUserBtnClicked(e) {
 	document.getElementById('edit-user-module').style.display = "none";
 
 }
+
+function createChat() {
+
+	const userListUI = document.getElementById("chat-list");
+
+	usersRef.on("value", snap => {
+
+		userListUI.innerHTML = ""
+
+		snap.forEach(childSnap => {
+
+			let key = childSnap.key,
+				value = childSnap.val()
+  			
+			let $li = document.createElement("li");
+			let $div = document.createElement("div");
+			$div.innerHTML = value.text;
+			if(value.sender_id != "physcid1"){
+				var incoming_message = document.createElement('div');
+				incoming_message.className = "incoming_msg";
+				var received_message = document.createElement('div');
+				received_message.className = "received_msg";
+				var received_withd_message = document.createElement('div');
+				received_withd_message.className = "received_withd_msg";
+				incoming_message.append(received_message);
+				received_message.append(received_withd_message);
+				/*
+				<div class="incoming_msg">
+                    <div class="received_msg">
+                        <div class="received_withd_msg">
+                                <p>Test which is a new approach to have all
+                                    solutions
+                                </p>
+                            <span class="time_date"> 11:01 AM    |    June 9</span>
+                        </div>
+                	</div>
+            	</div>
+				*/
+				received_withd_message.append($div);
+			}
+			else{
+				/*
+									<div class="outgoing_msg">
+                                       <div class="sent_msg">
+                                          <p>Test which is a new approach to have all
+                                             solutions
+                                          </p>
+                                          <span class="time_date"> 11:01 AM    |    June 9</span> 
+                                       </div>
+                                    </div>
+
+				*/
+				var outgoing_message = document.createElement('div');
+				outgoing_message.className = "outgoing_msg";
+				var sent_message = document.createElement('div');
+				sent_message.className = "sent_msg";
+				outgoing_message.append(sent_message);
+				sent_message.append($div);
+			}
+			$li.setAttribute("user-key", key);
+			$li.addEventListener("click", userClicked)
+			userListUI.append($div);
+
+ 		});
+
+
+	})
+
+}
+
 
 
 
