@@ -107,7 +107,7 @@ function userClicked(e) {
 // --------------------------
 
 const addUserBtnUI = document.getElementById("add-user-btn");
-addUserBtnUI.addEventListener("click", addUserBtnClicked)
+addUserBtnUI.addEventListener("click",  addUserBtnClicked);
 const addUserBtnUI1 = document.getElementById("add-user-btn1");
 addUserBtnUI1.addEventListener("click", addUserBtnClicked)
 
@@ -212,70 +212,48 @@ function saveUserBtnClicked(e) {
 
 }
 
+//const userListUI = document.getElementById("chat-list");
 function createChat() {
 
 	const userListUI = document.getElementById("chat-list");
-
+//	alert("OK");
 	usersRef.on("value", snap => {
 
-		userListUI.innerHTML = ""
-
+		userListUI.innerHTML = "";
+/*				var incoming_message = document.createElement('div');
+				userListUI.appendChild(incoming_message);
+				incoming_message.innerHTML="<p>Incoming message</p>";
+				incoming_message.className = "incoming_msg";
+				var outgoing_message = document.createElement('div');
+				userListUI.appendChild(outgoing_message);
+				outgoing_message.innerHTML="<p>Outgoing message</p>";
+				outgoing_message.className = "outgoing_msg";
+*/
 		snap.forEach(childSnap => {
 
 			let key = childSnap.key,
-				value = childSnap.val()
+			value = childSnap.val()
   			
-			let $li = document.createElement("li");
+//			let $li = document.createElement("li");
 			let $div = document.createElement("div");
-			$div.innerHTML = value.text;
-			if(value.sender_id != "physcid1"){
-				var incoming_message = document.createElement('div');
-				incoming_message.className = "incoming_msg";
-				var received_message = document.createElement('div');
-				received_message.className = "received_msg";
-				var received_withd_message = document.createElement('div');
-				received_withd_message.className = "received_withd_msg";
-				incoming_message.append(received_message);
-				received_message.append(received_withd_message);
-				/*
-				<div class="incoming_msg">
-                    <div class="received_msg">
-                        <div class="received_withd_msg">
-                                <p>Test which is a new approach to have all
-                                    solutions
-                                </p>
-                            <span class="time_date"> 11:01 AM    |    June 9</span>
-                        </div>
-                	</div>
-            	</div>
-				*/
-				received_withd_message.append($div);
+			if(value.sender_id != "physcid1") {
+				$div.className="col-4"
+				$div.innerHTML = "<p><font size=\"4\" color=\"cyan\">" + value.text +"</font></p>";
 			}
-			else{
-				/*
-									<div class="outgoing_msg">
-                                       <div class="sent_msg">
-                                          <p>Test which is a new approach to have all
-                                             solutions
-                                          </p>
-                                          <span class="time_date"> 11:01 AM    |    June 9</span> 
-                                       </div>
-                                    </div>
-
-				*/
-				var outgoing_message = document.createElement('div');
-				outgoing_message.className = "outgoing_msg";
-				var sent_message = document.createElement('div');
-				sent_message.className = "sent_msg";
-				outgoing_message.append(sent_message);
-				sent_message.append($div);
+			else {
+				$div.className="col-4 offset-6"
+				$div.innerHTML = "<p><font size=\"4\" color=\"red\">"+value.text+"</font></p>";
 			}
+/*
 			$li.setAttribute("user-key", key);
 			$li.addEventListener("click", userClicked)
-			userListUI.append($div);
+*/
+			userListUI.appendChild($div);
 
  		});
-
+		// auto scroll  y axis to the bottom
+		var objDiv = document.getElementById("msg_history");
+		objDiv.scrollTop = objDiv.scrollHeight;
 
 	})
 
