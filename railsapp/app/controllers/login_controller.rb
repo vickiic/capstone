@@ -13,22 +13,12 @@ class LoginController < ApplicationController
   end
 
   def gen
-    _api = JSON.parse File.read(Rails.root.join("app/assets/api.json"))
-    _response = HTTParty.post(
-        'https://devices.intouchhealth.com/api/v1/metric_field_values',
-        body: { "device_uid": "12345abc",
-                "metric_field_values": {
-                    "heartRate":
-                        {
-                            "value": rand(30) + 40,
-                            "timestamp": Time.now.strftime("%Y-%m-%dT%H:%M:%S.000Z")
-                        }
-                }
-        }.to_json,
-        headers: { 'ITH-API-Key': _api["key"],
-                   'ITH-Username': _api["username"],
-                   'Content-Type': 'application/json' }
-    )
+    bpm = Heartrate.new
+    bpm.device = "12345abc"
+    bpm.value = rand(100) + 50
+    randomTime = DateTime.now - rand 
+    bpm.time = randomTime.strftime("%Y-%m-%d %H:%M:%S.00")
+    bpm.save
     redirect_to login_index_path
   end
 end

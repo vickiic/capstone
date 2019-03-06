@@ -14,7 +14,31 @@ class StatsController < ApplicationController
     _endDay = params[:endDay]
 
     if (params[:commit] == nil) then
-      @heartrates = Heartrate.where("device = ?", @patient)
+      @heartrates = Heartrate.where("device = ?", @patient).order(:Time)
+
+      puts "The current time is: "
+      puts DateTime.now
+      aryValue = Array.new
+      aryTime = Array.new
+      (0..24).each do |i|
+        current = Heartrate.where("device = ? AND time >= ? AND time <= ?",
+          @patient,
+          DateTime.now - (0.04166*(i+1)),
+          DateTime.now - (0.04166*i)
+          )
+          avg = current.average(:value)
+        if(avg)
+          aryValue.push(avg)
+        else 
+          aryValue.push("NaN")
+        end
+        aryTime.push(DateTime.now - (0.0416*i))
+      end
+
+      @averageValues = aryValue
+      @averageTimes = aryTime
+      puts aryValue
+      puts aryTime
     else
       #check for nil
       if _startYear == '' || _startYear == nil then
@@ -38,7 +62,7 @@ class StatsController < ApplicationController
 
       _startDate = Date.new(_startYear.to_i, _startMonth.to_i, _startDay.to_i)
       _endDate = Date.new(_endYear.to_i, _endMonth.to_i, _endDay.to_i)
-      @heartrates = Heartrate.where("device = ? AND created_at > ? AND created_at < ?", @patient, _startDate, _endDate)
+      @heartrates = Heartrate.where("device = ? AND created_at > ? AND created_at < ?", @patient, _startDate, _endDate).order(:Time)
     end
   end
 

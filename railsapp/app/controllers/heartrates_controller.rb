@@ -4,7 +4,7 @@ class HeartratesController < ApplicationController
   # GET /heartrates
   # GET /heartrates.json
   def index
-    @heartrates = Heartrate.all
+    @heartrates = Heartrate.order(:Time)
   end
 
   # GET /heartrates/1
@@ -30,12 +30,6 @@ class HeartratesController < ApplicationController
 
     duplicate = Heartrate.where("device = ? AND value = ? AND time = ?", _device, _value, _time)
     if(duplicate.exists?)
-      return
-    end
-
-    _newDevice = Heartrate.where("device = ?", _device).exists?
-    _lastHeartrate = Heartrate.where("device = ?", _device).last
-    if(_newDevice && _lastHeartrate.created_at > DateTime.now - 0.02 && _lastHeartrate.value == _value)
       return
     end
 
