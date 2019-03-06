@@ -16,9 +16,15 @@ class LoginController < ApplicationController
     bpm = Heartrate.new
     bpm.device = "12345abc"
     bpm.value = rand(100) + 50
-    randomTime = DateTime.now - rand 
+    randomTime = DateTime.now - rand
     bpm.time = randomTime.strftime("%Y-%m-%d %H:%M:%S.00")
     bpm.save
     redirect_to login_index_path
   end
+
+  def clearDb
+    Heartrate.all.delete_all
+    redirect_to login_index_path
+  end
 end
+

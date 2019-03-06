@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/stats/index/:id', to: 'stats#index'
   post 'welcome/index', to: 'welcome#search'
   get '/login/gen', to: 'login#gen'
+  get '/login/clearDb', to: 'login#clearDb'
   get '/login/authenticate', to: 'login#authenticate'
   resources :heartrates
 

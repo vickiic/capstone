@@ -23,8 +23,8 @@ class StatsController < ApplicationController
       (0..24).each do |i|
         current = Heartrate.where("device = ? AND time >= ? AND time <= ?",
           @patient,
-          DateTime.now - (0.04166*(i+1)),
-          DateTime.now - (0.04166*i)
+          (DateTime.now - (0.04166*(i+1)) - 0.33333).at_beginning_of_hour,
+          (DateTime.now - (0.04166*i) - 0.33333).at_beginning_of_hour
           )
           avg = current.average(:value)
         if(avg)
@@ -32,7 +32,7 @@ class StatsController < ApplicationController
         else 
           aryValue.push("NaN")
         end
-        aryTime.push(DateTime.now - (0.0416*i))
+        aryTime.push((DateTime.now - (0.0416*i)).at_beginning_of_hour)
       end
 
       @averageValues = aryValue
