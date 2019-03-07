@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'stats/notes'
   get 'stats/messaging'
   get 'welcome/index'
+  get 'stats/test'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/stats/index/:id', to: 'stats#index'
@@ -22,5 +23,8 @@ Rails.application.routes.draw do
 
   # root :to => redirect('/login/index')
   root 'welcome#index'
+
+  # Serve websocket cable requests in-progress
+  # mount ActionCable.server => '/cable'
 end
 
