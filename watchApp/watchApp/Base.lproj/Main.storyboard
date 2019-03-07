@@ -445,6 +445,13 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0rT-zt-adc" customClass="SymptomDialogView" customModule="watchApp" customModuleProvider="target">
+                                <rect key="frame" x="48" y="316" width="279" height="296"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="9E0-zZ-1V2" kind="embed" id="bNa-KY-fgq"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -459,6 +466,8 @@
                         <outlet property="patientEmailTF" destination="xhD-9w-Y0M" id="ISj-0K-Wv8"/>
                         <outlet property="patientImage" destination="B6Q-Kh-D6U" id="Vod-yd-TGc"/>
                         <outlet property="patientNameTF" destination="Hvq-UR-cYq" id="G06-NY-9o8"/>
+                        <outlet property="reportButton" destination="Dy9-HA-ygX" id="ARU-cN-nNH"/>
+                        <outlet property="symptomView" destination="0rT-zt-adc" id="3Un-gf-VWc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TsO-Od-0q3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -780,6 +789,80 @@
             </objects>
             <point key="canvasLocation" x="1657" y="34"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="vkC-2D-tdb">
+            <objects>
+                <viewController id="9E0-zZ-1V2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HA4-T6-Bz4" customClass="SymptomDialogView" customModule="watchApp" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="279" height="296"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Report Symptom" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FC9-fC-INn">
+                                <rect key="frame" x="60" y="11" width="158" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oS-Qb-fZ0">
+                                <rect key="frame" x="26" y="49" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Fatigue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="fatigueClicked:" destination="HA4-T6-Bz4" eventType="touchUpInside" id="OM1-Of-hCi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t94-OX-zTs">
+                                <rect key="frame" x="152" y="49" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.63921568627450975" green="0.85490196078431369" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="1" green="0.5450980392" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Nausea">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nauseaClicked:" destination="HA4-T6-Bz4" eventType="touchUpInside" id="gNw-8P-az4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAy-Za-Izh">
+                                <rect key="frame" x="152" y="170" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.5450980392" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Pain">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="painClicked:" destination="HA4-T6-Bz4" eventType="touchUpInside" id="KDy-DJ-1jM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J5x-iv-A5m">
+                                <rect key="frame" x="26" y="170" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.18823529411764706" green="0.32156862745098036" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Discomfort">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="discomfortClicked:" destination="HA4-T6-Bz4" eventType="touchUpInside" id="jWS-yF-KmT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="discomfortButton" destination="J5x-iv-A5m" id="ntB-Ur-2dh"/>
+                            <outlet property="fatigueButton" destination="3oS-Qb-fZ0" id="zd0-Of-Lqa"/>
+                            <outlet property="nauseaButton" destination="t94-OX-zTs" id="E3g-yZ-o1l"/>
+                            <outlet property="painButton" destination="OAy-Za-Izh" id="AqP-G7-gBD"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DbX-Cl-pRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3420.8000000000002" y="-661.33004926108379"/>
+        </scene>
     </scenes>
     <resources>
         <image name="heartbeat" width="30" height="30"/>
@@ -789,7 +872,7 @@
         <image name="settings" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iXp-2B-BYr"/>
+        <segue reference="vCb-te-TsC"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.5450980392" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
