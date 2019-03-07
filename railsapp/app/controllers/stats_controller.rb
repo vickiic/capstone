@@ -16,29 +16,48 @@ class StatsController < ApplicationController
     if (params[:commit] == nil) then
       @heartrates = Heartrate.where("device = ?", @patient).order(:Time)
 
-      puts "The current time is: "
-      puts DateTime.now
-      aryValue = Array.new
-      aryTime = Array.new
+      hourlyAverageToday = Array.new(24)
+      hourlyTimeToday = Array.new(24)
+      (0..23).each do |i|
+        (0..6).each do |j|
+          current = Heartrate.where("device = ? AND time >= ? AND time <= ?",
+            @patient,
+            (DateTime.now - (0.04166*(i+1)) - 0.33333).at_beginning_of_hour,
+            (DateTime.now - (0.04166*i) - 0.33333).at_beginning_of_hour
+            )
+            avg = current.average(:value)
+          if(avg)
+            hourlyAverageToday[avg] = hourlyAverageToday[avg] + avg
+          else 
+            hourlyAverageToday.push("NaN")
+          end
+        hourlyTimeToday.push((DateTime.now - (0.0416*i)).at_beginning_of_hour)
+      end
+
+      @hourlyAverageToday = hourlyAverageToday
+      @hourlyTimeToday = hourlyTimeToday
+
+      hourlyAverageYesterday = Array.new
       (0..24).each do |i|
         current = Heartrate.where("device = ? AND time >= ? AND time <= ?",
           @patient,
-          (DateTime.now - (0.04166*(i+1)) - 0.33333).at_beginning_of_hour,
-          (DateTime.now - (0.04166*i) - 0.33333).at_beginning_of_hour
+          (DateTime.now - (0.04166*(i+1)) - 0.33333 - 1).at_beginning_of_hour,
+          (DateTime.now - (0.04166*i) - 0.33333 - 1).at_beginning_of_hour
           )
           avg = current.average(:value)
         if(avg)
-          aryValue.push(avg)
+          hourlyAverageYesterday.push(avg)
         else 
-          aryValue.push("NaN")
+          hourlyAverageYesterday.push("NaN")
         end
-        aryTime.push((DateTime.now - (0.0416*i)).at_beginning_of_hour)
       end
 
-      @averageValues = aryValue
-      @averageTimes = aryTime
-      puts aryValue
-      puts aryTime
+      @hourlyAverageYesterday = hourlyAverageYesterday
+
+
+
+
+
     else
       #check for nil
       if _startYear == '' || _startYear == nil then
