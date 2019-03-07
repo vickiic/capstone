@@ -155,7 +155,7 @@
                             fill: true,
                             lineTension: 0,
                             borderWidth: 2,
-                          }]
+                          },]
                         },
                         options: {
                           responsive: false,
@@ -193,8 +193,8 @@
                     </div>
                     <script>
                       <% 
-                        date = @averageTimes
-                        datapoints = @averageValues
+                        date = @hourlyTimeToday
+                        datapoints = @hourlyAverageToday
                         # @heartrates.each  do |heartrate|
                         #   date << heartrate['created_at']
                         #   datapoints << heartrate['value']
@@ -357,15 +357,13 @@
                     </div>
                     <script>
                       <% 
-                        date = []
-                        datapoints = []
-                        @heartrates.each  do |heartrate|
-                          date << heartrate['created_at']
-                          datapoints << heartrate['value']
-                        end
+                        date = @hourlyTimeToday
+                        datapointsToday = @hourlyAverageToday
+                        datapointsYesterday = @hourlyAverageYesterday
                       %>
                       var labels1 = <%= raw date.to_json %>;
-                      var data = <%= raw datapoints.to_json %>;
+                      var dataToday = <%= raw datapointsToday.to_json %>;
+                      var dataYesterday = <%= raw datapointsYesterday.to_json %>;
                       var labels = [];
                       var dateFormat = 'YYYY-MM-DD HH:mm:ss';
                       for (i=0; i<labels1.length; i++) {
@@ -376,36 +374,54 @@
                       ctx.canvas.height = 300;
                       var color = Chart.helpers.color;
                       var cfg = {
-                        type: 'bar',
+                        type: 'line',
                         data: {
                           labels: labels,
                           datasets: [{
-                            label: 'Current Heartrate',
-                            data: data,
-                                  backgroundColor: "green",
-                                  borderColor: "lightgreen",
+                            label: 'Average Today',
+                            data: dataToday,
+                            backgroundColor: "rgb(252, 161, 136)",
+					                  borderColor: "red",
                             type: 'line',
                             pointRadius: 3,
                             fill: false,
                             lineTension: 0,
-                            borderWidth: 2
-                          }]
+                            borderWidth: 2,
+                          },
+                          {
+                            label: 'Average Yesterday',
+                            data: dataYesterday,
+                            backgroundColor: "rgb(116, 252, 136)",
+					                  borderColor: "green",
+                            type: 'line',
+                            pointRadius: 3,
+                            fill: false,
+                            lineTension: 0,
+                            borderWidth: 2,
+                          },
+                          ]
                         },
                         options: {
                           responsive: false,
                           scales: {
                             xAxes: [{
-                              type: 'realtime'
+                              type: 'time',
+                              distribution: 'linear',
                             }],
                             yAxes: [{
                               scaleLabel: {
                                 display: true,
                                 labelString: 'HeartRate Values'
                               },
-                                ticks: {
+                              ticks: {
                                 beginAtZero:true
                               }
                             }]
+                          },
+                          plugins: {
+                            datalabels: {
+                                display: false,
+                            },
                           }
                         }
                       };

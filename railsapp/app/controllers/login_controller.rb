@@ -15,7 +15,7 @@ class LoginController < ApplicationController
   def gen
     bpm = Heartrate.new
     bpm.device = "12345abc"
-    bpm.value = rand(100) + 50
+    bpm.value = rand(100) + 200
     randomTime = DateTime.now - rand
     bpm.time = randomTime.strftime("%Y-%m-%d %H:%M:%S.00")
     bpm.save
