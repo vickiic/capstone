@@ -26,5 +26,5 @@ production:
   timeout: 5000
   username: "root"
   password: "capstone"
-  database: "heartrates_production"
-  socket:   "/cloudsql/ithcapstone2019:us-west2:heartrates"
+  database: "heartrate"
+  socket:   "/cloudsql/ithcapstone4:us-west2:heartrate"
