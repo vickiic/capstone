@@ -194,7 +194,7 @@
                     <script>
                       <% 
                         date = @hourlyTimeToday
-                        datapoints = @hourlyAverageToday
+                        datapoints = @weekly1
                         # @heartrates.each  do |heartrate|
                         #   date << heartrate['created_at']
                         #   datapoints << heartrate['value']
@@ -358,12 +358,16 @@
                     <script>
                       <% 
                         date = @hourlyTimeToday
-                        datapointsToday = @hourlyAverageToday
-                        datapointsYesterday = @hourlyAverageYesterday
+                        rawWeekly1 = @weekly1
+                        rawWeekly2 = @weekly2
+                        rawWeekly3 = @weekly3
+                        rawWeekly4 = @weekly4
                       %>
                       var labels1 = <%= raw date.to_json %>;
-                      var dataToday = <%= raw datapointsToday.to_json %>;
-                      var dataYesterday = <%= raw datapointsYesterday.to_json %>;
+                      var weekly1 = <%= raw rawWeekly1.to_json %>;
+                      var weekly2 = <%= raw rawWeekly2.to_json %>;
+                      var weekly3 = <%= raw rawWeekly3.to_json %>;
+                      var weekly4 = <%= raw rawWeekly4.to_json %>;
                       var labels = [];
                       var dateFormat = 'YYYY-MM-DD HH:mm:ss';
                       for (i=0; i<labels1.length; i++) {
@@ -378,8 +382,8 @@
                         data: {
                           labels: labels,
                           datasets: [{
-                            label: 'Average Today',
-                            data: dataToday,
+                            label: 'Last Week',
+                            data: weekly1,
                             backgroundColor: "rgb(252, 161, 136)",
 					                  borderColor: "red",
                             type: 'line',
@@ -389,10 +393,32 @@
                             borderWidth: 2,
                           },
                           {
-                            label: 'Average Yesterday',
-                            data: dataYesterday,
+                            label: '2 Weeks ago',
+                            data: weekly2,
                             backgroundColor: "rgb(116, 252, 136)",
 					                  borderColor: "green",
+                            type: 'line',
+                            pointRadius: 3,
+                            fill: false,
+                            lineTension: 0,
+                            borderWidth: 2,
+                          },
+                          {
+                            label: '3 Weeks ago',
+                            data: weekly3,
+                            backgroundColor: "rgb(116, 136, 252)",
+					                  borderColor: "blue",
+                            type: 'line',
+                            pointRadius: 3,
+                            fill: false,
+                            lineTension: 0,
+                            borderWidth: 2,
+                          },
+                          {
+                            label: '4 Weeks ago',
+                            data: weekly4,
+                            backgroundColor: "rgb(0, 0, 0)",
+					                  borderColor: "black",
                             type: 'line',
                             pointRadius: 3,
                             fill: false,
