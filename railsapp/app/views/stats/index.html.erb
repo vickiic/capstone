@@ -2,11 +2,6 @@
 <div id="main-wrapper">
   <header class="topbar">
     <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="index.html">
-          <%= image_tag "logo.png", :class => "light-logo" %>
-        </b></a>
-      </div>
       <div class="navbar-collapse">
         <ul class="navbar-nav mr-auto mt-md-0">
           <li class="nav-item"> 
@@ -79,10 +74,6 @@
         <div class="col-lg-12">
           <div class="card">
             <span>
-              <%= link_to 'Heartrate', stats_index_path(:id => @patient) %>
-              <%= link_to 'Prescription', stats_prescription_path(:id => @patient) %>
-              <%= link_to 'Medical History', stats_history_path(:id => @patient) %>
-              <%= link_to 'Notes', stats_notes_path(:id => @patient) %>
               <%= link_to 'Messages', stats_messaging_path(:id => @patient) %>              
             </span>
             <div class="card-block">
@@ -91,22 +82,6 @@
                   <div class="d-flex flex-wrap">
                     <div>
                       <h3 class="card-title">Heartrate (bpm)</h3>
-                      <%= form_tag(stats_index_path, method: "get") do %>
-                        <div>
-                          <%= text_field_tag :startYear, nil, placeholder: 'Year' %>
-                          <%= text_field_tag :startMonth, nil, placeholder: 'Month' %>
-                          <%= text_field_tag :startDay, nil, placeholder: 'Day' %>
-                        </div>
-                        <div>
-                          <%= text_field_tag :endYear, nil, placeholder: 'Year' %>
-                          <%= text_field_tag :endMonth, nil, placeholder: 'Month' %>
-                          <%= text_field_tag :endDay, nil, placeholder: 'Day' %>
-                        </div>
-                        <%= hidden_field_tag :id, @patient %>
-                        <p>
-                          <%= submit_tag("Submit") %>
-                        </p>
-                      <% end %>
                   </div>
                 </div>
               <div class ="tab">
@@ -115,7 +90,6 @@
                 <button class="tablinks" onclick="openGraph(event, 'Warnings')">Warnings</button>
                 <button class="tablinks" onclick="openGraph(event, 'Live')">Live</button>
               </div>
-                <div class="col-12">
                 <div id="Main" class="tabcontent">
                   <div class="amp-pxl" style="height: 360px;">
                     <div style="width:1000px">
@@ -184,7 +158,6 @@
                       var chart = new Chart(ctx, cfg);
                     </script>
                   </div>
-                </div>
                 </div>
                 <div id="Outliers" class="tabcontent">
                   <div class="amp-pxl" style="height: 360px;">
