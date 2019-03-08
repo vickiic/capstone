@@ -86,9 +86,9 @@
                 </div>
               <div class ="tab">
                 <button class="tablinks" onclick="openGraph(event, 'Main')" id="defaultOpen">Raw</button>
-                <button class="tablinks" onclick="openGraph(event, 'Outliers')">Hourly Averages</button>
-                <button class="tablinks" onclick="openGraph(event, 'Warnings')">Warnings</button>
-                <button class="tablinks" onclick="openGraph(event, 'Live')">Live</button>
+                <button class="tablinks" onclick="openGraph(event, 'Outliers')">Last 24 Hours Raw</button>
+                <button class="tablinks" onclick="openGraph(event, 'Warnings')">Last 24 Hours Average</button>
+                <button class="tablinks" onclick="openGraph(event, 'Live')">Weekly Comparison</button>
               </div>
                 <div id="Main" class="tabcontent">
                   <div class="amp-pxl" style="height: 360px;">
@@ -125,7 +125,7 @@
                             backgroundColor: "rgb(252, 161, 136)",
 					                  borderColor: "red",
                             type: 'line',
-                            pointRadius: 3,
+                            pointRadius: 1,
                             fill: true,
                             lineTension: 0,
                             borderWidth: 2,
@@ -166,12 +166,12 @@
                     </div>
                     <script>
                       <% 
-                        date = @hourlyTimeToday
-                        datapoints = @weekly1
-                        # @heartrates.each  do |heartrate|
-                        #   date << heartrate['created_at']
-                        #   datapoints << heartrate['value']
-                        # end
+                        date = []
+                        datapoints = []
+                        @todayRaw.each  do |heartrate|
+                          date << heartrate['time']
+                          datapoints << heartrate['value']
+                        end
                       %>
                       var labels1 = <%= raw date.to_json %>;
                       var data = <%= raw datapoints.to_json %>;
@@ -194,7 +194,7 @@
                             backgroundColor: "rgb(252, 161, 136)",
 					                  borderColor: "red",
                             type: 'line',
-                            pointRadius: 3,
+                            pointRadius: 1,
                             fill: true,
                             lineTension: 0,
                             borderWidth: 2
@@ -235,12 +235,8 @@
                     </div>
                     <script>
                       <% 
-                        date = []
-                        datapoints = []
-                        @heartrates.each  do |heartrate|
-                          date << heartrate['created_at']
-                          datapoints << heartrate['value']
-                        end
+                        date = @hourlyTimeToday
+                        datapoints = @hourlyAverageToday
                       %>
                       var labels1 = <%= raw date.to_json %>;
                       var data = <%= raw datapoints.to_json %>;
@@ -254,59 +250,42 @@
                       ctx.canvas.height = 300;
                       var color = Chart.helpers.color;
                       var cfg = {
-                        type: 'bar',
+                        type: 'line',
                         data: {
                           labels: labels,
                           datasets: [{
-                            label: 'Warnings',
+                            label: 'HeartRates w/Outliers',
                             data: data,
-                                  backgroundColor: "green",
-                                  borderColor: "lightgreen",
-                                  pointBackgroundColor: "green",
+                            backgroundColor: "rgb(252, 161, 136)",
+					                  borderColor: "red",
                             type: 'line',
-                            pointRadius: 10,
-                            fill: false,
+                            pointRadius: 1,
+                            fill: true,
                             lineTension: 0,
                             borderWidth: 2
                           }]
                         },
                         options: {
                           responsive: false,
-                          tooltips: {
-                            callbacks:{
-                              label: function(tooltipItem, data){
-                                var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || 'Other';
-                                var label = data.labels[tooltipItem.index];
-                                var datanumber = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-                                if (datanumber > 100){
-                                return  'HIGH BPM';
-                                }
-                                else if (datanumber < 55){
-                                  return 'LOW BPM';
-                                }
-                                else {
-                                  return datanumber;
-                                }
-                              }
-                            }
-                          },
                           scales: {
                             xAxes: [{
                               type: 'time',
                               distribution: 'series',
-                              ticks: {
-                                source: 'labels'
-                              }
                             }],
                             yAxes: [{
                               scaleLabel: {
                                 display: true,
                                 labelString: 'HeartRate Values'
                               },
-                                ticks: {
+                              ticks: {
                                 beginAtZero:true
                               }
                             }]
+                          },
+                          plugins: {
+                            datalabels: {
+                                display: false,
+                            },
                           }
                         }
                       };
@@ -360,7 +339,7 @@
                             backgroundColor: "rgb(252, 161, 136)",
 					                  borderColor: "red",
                             type: 'line',
-                            pointRadius: 3,
+                            pointRadius: 1,
                             fill: false,
                             lineTension: 0,
                             borderWidth: 2,
@@ -371,7 +350,7 @@
                             backgroundColor: "rgb(116, 252, 136)",
 					                  borderColor: "green",
                             type: 'line',
-                            pointRadius: 3,
+                            pointRadius: 1,
                             fill: false,
                             lineTension: 0,
                             borderWidth: 2,
@@ -382,7 +361,7 @@
                             backgroundColor: "rgb(116, 136, 252)",
 					                  borderColor: "blue",
                             type: 'line',
-                            pointRadius: 3,
+                            pointRadius: 1,
                             fill: false,
                             lineTension: 0,
                             borderWidth: 2,
@@ -393,7 +372,7 @@
                             backgroundColor: "rgb(0, 0, 0)",
 					                  borderColor: "black",
                             type: 'line',
-                            pointRadius: 3,
+                            pointRadius: 1,
                             fill: false,
                             lineTension: 0,
                             borderWidth: 2,
