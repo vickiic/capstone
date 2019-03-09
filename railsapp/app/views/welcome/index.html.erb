@@ -7,27 +7,12 @@
   <!-- ============================================================== -->
   <header class="topbar">
     <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
-      <!-- ============================================================== -->
-      <!-- Logo -->
-      <!-- ============================================================== -->
-      <div class="navbar-header">
-        <a class="navbar-brand" href="index.html">
-          <!-- Logo icon --><b>
-          <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-
-          <!-- Light Logo icon -->
-          <%= image_tag "logo.png", :class => "light-logo" %>
-          </b>
-          <!--End Logo icon -->
-          <!-- Logo text --></a>
-      </div>
-      <!-- ============================================================== -->
-      <!-- End Logo -->
-      <!-- ============================================================== -->
       <div class="navbar-collapse">
-        <!-- ============================================================== -->
-        <!-- toggle and nav items -->
-        <!-- ============================================================== -->
+        <ul class="navbar-nav my-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link waves-dark" href="/welcome/index" ><%= image_tag "logo.png", :class => "profile-pic m-r-10"%></a>
+          </li>
+        </ul>
         <ul class="navbar-nav mr-auto mt-md-0">
           <!-- This is  -->
           <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
@@ -48,7 +33,7 @@
           <!-- Profile -->
           <!-- ============================================================== -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= image_tag "users/d2.jpg", :class => "profile-pic m-r-10"%>Dr. Wang</a>
+            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= image_tag "users/DAVID.png", :class => "profile-pic m-r-10"%>Dr. Halman</a>
           </li>
         </ul>
       </div>
@@ -100,10 +85,9 @@
       <!-- ============================================================== -->
       <div class="row page-titles">
         <div class="col-md-5 col-8 align-self-center">
-          <h3 class="text-themecolor">Welcome, Dr.Wang </h3>
+          <h3 class="text-themecolor">Welcome, Dr. Halman </h3>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard</li>
           </ol>
         </div>
       </div>
