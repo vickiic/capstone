@@ -253,8 +253,9 @@
                           datasets: [{
                             label: 'HeartRates w/Outliers',
                             data: data,
-                            backgroundColor: "rgb(252, 161, 136)",
-					                  borderColor: "red",
+                            backgroundColor: "green",
+                            borderColor: "lightgreen",
+                            pointBackgroundColor: [],
                             type: 'line',
                             pointRadius: 1,
                             fill: true,
@@ -288,11 +289,11 @@
                       };
                       
                       var myChart = new Chart(ctx, cfg);
-                      for (i = 0; i < myChart.data.datasets[datasetIndex].data.length; i++) {
+                      for (i = 0; i < myChart.data.datasets[0].data.length; i++) {
                         if (myChart.data.datasets[0].data[i] > 100) {
-                              pointBackgroundColors.push("#90cd8a");
+                              myChart.data.datasets[0].pointBackgroundColor.push("#90cd8a");
                           } else {
-                              pointBackgroundColors.push("#f58368");
+                              myChart.data.datasets[0].pointBackgroundColor.push("#f58368");
                           }
                       }
                       myChart.update();
