@@ -101,8 +101,8 @@ class StatsController < ApplicationController
     (0..24).each do |i|
       current = Heartrate.where("device = ? AND time >= ? AND time <= ?",
         @patient,
-        (DateTime.now - (0.04166*(i+1)) - 0.33333 - 1).at_beginning_of_hour,
-        (DateTime.now - (0.04166*i) - 0.33333 - 1).at_beginning_of_hour)
+        (DateTime.now - (0.04166*(i+1))).at_beginning_of_hour,
+        (DateTime.now - (0.04166*i)).at_beginning_of_hour)
       avg = current.average(:value)
       if(avg)
         hourlyAverageToday.push(avg)
