@@ -96,13 +96,16 @@
                       <% 
                         date = []
                         datapoints = []
+		                    symptoms = []
                         @heartrates.each  do |heartrate|
                           date << heartrate['time']
                           datapoints << heartrate['value']
+                          symptoms << heartrate['symptom']
                         end
                       %>
                       var labels1 = <%= raw date.to_json %>;
                       var data = <%= raw datapoints.to_json %>;
+	                    var symptomsList = <%= raw symptoms.to_json %>;
                       var labels = [];
                       var dateFormat = 'YYYY-MM-DD HH:mm:ss';
                       for (i=0; i<labels1.length; i++) {
@@ -122,7 +125,9 @@
                             backgroundColor: "rgb(252, 161, 136)",
 					                  borderColor: "red",
                             type: 'line',
-                            pointRadius: 1,
+                            pointBackgroundColor: [],
+                            pointBorderColor: [],
+                            pointRadius: [],
                             fill: true,
                             lineTension: 0,
                             borderWidth: 2,
@@ -130,6 +135,19 @@
                         },
                         options: {
                           responsive: false,
+                          tooltips: {
+                            callbacks:{
+                              label: function(tooltipItem, data){
+                                var datanumber = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                if (symptomsList[tooltipItem.index]){
+                                  return `${datanumber} : ${symptomsList[tooltipItem.index]}`;
+                                }
+                                else {
+                                  return datanumber;
+                                }
+                              }
+                            }
+                          },
                           scales: {
                             xAxes: [{
                               type: 'time',
@@ -152,7 +170,19 @@
                           }
                         }
                       };
-                      var chart = new Chart(ctx, cfg);
+                      var myChart = new Chart(ctx, cfg);
+                      for (i = 0; i < myChart.data.datasets[0].data.length; i++) {
+                        if (symptomsList[i]) {
+                          myChart.data.datasets[0].pointBackgroundColor.push("black");
+                          myChart.data.datasets[0].pointBorderColor.push("black");
+                          myChart.data.datasets[0].pointRadius.push(3);
+                        } else {
+                          myChart.data.datasets[0].pointBackgroundColor.push("rgb(252, 161, 136)");
+                          myChart.data.datasets[0].pointBorderColor.push("red");
+                          myChart.data.datasets[0].pointRadius.push(1);
+                        }
+                      }
+	                    myChart.update();
                     </script>
                   </div>
                 </div>
@@ -165,13 +195,16 @@
                       <% 
                         date = []
                         datapoints = []
+                        symptoms = []
                         @todayRaw.each  do |heartrate|
                           date << heartrate['time']
                           datapoints << heartrate['value']
+		                    	symptoms << heartrate['symptom']
                         end
                       %>
                       var labels1 = <%= raw date.to_json %>;
                       var data = <%= raw datapoints.to_json %>;
+	                    var symptomsList = <%= raw symptoms.to_json %>;
                       var labels = [];
                       var dateFormat = 'YYYY-MM-DD HH:mm:ss';
                       for (i=0; i<labels1.length; i++) {
@@ -191,7 +224,9 @@
                             backgroundColor: "rgb(252, 161, 136)",
 					                  borderColor: "red",
                             type: 'line',
-                            pointRadius: 1,
+                            pointBackgroundColor: [],
+                            pointBorderColor: [],
+                            pointRadius: [],
                             fill: true,
                             lineTension: 0,
                             borderWidth: 2
@@ -199,6 +234,19 @@
                         },
                         options: {
                           responsive: false,
+                          tooltips: {
+                            callbacks:{
+                              label: function(tooltipItem, data){
+                                var datanumber = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                if (symptomsList[tooltipItem.index]){
+                                  return `${datanumber} : ${symptomsList[tooltipItem.index]}`;
+                                }
+                                else {
+                                  return datanumber;
+                                }
+                              }
+                            }
+                          },
                           scales: {
                             xAxes: [{
                               type: 'time',
@@ -221,7 +269,20 @@
                           }
                         }
                       };
-                      var chart = new Chart(ctx, cfg);
+                      var myChart = new Chart(ctx, cfg);
+                      var myChart = new Chart(ctx, cfg);
+                      for (i = 0; i < myChart.data.datasets[0].data.length; i++) {
+                        if (symptomsList[i]) {
+                          myChart.data.datasets[0].pointBackgroundColor.push("black");
+                          myChart.data.datasets[0].pointBorderColor.push("black");
+                          myChart.data.datasets[0].pointRadius.push(3);
+                        } else {
+                          myChart.data.datasets[0].pointBackgroundColor.push("rgb(252, 161, 136)");
+                          myChart.data.datasets[0].pointBorderColor.push("red");
+                          myChart.data.datasets[0].pointRadius.push(1);
+                        }
+                      }
+	                    myChart.update();
                     </script>
                   </div>
                 </div>
@@ -289,14 +350,6 @@
                       };
                       
                       var myChart = new Chart(ctx, cfg);
-                      for (i = 0; i < myChart.data.datasets[0].data.length; i++) {
-                        if (myChart.data.datasets[0].data[i] > 100) {
-                              myChart.data.datasets[0].pointBackgroundColor.push("#90cd8a");
-                          } else {
-                              myChart.data.datasets[0].pointBackgroundColor.push("#f58368");
-                          }
-                      }
-                      myChart.update();
                     </script>
                   </div>
                 </div>
