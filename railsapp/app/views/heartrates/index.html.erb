@@ -8,6 +8,7 @@
       <th>Device</th>
       <th>Value</th>
       <th>Time</th>
+      <th>Symptom</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= heartrate.device %></td>
         <td><%= heartrate.value %></td>
         <td><%= heartrate.time %></td>
+				<td><%= heartrate.symptom %></td>
         <td><%= heartrate.created_at %></td>
         <td><%= link_to 'Show', heartrate %></td>
         <td><%= link_to 'Edit', edit_heartrate_path(heartrate) %></td>
