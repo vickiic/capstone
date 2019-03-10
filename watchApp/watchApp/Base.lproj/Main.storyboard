@@ -283,8 +283,8 @@
                                 <rect key="frame" x="16" y="156" width="154" height="154"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="cpR-mz-YeH">
-                                <rect key="frame" x="97.666666666666686" y="484" width="180" height="182"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="cpR-mz-YeH">
+                                <rect key="frame" x="97.666666666666686" y="494" width="180" height="172"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brS-IG-Ek8">
                                         <rect key="frame" x="0.0" y="0.0" width="180" height="34"/>
@@ -295,7 +295,7 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CZ-if-lsV">
-                                        <rect key="frame" x="0.0" y="74" width="180" height="34"/>
+                                        <rect key="frame" x="0.0" y="69" width="180" height="34"/>
                                         <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Doctor's Notes">
@@ -303,7 +303,7 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ar-v2-Hj5">
-                                        <rect key="frame" x="0.0" y="148" width="180" height="34"/>
+                                        <rect key="frame" x="0.0" y="138" width="180" height="34"/>
                                         <color key="backgroundColor" red="1" green="0.5450980392" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Message">

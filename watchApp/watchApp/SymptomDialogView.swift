@@ -17,6 +17,9 @@ class SymptomDialogView: UIView {
     @IBOutlet weak var nauseaButton: UIButton!
     @IBOutlet weak var painButton: UIButton!
     
+    let io: IOWebService = IOWebService.getSharedInstance()
+    let currUid = Auth.auth().currentUser?.uid
+    
     override func layoutSubviews() {
         painButton?.layer.cornerRadius = 30
         discomfortButton?.layer.cornerRadius = 30
@@ -31,18 +34,22 @@ class SymptomDialogView: UIView {
     
     @IBAction func fatigueClicked(_ sender: UIButton) {
         sendSymptom(type: 1)
+        self.io.sendSymptomIO(uid: self.currUid!, type: 1)
     }
     
     @IBAction func nauseaClicked(_ sender: UIButton) {
         sendSymptom(type: 2)
+        self.io.sendSymptomIO(uid: self.currUid!, type: 2)
     }
     
     @IBAction func discomfortClicked(_ sender: UIButton) {
         sendSymptom(type: 3)
+        self.io.sendSymptomIO(uid: self.currUid!, type: 3)
     }
     
     @IBAction func painClicked(_ sender: UIButton) {
         sendSymptom(type: 4)
+        self.io.sendSymptomIO(uid: self.currUid!, type: 4)
     }
     
     
@@ -54,7 +61,7 @@ class SymptomDialogView: UIView {
         let currUid = Auth.auth().currentUser?.uid
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let innerTime = dateFormatter.string(from: NSDate() as Date)
         
         var symptomType:String = ""
