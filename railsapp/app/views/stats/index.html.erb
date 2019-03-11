@@ -57,14 +57,38 @@
               </center>
             </div>
           </div>
-        </div>
-        <div class="col-lg-8 col-xlg-9 col-md-7">
           <div class="card">
-            <div class="card-block">
-              <div>Reasons for Visit</div>
-              <div>*Feeling sick</div>
+            <div class="card-block symptoms">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Symptom</th>
+                    <th>Time</th>
+                    <th colspan="3"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @allSymptoms.each do |element| %>
+                    <tr>
+                      <td> <%= element.symptom %></td>
+                      <td>
+                        <% timeSince = (DateTime.now - DateTime.parse(element.time))%>
+                        <% if timeSince > 1%>
+                          <%= timeSince.to_i %><%= " days ago"%>
+                        <% end %>
+                        <% if timeSince > 1.0/24.0 && timeSince < 1 %>
+                          <%= (timeSince*24).to_f %><%= " hours ago"%>
+                        <% end %>
+
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
             </div>
           </div>
+        </div>
+        <div class="col-lg-8 col-xlg-9 col-md-7">
         </div>
       </div>
       <div class="row">
