@@ -65,6 +65,11 @@ Global Styles
 * {
   outline: none; }
 
+.symptoms {
+  overflow-y: auto;
+  height: 150px;
+}
+
 body {
   background: #fff;
   font-family: "Poppins", sans-serif;

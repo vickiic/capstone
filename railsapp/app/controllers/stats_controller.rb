@@ -118,6 +118,9 @@ class StatsController < ApplicationController
       DateTime.now - 1,
       DateTime.now).order(:Time)
 
+
+    @allSymptoms = Heartrate.where("device = ? AND symptom != ?", @patient, "").order(:time).reverse_order
+
   end
 
   def messaging
