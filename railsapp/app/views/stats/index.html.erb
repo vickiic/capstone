@@ -85,12 +85,15 @@ $(document).ready(function(){
                     <tr>
                       <td> <%= element.symptom %></td>
                       <td>
-                        <% timeSince = (DateTime.now - DateTime.parse(element.time))%>
+                        <% timeSince = (DateTime.parse("2019-3-14 11:00") - DateTime.parse(element.time))%>
                         <% if timeSince > 1%>
                           <%= timeSince.to_i %><%= " days ago"%>
                         <% end %>
                         <% if timeSince > 1.0/24.0 && timeSince < 1 %>
-                          <%= (timeSince*24).to_f %><%= " hours ago"%>
+                          <%= (timeSince*24).to_i %><%= " hours ago"%>
+                        <% end %>
+                        <% if timeSince > 1.0/(24.0*60) && timeSince < 1.0/24 %>
+                          <%= (timeSince*24*60).to_i %><%= " minutes ago"%>
                         <% end %>
                       </td>
                     </tr>
