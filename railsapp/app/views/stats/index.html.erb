@@ -225,9 +225,9 @@ $(document).ready(function(){
                       var myChart = new Chart(ctx, cfg);
                       for (i = 0; i < myChart.data.datasets[0].data.length; i++) {
                         if (symptomsList[i]) {
-                          myChart.data.datasets[0].pointBackgroundColor.push("black");
-                          myChart.data.datasets[0].pointBorderColor.push("black");
-                          myChart.data.datasets[0].pointRadius.push(3);
+                          myChart.data.datasets[0].pointBackgroundColor.push("rgb(252, 161, 136)");
+                          myChart.data.datasets[0].pointBorderColor.push("red");
+                          myChart.data.datasets[0].pointRadius.push(1);
                         } else {
                           myChart.data.datasets[0].pointBackgroundColor.push("rgb(252, 161, 136)");
                           myChart.data.datasets[0].pointBorderColor.push("red");
@@ -271,7 +271,7 @@ $(document).ready(function(){
                         data: {
                           labels: labels,
                           datasets: [{
-                            label: 'HeartRates w/Outliers',
+                            label: 'Heartrate',
                             data: data,
                             backgroundColor: "rgb(252, 161, 136)",
 					                  borderColor: "red",
@@ -302,7 +302,7 @@ $(document).ready(function(){
                           scales: {
                             xAxes: [{
                               type: 'time',
-                              distribution: 'series',
+                              distribution: 'linear',
                             }],
                             yAxes: [{
                               scaleLabel: {
@@ -322,12 +322,11 @@ $(document).ready(function(){
                         }
                       };
                       var myChart = new Chart(ctx, cfg);
-                      var myChart = new Chart(ctx, cfg);
                       for (i = 0; i < myChart.data.datasets[0].data.length; i++) {
                         if (symptomsList[i]) {
-                          myChart.data.datasets[0].pointBackgroundColor.push("black");
-                          myChart.data.datasets[0].pointBorderColor.push("black");
-                          myChart.data.datasets[0].pointRadius.push(3);
+                          myChart.data.datasets[0].pointBackgroundColor.push("rgb(252, 161, 136)");
+                          myChart.data.datasets[0].pointBorderColor.push("red");
+                          myChart.data.datasets[0].pointRadius.push(1);
                         } else {
                           myChart.data.datasets[0].pointBackgroundColor.push("rgb(252, 161, 136)");
                           myChart.data.datasets[0].pointBorderColor.push("red");
@@ -364,11 +363,10 @@ $(document).ready(function(){
                         data: {
                           labels: labels,
                           datasets: [{
-                            label: 'HeartRates w/Outliers',
+                            label: 'Hourly Average',
                             data: data,
-                            backgroundColor: "green",
-                            borderColor: "lightgreen",
-                            pointBackgroundColor: [],
+                            backgroundColor: "rgb(252, 161, 136)",
+                            borderColor: "red",
                             type: 'line',
                             pointRadius: 1,
                             fill: true,
@@ -381,7 +379,7 @@ $(document).ready(function(){
                           scales: {
                             xAxes: [{
                               type: 'time',
-                              distribution: 'series',
+                              distribution: 'linear',
                             }],
                             yAxes: [{
                               scaleLabel: {
@@ -522,9 +520,11 @@ $(document).ready(function(){
   // Get the element with id="defaultOpen" and click on it
   document.getElementById("defaultOpen").click();
 </script>
-    <ul id="user-list"></ul> 
-   <div id="user-detail"></div>
-   <p id="user-list-once">
-   </p>
-   <%= javascript_include_tag "fbmessage", "data-turbolinks-track" => true  %>
+  <div class="invisibleDiv">
+  <ul id="user-list"></ul> 
+  <div id="user-detail"></div>
+  <p id="user-list-once">
+  </p>
+  </div>
+  <%= javascript_include_tag "fbmessage", "data-turbolinks-track" => true  %>
 </body>

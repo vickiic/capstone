@@ -15,8 +15,8 @@ class StatsController < ApplicationController
       (0..6).each do |j|
         current = Heartrate.where("device = ? AND time >= ? AND time <= ?",
           @patient,
-          (DateTime.parse("2019-3-14") - (0.04166*(i+1)) - 0.33333 - j).at_beginning_of_hour,
-          (DateTime.parse("2019-3-14") - (0.04166*i) - 0.33333 - j).at_beginning_of_hour)
+          (DateTime.parse("2019-3-14 11:00") - (0.04166*(i+1)) - j).at_beginning_of_hour,
+          (DateTime.parse("2019-3-14 11:00") - (0.04166*i) - j).at_beginning_of_hour)
         avg = current.average(:value)
         if(avg)
           validData[i] = validData[i].to_i + 1
@@ -25,7 +25,7 @@ class StatsController < ApplicationController
         if(j == 6 && weekly1[i].to_i != 0)
           weekly1[i] = weekly1[i] / validData[i]
         end
-        hourlyTimeToday[i] = (DateTime.now - (0.0416*i)).at_beginning_of_hour
+        hourlyTimeToday[i] = (DateTime.parse("2019-3-14 11:00") - (0.0416*i)).at_beginning_of_hour
       end
     end
 
@@ -38,8 +38,8 @@ class StatsController < ApplicationController
       (0..6).each do |j|
         current = Heartrate.where("device = ? AND time >= ? AND time <= ?",
           @patient,
-          (DateTime.parse("2019-3-14") - (0.04166*(i+1)) - 7.33333 - j).at_beginning_of_hour,
-          (DateTime.parse("2019-3-14") - (0.04166*i) - 7.33333 - j).at_beginning_of_hour
+          (DateTime.parse("2019-3-14 11:00") - (0.04166*(i+1)) - 7 - j).at_beginning_of_hour,
+          (DateTime.parse("2019-3-14 11:00") - (0.04166*i) - 7 - j).at_beginning_of_hour
           )
           avg = current.average(:value)
         if(avg)
@@ -60,8 +60,8 @@ class StatsController < ApplicationController
       (0..6).each do |j|
         current = Heartrate.where("device = ? AND time >= ? AND time <= ?",
           @patient,
-          (DateTime.parse("2019-3-14") - (0.04166*(i+1)) - 14.33333 - j).at_beginning_of_hour,
-          (DateTime.parse("2019-3-14") - (0.04166*i) - 14.33333 - j).at_beginning_of_hour
+          (DateTime.parse("2019-3-14 11:00") - (0.04166*(i+1)) - 14 - j).at_beginning_of_hour,
+          (DateTime.parse("2019-3-14 11:00") - (0.04166*i) - 14 - j).at_beginning_of_hour
           )
           avg = current.average(:value)
         if(avg)
@@ -82,8 +82,8 @@ class StatsController < ApplicationController
       (0..6).each do |j|
         current = Heartrate.where("device = ? AND time >= ? AND time <= ?",
           @patient,
-          (DateTime.parse("2019-3-14") - (0.04166*(i+1)) - 21.33333 - j).at_beginning_of_hour,
-          (DateTime.parse("2019-3-14") - (0.04166*i) - 21.33333 - j).at_beginning_of_hour)
+          (DateTime.parse("2019-3-14 11:00") - (0.04166*(i+1)) - 21 - j).at_beginning_of_hour,
+          (DateTime.parse("2019-3-14 11:00") - (0.04166*i) - 21 - j).at_beginning_of_hour)
         avg = current.average(:value)
         if(avg)
           validData[i] = validData[i].to_i + 1
@@ -98,11 +98,11 @@ class StatsController < ApplicationController
     @weekly4 = weekly4
 
     hourlyAverageToday = Array.new
-    (0..24).each do |i|
+    (0..23).each do |i|
       current = Heartrate.where("device = ? AND time >= ? AND time <= ?",
         @patient,
-        (DateTime.parse("2019-3-14") - (0.04166*(i+1))).at_beginning_of_hour,
-        (DateTime.parse("2019-3-14") - (0.04166*i)).at_beginning_of_hour)
+        (DateTime.parse("2019-3-14 11:00") - (0.04166*(i+1))).at_beginning_of_hour,
+        (DateTime.parse("2019-3-14 11:00") - (0.04166*i)).at_beginning_of_hour)
       avg = current.average(:value)
       if(avg)
         hourlyAverageToday.push(avg)
@@ -115,8 +115,8 @@ class StatsController < ApplicationController
 
     @todayRaw = Heartrate.where("device = ? AND time >= ? AND time <= ?",
       @patient,
-      DateTime.parse("2019-3-14") - 1,
-      DateTime.parse("2019-3-14")).order(:Time)
+      DateTime.parse("2019-3-14 11:00") - 1,
+      DateTime.parse("2019-3-14 11:00")).order(:Time)
 
 
     @allSymptoms = Heartrate.where("device = ? AND symptom != ?", @patient, "").order(:time).reverse_order
