@@ -32,13 +32,4 @@ ActiveRecord::Schema.define(version: 2019_03_09_062701) do
     t.string "height"
   end
 
-  create_table "welcomes", force: :cascade do |t|
-    t.string "name"
-    t.string "device"
-    t.integer "age"
-    t.integer "weight"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
 end
