@@ -2342,6 +2342,7 @@ ul#themecolors {
 .card {
   margin: 15px; }
   .card .card-subtitle {
+    position:relative;
     font-weight: 300;
     margin-bottom: 15px;
     color: #99abb4; }
@@ -8036,6 +8037,7 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
   float: left;
   padding: 30px 15px 0 25px;
   width: 80%;
+  height: 70%;
   border-style: ridge;
 }
 
@@ -8061,7 +8063,7 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
   width: 100%;
 }
 
-.type_msg {border-top: 1px solid #c4c4c4;position: relative;}
+.type_msg {border-top: 1px solid #c4c4c4;position: relative; height: 150px;}
 .msg_send_btn {
   background: #05728f none repeat scroll 0 0;
   border: medium none;
@@ -8077,7 +8079,8 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
 }
 .messaging { padding: 0 0 50px 0;}
 .msg_history {
-  height: 516px;
+  height: 479px;
+  width: 800px;
   overflow-y: auto;
 }
 
@@ -8193,3 +8196,38 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
      margin-top: 10px;
  }
  
+
+ span.red {
+  background: red;
+   border-radius: 0.8em;
+  -moz-border-radius: 0.8em;
+  -webkit-border-radius: 0.8em;
+  color: #ffffff;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 1.6em;
+  margin-right: 15px;
+  text-align: center;
+  width: 1.6em; 
+}
+
+span.isCalvin{
+  position: relative;
+  right: 0;
+  top: 0;
+  background: red;
+  border-radius: 0.8em;
+  -moz-border-radius: 0.8em;
+  -webkit-border-radius: 0.8em;
+  color: #ffffff;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 1.6em;
+  margin-right: 15px;
+  text-align: center;
+  width: 1.6em;
+}
+
+div.cardblockMessage{
+  padding: 15px 0px;
+}
