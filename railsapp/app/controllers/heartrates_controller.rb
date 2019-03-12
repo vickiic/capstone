@@ -95,6 +95,6 @@ class HeartratesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def heartrate_params
-      params.require(:heartrate).permit(:device, :value, :time, :symptom)
+      params.require(:heartrate).permit(:device, :value, :time)
     end
 end
