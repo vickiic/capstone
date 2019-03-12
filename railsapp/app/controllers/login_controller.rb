@@ -15,8 +15,8 @@ class LoginController < ApplicationController
   def gen
     bpm = Heartrate.new
     bpm.device = "12345abc"
-    bpm.value = rand(25) + 25
-    randomTime = DateTime.now - rand(6) - rand - 21
+    bpm.value = rand(25) + 75
+    randomTime = DateTime.now - rand
     bpm.time = randomTime.strftime("%Y-%m-%d %H:%M:%S.00")
     bpm.save
     redirect_to login_index_path

@@ -57,14 +57,38 @@
               </center>
             </div>
           </div>
-        </div>
-        <div class="col-lg-8 col-xlg-9 col-md-7">
           <div class="card">
-            <div class="card-block">
-              <div>Reasons for Visit</div>
-              <div>*Feeling sick</div>
+            <div class="card-block symptoms">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Symptom</th>
+                    <th>Time</th>
+                    <th colspan="3"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @allSymptoms.each do |element| %>
+                    <tr>
+                      <td> <%= element.symptom %></td>
+                      <td>
+                        <% timeSince = (DateTime.now - DateTime.parse(element.time))%>
+                        <% if timeSince > 1%>
+                          <%= timeSince.to_i %><%= " days ago"%>
+                        <% end %>
+                        <% if timeSince > 1.0/24.0 && timeSince < 1 %>
+                          <%= (timeSince*24).to_f %><%= " hours ago"%>
+                        <% end %>
+
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
             </div>
           </div>
+        </div>
+        <div class="col-lg-8 col-xlg-9 col-md-7">
         </div>
       </div>
       <div class="row">
@@ -96,13 +120,16 @@
                       <% 
                         date = []
                         datapoints = []
+		                    symptoms = []
                         @heartrates.each  do |heartrate|
                           date << heartrate['time']
                           datapoints << heartrate['value']
+                          symptoms << heartrate['symptom']
                         end
                       %>
                       var labels1 = <%= raw date.to_json %>;
                       var data = <%= raw datapoints.to_json %>;
+	                    var symptomsList = <%= raw symptoms.to_json %>;
                       var labels = [];
                       var dateFormat = 'YYYY-MM-DD HH:mm:ss';
                       for (i=0; i<labels1.length; i++) {
@@ -122,7 +149,9 @@
                             backgroundColor: "rgb(252, 161, 136)",
 					                  borderColor: "red",
                             type: 'line',
-                            pointRadius: 1,
+                            pointBackgroundColor: [],
+                            pointBorderColor: [],
+                            pointRadius: [],
                             fill: true,
                             lineTension: 0,
                             borderWidth: 2,
@@ -130,6 +159,19 @@
                         },
                         options: {
                           responsive: false,
+                          tooltips: {
+                            callbacks:{
+                              label: function(tooltipItem, data){
+                                var datanumber = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                if (symptomsList[tooltipItem.index]){
+                                  return `${datanumber} : ${symptomsList[tooltipItem.index]}`;
+                                }
+                                else {
+                                  return datanumber;
+                                }
+                              }
+                            }
+                          },
                           scales: {
                             xAxes: [{
                               type: 'time',
@@ -152,7 +194,19 @@
                           }
                         }
                       };
-                      var chart = new Chart(ctx, cfg);
+                      var myChart = new Chart(ctx, cfg);
+                      for (i = 0; i < myChart.data.datasets[0].data.length; i++) {
+                        if (symptomsList[i]) {
+                          myChart.data.datasets[0].pointBackgroundColor.push("black");
+                          myChart.data.datasets[0].pointBorderColor.push("black");
+                          myChart.data.datasets[0].pointRadius.push(3);
+                        } else {
+                          myChart.data.datasets[0].pointBackgroundColor.push("rgb(252, 161, 136)");
+                          myChart.data.datasets[0].pointBorderColor.push("red");
+                          myChart.data.datasets[0].pointRadius.push(1);
+                        }
+                      }
+	                    myChart.update();
                     </script>
                   </div>
                 </div>
@@ -165,13 +219,16 @@
                       <% 
                         date = []
                         datapoints = []
+                        symptoms = []
                         @todayRaw.each  do |heartrate|
                           date << heartrate['time']
                           datapoints << heartrate['value']
+		                    	symptoms << heartrate['symptom']
                         end
                       %>
                       var labels1 = <%= raw date.to_json %>;
                       var data = <%= raw datapoints.to_json %>;
+	                    var symptomsList = <%= raw symptoms.to_json %>;
                       var labels = [];
                       var dateFormat = 'YYYY-MM-DD HH:mm:ss';
                       for (i=0; i<labels1.length; i++) {
@@ -191,7 +248,9 @@
                             backgroundColor: "rgb(252, 161, 136)",
 					                  borderColor: "red",
                             type: 'line',
-                            pointRadius: 1,
+                            pointBackgroundColor: [],
+                            pointBorderColor: [],
+                            pointRadius: [],
                             fill: true,
                             lineTension: 0,
                             borderWidth: 2
@@ -199,6 +258,19 @@
                         },
                         options: {
                           responsive: false,
+                          tooltips: {
+                            callbacks:{
+                              label: function(tooltipItem, data){
+                                var datanumber = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                if (symptomsList[tooltipItem.index]){
+                                  return `${datanumber} : ${symptomsList[tooltipItem.index]}`;
+                                }
+                                else {
+                                  return datanumber;
+                                }
+                              }
+                            }
+                          },
                           scales: {
                             xAxes: [{
                               type: 'time',
@@ -221,7 +293,20 @@
                           }
                         }
                       };
-                      var chart = new Chart(ctx, cfg);
+                      var myChart = new Chart(ctx, cfg);
+                      var myChart = new Chart(ctx, cfg);
+                      for (i = 0; i < myChart.data.datasets[0].data.length; i++) {
+                        if (symptomsList[i]) {
+                          myChart.data.datasets[0].pointBackgroundColor.push("black");
+                          myChart.data.datasets[0].pointBorderColor.push("black");
+                          myChart.data.datasets[0].pointRadius.push(3);
+                        } else {
+                          myChart.data.datasets[0].pointBackgroundColor.push("rgb(252, 161, 136)");
+                          myChart.data.datasets[0].pointBorderColor.push("red");
+                          myChart.data.datasets[0].pointRadius.push(1);
+                        }
+                      }
+	                    myChart.update();
                     </script>
                   </div>
                 </div>
@@ -253,8 +338,9 @@
                           datasets: [{
                             label: 'HeartRates w/Outliers',
                             data: data,
-                            backgroundColor: "rgb(252, 161, 136)",
-					                  borderColor: "red",
+                            backgroundColor: "green",
+                            borderColor: "lightgreen",
+                            pointBackgroundColor: [],
                             type: 'line',
                             pointRadius: 1,
                             fill: true,
@@ -288,14 +374,6 @@
                       };
                       
                       var myChart = new Chart(ctx, cfg);
-                      for (i = 0; i < myChart.data.datasets[datasetIndex].data.length; i++) {
-                        if (myChart.data.datasets[0].data[i] > 100) {
-                              pointBackgroundColors.push("#90cd8a");
-                          } else {
-                              pointBackgroundColors.push("#f58368");
-                          }
-                      }
-                      myChart.update();
                     </script>
                   </div>
                 </div>

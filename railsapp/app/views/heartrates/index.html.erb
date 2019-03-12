@@ -8,6 +8,7 @@
       <th>Device</th>
       <th>Value</th>
       <th>Time</th>
+      <th>Symptom</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= heartrate.device %></td>
         <td><%= heartrate.value %></td>
         <td><%= heartrate.time %></td>
+				<td><%= heartrate.symptom %></td>
         <td><%= heartrate.created_at %></td>
         <td><%= link_to 'Show', heartrate %></td>
         <td><%= link_to 'Edit', edit_heartrate_path(heartrate) %></td>
@@ -31,83 +33,107 @@
 
 <%= link_to 'New Heartrate', new_heartrate_path %>
 
-	<div style="width:1000px">
-		<canvas id="chart1"></canvas>
-	</div>
-	<br>
-	<br>
-	Chart Type:
-	<select id="type">
-		<option value="line">Line</option>
-		<option value="bar">Bar</option>
-	</select>
-	<button id="update">update</button>
-	<script>
-		<% 
-			date = []
-			datapoints = []
-			@heartrates.each  do |heartrate|
+<div style="width:1000px">
+	<canvas id="chart1"></canvas>
+</div>
+<br>
+<br>
+Chart Type:
+<select id="type">
+	<option value="line">Line</option>
+	<option value="bar">Bar</option>
+</select>
+<button id="update">update</button>
+<script>
+	<% 
+		date = []
+		datapoints = []
+		symptoms = []
+		@heartrates.each do |heartrate|
 			date << heartrate['time']
 			datapoints << heartrate['value']
-			end
-		%>
-		var labels1 = <%= raw date.to_json %>;
-		var data = <%= raw datapoints.to_json %>;
-		var labels = [];
-		var dateFormat = 'YYYY-MM-DD HH:mm:ss';
-		for (i=0; i<labels1.length; i++) {
-			labels.push(moment(labels1[i], dateFormat));
-		}
-		var ctx = document.getElementById('chart1').getContext('2d');
-		ctx.canvas.width = 1000;
-		ctx.canvas.height = 300;
+			symptoms << heartrate['symptom']
+		end
+	%>
+	var labels1 = <%= raw date.to_json %>;
+	var data = <%= raw datapoints.to_json %>;
+	var symptomsList = <%= raw symptoms.to_json %>;
+	var labels = [];
+	var dateFormat = 'YYYY-MM-DD HH:mm:ss';
+	for (i=0; i<labels1.length; i++) {
+		labels.push(moment(labels1[i], dateFormat));
+	}
+	var ctx = document.getElementById('chart1').getContext('2d');
+	ctx.canvas.width = 1000;
+	ctx.canvas.height = 300;
 
-		var color = Chart.helpers.color;
-		var cfg = {
-			type: 'bar',
-			data: {
-				labels: labels,
-				datasets: [{
-					label: 'HeartRates',
-					data: data,
-					backgroundColor: "rgb(252, 161, 136)",
-					borderColor: "red",
- 					type: 'line',
-					pointRadius: 1,
-					fill: true,
-					lineTension: 0,
-					borderWidth: 2
-				}]
-			},
-			options: {
-				responsive: false,
-				scales: {
-					xAxes: [{
-						type: 'time',
-						distribution: 'linear',
-						// ticks: {
-						// 	source: 'labels',
-						// 	maxTicksLimit: 1
-						// }
-					}],
-					yAxes: [{
-						scaleLabel: {
-							display: true,
-							labelString: 'HeartRate Values'
-						},
-				                ticks: {
-				                    beginAtZero:true
+	var color = Chart.helpers.color;
+	var cfg = {
+		type: 'line',
+		data: {
+			labels: labels,
+			datasets: [{
+				label: 'HeartRates',
+				data: data,
+				backgroundColor: "rgb(252, 161, 136)",
+				borderColor: "red",
+				type: 'line',
+				pointBackgroundColor: [],
+				pointBorderColor: [],
+				pointRadius: [],
+				fill: true,
+				lineTension: 0,
+				borderWidth: 2
+			}]
+		},
+		options: {
+			responsive: false,
+			tooltips: {
+				callbacks:{
+					label: function(tooltipItem, data){
+						var datanumber = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+						if (symptomsList[tooltipItem.index]){
+							return `${datanumber} : ${symptomsList[tooltipItem.index]}`;
 						}
-
-					}]
-				}, 
-				plugins: {
-					datalabels: {
-							display: false,
-					},
+						else {
+							return datanumber;
+						}
+					}
 				}
+			},
+			scales: {
+				xAxes: [{
+					type: 'time',
+					distribution: 'linear',
+				}],
+				yAxes: [{
+					scaleLabel: {
+						display: true,
+						labelString: 'HeartRate Values'
+					},
+					ticks: {
+						beginAtZero:true
+					}
+				}]
+			}, 
+			plugins: {
+				datalabels: {
+						display: false,
+				},
 			}
-		};
-		var chart = new Chart(ctx, cfg);
-
-	</script>
+		}
+	};
+	var myChart = new Chart(ctx, cfg);
+	for (i = 0; i < myChart.data.datasets[0].data.length; i++) {
+		if (symptomsList[i]) {
+			myChart.data.datasets[0].pointBackgroundColor.push("black");
+			myChart.data.datasets[0].pointBorderColor.push("black");
+			myChart.data.datasets[0].pointRadius.push(3);
+		} else {
+			myChart.data.datasets[0].pointBackgroundColor.push("rgb(252, 161, 136)");
+			myChart.data.datasets[0].pointBorderColor.push("red");
+			myChart.data.datasets[0].pointRadius.push(1);
+		}
+	}
+	myChart.update();
+</script>
