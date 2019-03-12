@@ -53,7 +53,7 @@
         <ul id="sidebarnav">
           <li> <a class="waves-effect waves-dark" href="/welcome/index" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Patients</span></a>
           </li>
-          <li> <a class="waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-message-text-outline"></i><span class="hide-menu">Messages</span></a>
+          <li> <a class="waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-message-text-outline"></i><span class="hide-menu">Messages   </span><span class="red">1</span></a>
           </li>
           <li> <a class="waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">Settings</span></a>
           </li>
@@ -116,6 +116,9 @@
             <div class="card">
               <%= link_to stats_index_path(:id => element.device) do %>
                 <div class="card-block">
+                                                                    <% if element.device == "demo"%>
+                <span class= "isCalvin">1</span>
+                <% end %>
                   <center class="m-t-30"> 
                     <%= if Rails.application.assets.find_asset("users/#{element.pic}") != nil then image_tag "users/#{element.pic}", :class => "img-circle", :style => "width:150px" end %>
                     <%= if Rails.application.assets.find_asset("users/#{element.pic}") == nil then image_tag "users/DEFAULT.jpg", :class => "img-circle", :style => "width:150px" end %>                    
