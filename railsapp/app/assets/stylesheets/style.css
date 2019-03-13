@@ -8200,6 +8200,7 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
 
  span.red {
   background: red;
+  font-family: verdana;
    border-radius: 0.8em;
   -moz-border-radius: 0.8em;
   -webkit-border-radius: 0.8em;
@@ -8214,6 +8215,7 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
 
 span.isCalvin{
   position: relative;
+  font-family: verdana;
   right: 0;
   top: 0;
   background: red;

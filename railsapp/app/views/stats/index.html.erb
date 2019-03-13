@@ -110,11 +110,16 @@ $(document).ready(function(){
                 <div class="type_msg">
                   <div class="input_msg_write">
                     <input>
-                    <form>
+                    <form id="text_form">
                       <input type='text' data-key='text' class="user-input" placeholder="Write a message">  <input type='text' data-key='name' value="Dr. Halman" hidden class="user-input">
                       <input type='text' data-key='sender_id' value="physcid1" hidden class="user-input">
-                      <button type='button' id="add-user-btn">enter</button>
+                      <button type='button' id="add-user-btn" onclick="resetFunction()">enter</button>
                     </form>
+                    <script>
+                    function resetFunction() {
+                      document.getElementById("text_form").reset();
+                    }
+                    </script>
                   </div>
                 </div>
               </div>
